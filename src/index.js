@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core';
+import { indigo, lime } from '@material-ui/core/colors';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#2B5DFF',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#FF3868',
+      contrastText: '#fff',
+    },
+  },
+  //fontFamily: Roboto // as an aside, highly recommend importing roboto font for Material UI projects! Looks really nice
+});
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>,
   document.getElementById('root')
 );
 
