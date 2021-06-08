@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardActions, CardContent, TextField, Grid, Paper, Button, Switch, Typography, InputBase, InputAdornment, FormControlLabel } from '@material-ui/core';
+import { Grid, Button, Switch, InputBase, FormControlLabel } from '@material-ui/core';
 
 import { IconPicker } from 'react-fa-icon-picker'
 import {Edit, DeleteOutline} from '@material-ui/icons';
-import Appbar from './appbar';
-
 //green: #03D084
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +46,6 @@ export default function Links(){
 
     return(
         <React.Fragment>
-            <Appbar/>
             <Grid
                 className={classes.root}
                 container

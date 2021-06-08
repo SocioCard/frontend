@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import LinkShareAppbar from './linkShareAppbar';
 import NavigationAppbar from './navigationAppbar';
 
