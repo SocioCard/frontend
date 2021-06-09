@@ -1,14 +1,14 @@
 import React from "react";
 import Appbar from "./appbar";
 import Links from "./link";
-import Profile from "./profile"
+import Appearance from "./appearance";
 
 const Admin = ()=>{
     return (
         <>
             <Appbar/>
             {/* <Links/> */}
-            <Profile/>
+            <Appearance/>
         </>
     );
 };

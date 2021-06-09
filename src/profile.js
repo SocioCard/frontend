@@ -1,26 +1,10 @@
-import React from "react";
-import { Avatar, Button, Grid, InputBase, makeStyles} from "@material-ui/core";
+import { Avatar, Button, Grid, InputBase, makeStyles } from "@material-ui/core";
 import defaultImg from './static/images/avatarDefault1.jpg';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
+
 const useStyles = makeStyles((theme) => ({
-  cont: {
-    display: "flex",
-    "& > *": {
-      margin: theme.spacing(1)
-    },
-    minHeight:'100vh',
-    backgroundColor: "rgb(22,26,43)",
-    // [theme.breakpoints.only("md")]:{
-    //   display:'none',
-    // },
-  },
-  profileCont: {
-    borderRadius: "5px",
-    backgroundColor: "rgb(31,38,60)",
-    padding: "10px 15px",
-  },
   imgCont: {
     display:'flex',
     flexDirection: 'row',
@@ -64,21 +48,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Profile = () => {
+const Profile=()=>{
   const classes = useStyles();
-  return (
-    <div className={classes.root}>
-      <Grid container className={classes.cont} direction='column' justify='flex-center' alignItems='center'>
-        <Grid item xs={11} container direction='column' alignItems='flex-start'>
-          <h3 style={{"color":"white", "margin":"10px 0 0 10px"}}>Profile</h3>
-        </Grid>
-        <Grid
-          item
-          xs={11}
-          container
-          className={classes.profileCont}
-          spacing={1}
-        >
+  return(
+        <>
           <Grid item xs={5} className={classes.imgCont}>
             <Avatar
               alt="Default Img"
@@ -120,9 +93,7 @@ const Profile = () => {
               }}
             />
           </Grid>
-        </Grid>
-      </Grid>
-    </div>
+         </>
   );
 };
 
