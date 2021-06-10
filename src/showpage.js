@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme)=>({
         alignContent: "flex-start",
         height:"100vh",
         padding:"6vh 4vw 10vh 4vw",
-        backgroundColor: "wheat",
+        backgroundColor: Theme.Bg.color,
     },
     avatarCont: {
         height: "160px",
@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme)=>({
     avatar: {
         height: "120px",
         width: "120px",
-        border: "5px solid green",
+        borderWidth: Theme.Avatar.borderWidth,
+        borderStyle: Theme.Avatar.borderStyle,
+        borderColor: Theme.Avatar.borderColor,
     },
     userDetails: {
         display: 'flex',
@@ -29,14 +31,14 @@ const useStyles = makeStyles((theme)=>({
         minHeight: '130px',
     },
     userName: {
-        fontSize: '1.35rem',
-        fontFamily: 'Lato',
-        color: 'black',
+        fontSize: Theme.Username.fontSize,
+        fontFamily: Theme.Username.fontFamily,
+        color: Theme.Username.color,
     },
     userBio: {
-        fontSize: '1.10rem',
-        fontFamily: 'Lato',
-        color: 'black',
+        fontSize: Theme.Userbio.fontSize,
+        fontFamily: Theme.Userbio.fontFamily,
+        color: Theme.Userbio.color,
     },
     linkList: {
         height: '45vh',
@@ -44,20 +46,18 @@ const useStyles = makeStyles((theme)=>({
         alignContent: 'flex-start',
     },
     linkCard: {
-        height:"80px",
+        height:"70px",
         margin: "10px 0",
-        [theme.breakpoints.up("sm")]:{
-            width: '85vw',
-        },
-        [theme.breakpoints.up("md")]:{
-            width: '90vw',
-        },
-        backgroundColor:"#e8b651",
-        borderRadius: '13px',
-        border: '2px solid #e3e3e3',
+        backgroundColor:Theme.LinkCard.backgroundColor,
+        borderRadius: Theme.LinkCard.borderRadius,
+        borderWidth: Theme.LinkCard.borderWidth,
+        borderStyle: Theme.LinkCard.borderStyle,
+        borderColor: Theme.LinkCard.borderColor,
         '&:hover':{
-            backgroundColor: "#fff",
-            border: "2px solid #6b5d41",
+            backgroundColor:Theme.LinkCard.onHover.backgroundColor,
+            borderWidth: Theme.LinkCard.onHover.borderWidth,
+            borderStyle: Theme.LinkCard.onHover.borderStyle,
+            borderColor: Theme.LinkCard.onHover.borderColor,
         },
     },
     linkLogoCont: {
@@ -65,27 +65,64 @@ const useStyles = makeStyles((theme)=>({
         alignContent:"center",
     },
     linkLogo: {
-        fontSize: '2.25rem',
-        color: 'brown',
+        fontSize: Theme.LinkLogo.fontSize,
+        color: Theme.LinkLogo.color,
     },
     linkMsgCont: {
         justifyContent: 'center',
         alignContent:"center",
-        padding: "0 30px 0 10px",
-        [theme.breakpoints.up("sm")]:{
-            padding: "0 130px 0 20px",
-        },
-        [theme.breakpoints.up("lg")]:{
-            padding: "0 120px 0 20px",
-        },
         
         '& > *':{
-            fontSize: '1.35rem',
-            fontFamily: 'Fira Sans',
-            color: 'brown',
+            fontSize: Theme.LinkMsg.fontSize,
+            fontFamily: Theme.LinkMsg.fontFamily,
+            color: Theme.LinkMsg.color,
         },
     }
 }));
+
+var Theme = {
+    Bg: {
+        color: "wheat",
+    },
+    Avatar: {
+        borderWidth: '5px',
+        borderStyle: 'solid',
+        borderColor: "green",
+    },
+    Username: {
+        fontSize: '1.35rem',
+        fontFamily: 'Lato',
+        color: 'black',
+    },
+    Userbio: {
+        fontSize: '1.10rem',
+        fontFamily: 'Lato',
+        color: 'black',
+    },
+    LinkCard: {
+        backgroundColor:"#e8b651",
+        borderRadius: '13px',
+        borderWidth: '2px',
+        borderStyle: 'solid',
+        borderColor: '#e3e3e3',
+        onHover:{
+            backgroundColor: "#fff",
+            borderWidth: '2px',
+            borderStyle: 'solid',
+            borderColor: '#6b5d41',
+        },
+    },
+    LinkLogo: {
+        fontSize: '2.25rem',
+        color: 'brown',
+    },
+    LinkMsg: {
+        fontSize: '1.35rem',
+        fontFamily: 'Fira Sans',
+        color: 'brown',
+    },
+};
+
 const ShowPage=()=>{
     const classes = useStyles();
     return(
@@ -113,7 +150,7 @@ const ShowPage=()=>{
                         <Grid item container className={classes.linkLogoCont} xs={2}>
                             <InstagramIcon className={classes.linkLogo} fontSize='large'/>
                         </Grid>
-                        <Grid item container className={classes.linkMsgCont} xs={10}>
+                        <Grid item container className={classes.linkMsgCont} xs={8}>
                             <Typography className={classes.linkMsg} xs={10}>
                                 View my Insta
                             </Typography>
@@ -123,7 +160,7 @@ const ShowPage=()=>{
                         <Grid item container className={classes.linkLogoCont} xs={2}>
                             <InstagramIcon className={classes.linkLogo} fontSize='large'/>
                         </Grid>
-                        <Grid item container className={classes.linkMsgCont} xs={10}>
+                        <Grid item container className={classes.linkMsgCont} xs={8}>
                             <Typography className={classes.linkMsg} xs={10}>
                                 View my Insta
                             </Typography>
