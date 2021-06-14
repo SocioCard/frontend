@@ -5,6 +5,7 @@ import { Grid, Button, Switch, InputBase, FormControlLabel } from '@material-ui/
 import { IconPicker } from 'react-fa-icon-picker'
 import {Edit, DeleteOutline} from '@material-ui/icons';
 import axios from 'axios';
+import Appbar from "./appbar";
 //green: #03D084
 
 const useStyles = makeStyles((theme) => ({
@@ -41,35 +42,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Links(){
+export default function Links({user, handleChange}){
     const classes = useStyles();
-    const [value, setValue] = useState("FaImages")
-    const [items, setItems] = useState({
-        link:"",
-        title:"",
-        icon:"FaImages",
-    })
 
-    const handleChange = (event) => {
-        //console.log(event.target.name+" "+event.target.value)
-        console.log(items)
-        console.log(setItems)
-        setItems({ ...(items), [event.target.name]: event.target.value});
-    };
-
-    const handleSubmit = () => {
-        console.log(items);
-        axios.post('http://localhost:5000/addLink', items)
-        .then(function (response) {
-        console.log(response);
-        })
-        .catch(function(err){
-        console.log(err);
-        })
-    }
+    
 
     return(
         <React.Fragment>
+            <Appbar/>
             <Grid
                 className={classes.root}
                 container
@@ -102,7 +82,8 @@ export default function Links(){
                                 <Grid item>
                                     <InputBase
                                         required 
-                                        id="title"                                         
+                                        id="title"
+                                        value={user.links[0].title}                                   
                                         name="title"
                                         onChange={handleChange}
                                         placeholder="Add Title"
@@ -120,7 +101,8 @@ export default function Links(){
                                 <Grid item>
                                     <InputBase
                                         required 
-                                        id="link" 
+                                        id="link"
+                                        value={user.links[0].link}
                                         name="link"
                                         onChange={handleChange}
                                         placeholder="Add Link"
@@ -141,7 +123,7 @@ export default function Links(){
                             containerStyles={{backgroundColor:'#1F263C', border:'none', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',}}
                             buttonStyles={{padding:'0', height:'20px', margin: '0 10px', border:'none'}}
                             buttonIconStyles={{color:'#fff'}}
-                            value={items.icon}
+                            value={user.links[0].icon}
                             //onChange={(v) => setValue(v)}
                             onChange={(v) => setItems({ ...(items), icon: v})}
                         />
