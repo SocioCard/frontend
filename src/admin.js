@@ -7,8 +7,8 @@ const Admin = ()=>{
     return (
         <>
             <Appbar/>
-            {/* <Links/> */}
-            <Appearance/>
+            <Links/>
+            {/* <Appearance/> */}
         </>
     );
 };

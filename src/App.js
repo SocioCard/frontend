@@ -5,7 +5,7 @@ import ShowPage from './showpage';
 function App() {
   return (
     <div className="App">
-      <ShowPage />
+      <Admin />
     </div>
   );
 }
