@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Appbar from "./appbar";
 import Links from "./link";
 import Appearance from "./appearance";
