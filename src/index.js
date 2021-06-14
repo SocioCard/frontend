@@ -4,12 +4,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+
+
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#2B5DFF',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#FF3868',
+      contrastText: '#fff',
+    },
+  },
+  //fontFamily: Roboto // as an aside, highly recommend importing roboto font for Material UI projects! Looks really nice
+});
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ThemeProvider theme={theme}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  </ThemeProvider>,
+document.getElementById("root"));
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

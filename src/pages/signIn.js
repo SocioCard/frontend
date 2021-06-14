@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   createMuiTheme,
   makeStyles,
@@ -14,8 +14,17 @@ import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton } from "reac
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    background: "#fff",
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "Arvo"
+  },
   container: {
     [theme.breakpoints.only("xs")]: {
       width: "80%"
@@ -70,6 +79,8 @@ export default function SignIn() {
       type: "light"
     }
   });
+  const [access, setAccess]=useState(false);
+  const [uname, setUname]=useState("");
   const classes = useStyles();
   const responseFacebook=(response)=>{
     console.log(response.accessToken);
@@ -80,7 +91,8 @@ export default function SignIn() {
     })
     .then(res=>{
         localStorage.setItem(`token${res.data.user.username}`,res.data.token)
-        // setAccess(res.data.user);
+        setUname(res.data.user.username);
+        setAccess(true);
         // history.push(res.data.user.username);
         console.log(res);
     })
@@ -98,7 +110,8 @@ export default function SignIn() {
     })
     .then(res=>{
         localStorage.setItem(`token${res.data.user.username}`,res.data.token)
-        // setAccess(res.data.user);
+        setUname(res.data.user.username);
+        setAccess(true);
         // history.push(res.data.user.username);
         console.log(res);
     })
@@ -112,45 +125,52 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Paper className={classes.container}>
-        <h1 className={classes.title}>Welcome</h1>
-        <div className={classes.options}>
-        <GoogleLogin
-          clientId="769406402556-njlr65a4ujf3t6knd4dv7hj4jf0f6ihv.apps.googleusercontent.com"
-          buttonText="Log in with Google"
-          render={renderProps => (
-            <GoogleLoginButton onClick={renderProps.onClick}/>
-          )}
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'single_host_origin'}
-        />
-        <FacebookLogin
-          appId="222250642836810"
-          autoLoad={false}
-          callback={responseFacebook}
-          render={renderProps => (
-            <FacebookLoginButton onClick={renderProps.onClick}/>
-          )}
-        />
-        <TwitterLogin
-          authCallback={responseTwitter}
-          consumerKey="Fd0VjgL1JjCswSBKRJLOiy0md"
-          consumerSecret="gWfzgs9JQh8SeP8vsHlBhPbUoimTZyXS5G8cDCa94R2b6gaHC2"
-          style={{color:'black'}}
-          buttonTheme="dark"
-        >
-          <div style={{ cursor: "pointer" }}>
-            <Paper style={{ margin: "10px 0", width: "100%", background:'#00aaee' }}>
-              <div className={classes.buttonContainer}>
-                <TwitterIcon className={classes.buttonIcon} />
-                <div className={classes.buttonText}>Log in with Twitter</div>
-              </div>
-            </Paper>
+      {
+        access?
+        <Redirect from="/" to={`/${uname}/admin`}/>
+        :
+        <div className={classes.root}>
+          <Paper className={classes.container}>
+          <h1 className={classes.title}>Welcome</h1>
+          <div className={classes.options}>
+          <GoogleLogin
+            clientId="769406402556-njlr65a4ujf3t6knd4dv7hj4jf0f6ihv.apps.googleusercontent.com"
+            buttonText="Log in with Google"
+            render={renderProps => (
+              <GoogleLoginButton onClick={renderProps.onClick}/>
+            )}
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
+          <FacebookLogin
+            appId="222250642836810"
+            autoLoad={false}
+            callback={responseFacebook}
+            render={renderProps => (
+              <FacebookLoginButton onClick={renderProps.onClick}/>
+            )}
+          />
+          <TwitterLogin
+            authCallback={responseTwitter}
+            consumerKey="Fd0VjgL1JjCswSBKRJLOiy0md"
+            consumerSecret="gWfzgs9JQh8SeP8vsHlBhPbUoimTZyXS5G8cDCa94R2b6gaHC2"
+            style={{color:'black'}}
+            buttonTheme="dark"
+          >
+            <div style={{ cursor: "pointer" }}>
+              <Paper style={{ margin: "10px 0", width: "100%", background:'#00aaee' }}>
+                <div className={classes.buttonContainer}>
+                  <TwitterIcon className={classes.buttonIcon} />
+                  <div className={classes.buttonText}>Log in with Twitter</div>
+                </div>
+              </Paper>
+            </div>
+            </TwitterLogin>
           </div>
-          </TwitterLogin>
-        </div>
-      </Paper>
+        </Paper>
+      </div>
+    }
     </ThemeProvider>
   );
 }
