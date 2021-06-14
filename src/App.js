@@ -6,7 +6,7 @@ import "./App.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: "#000",
+    background: "#fff",
     minHeight: "100vh",
     display: "flex",
     justifyContent: "center",
