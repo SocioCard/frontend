@@ -2,14 +2,17 @@ import { Avatar, Grid, makeStyles, Typography } from "@material-ui/core";
 import defaultImg from './static/images/avatarDefault1.jpg';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import {Theme} from './themes';
+import {LocalThemes} from './data/localthemes';
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const useStyles = makeStyles((theme)=>({
+
+const Theme1 = makeStyles((theme)=>({
     root: {
         height:"100vh",
         padding:"6vh 4vw 10vh 4vw",
-        // backgroundColor: Theme[1].Bg.color,
-        background: `url(${Theme[1].Bg.img}), ${Theme[1].Bg.color}`,
+        // backgroundColor: LocalThemes[1].Bg.color,
+        backgroundColor: "wheat",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         display: 'flex',
@@ -32,9 +35,9 @@ const useStyles = makeStyles((theme)=>({
     avatar: {
         height: "120px",
         width: "120px",
-        borderWidth: Theme[1].Avatar.borderWidth,
-        borderStyle: Theme[1].Avatar.borderStyle,
-        borderColor: Theme[1].Avatar.borderColor,
+        borderWidth: "5px",
+        borderStyle: "solid",
+        borderColor: "green",
     },
     userDetails: {
         display: 'flex',
@@ -44,15 +47,16 @@ const useStyles = makeStyles((theme)=>({
         minHeight: '130px',
     },
     userName: {
-        fontSize: Theme[1].Username.fontSize,
-        fontFamily: Theme[1].Username.fontFamily,
-        color: Theme[1].Username.color,
+        fontSize: "1.35rem",
+        fontFamily: "Lato",
+        fontWeight: "400",
+        color: "black",
     },
     userBio: {
-        fontSize: Theme[1].Userbio.fontSize,
-        fontFamily: Theme[1].Userbio.fontFamily,
-        fontWeight: Theme[1].Userbio.fontWeight,
-        color: Theme[1].Userbio.color,
+        fontSize: "1.10rem",
+        fontFamily: "Lato",
+        fontWeight: "400",
+        color: "black",
     },
     linkList: {
         height: '45vh',
@@ -62,23 +66,23 @@ const useStyles = makeStyles((theme)=>({
     linkCard: {
         height:"70px",
         margin: "10px 0",
-        backgroundColor:Theme[1].LinkCard.backgroundColor,
-        borderRadius: Theme[1].LinkCard.borderRadius,
-        borderWidth: Theme[1].LinkCard.borderWidth,
-        borderStyle: Theme[1].LinkCard.borderStyle,
-        borderColor: Theme[1].LinkCard.borderColor,
+        backgroundColor:"#e8b651",
+        borderRadius: "13px",
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderColor: "#e3e3e3",
         // transition: "width 2s, height 4s", 
         '&:hover':{
-            backgroundColor:Theme[1].LinkCard.onHover.backgroundColor,
-            borderWidth: Theme[1].LinkCard.onHover.borderWidth,
-            borderStyle: Theme[1].LinkCard.onHover.borderStyle,
-            borderColor: Theme[1].LinkCard.onHover.borderColor,
+            backgroundColor: "#fff",
+            borderWidth: "2px",
+            borderStyle: "solid",
+            borderColor: "#6b5d41",
             transform: "scale(1.03, 1.09)",
             '& $linkLogo': {
-                color: Theme[1].LinkCard.onHover.msgColor,
+                color: "brown",
             },
             '& $linkMsgCont > *': {
-                color: Theme[1].LinkCard.onHover.msgColor,
+                color: "brown",
             },
         },
     },
@@ -87,24 +91,151 @@ const useStyles = makeStyles((theme)=>({
         alignContent:"center",
     },
     linkLogo: {
-        fontSize: Theme[1].LinkLogo.fontSize,
-        color: Theme[1].LinkLogo.color,
+        fontSize: "2.25rem",
+        color: "brown",
     },
     linkMsgCont: {
         justifyContent: 'center',
         alignContent:"center",
         
         '& > *':{
-            fontSize: Theme[1].LinkMsg.fontSize,
-            fontFamily: Theme[1].LinkMsg.fontFamily,
-            color: Theme[1].LinkMsg.color,
+            fontSize: "1.35rem",
+            fontFamily: "Fira Sans",
+            color: "brown",
+        },
+    }
+}));
+const Theme2 = makeStyles((theme)=>({
+    root: {
+        height:"100vh",
+        padding:"6vh 4vw 10vh 4vw",
+        // backgroundColor: LocalThemes[1].Bg.color,
+        backgroundColor: "#fff",
+        backgroundImage: "url(https://thumbs.gfycat.com/DeterminedLimpHornbill-small.gif)",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    mainCont: {
+        [theme.breakpoints.up('md')]: {
+            width: '60vw',
+        },
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignContent: "flex-start",
+    },
+    avatarCont: {
+        height: "160px",
+        width: "auto",
+    },
+    avatar: {
+        height: "120px",
+        width: "120px",
+        borderWidth: "0",
+        borderStyle: "solid",
+        borderColor: "green",
+    },
+    userDetails: {
+        display: 'flex',
+        direction: 'row',
+        justifyContent: 'center',
+        alignContent:'flex-start',
+        minHeight: '130px',
+    },
+    userName: {
+        fontSize: "1.35rem",
+        fontFamily: "Lato",
+        fontWeight: "400",
+        color: "black",
+    },
+    userBio: {
+        fontSize: "1.10rem",
+        fontFamily: "Lato",
+        fontWeight: "400",
+        color: "black",
+    },
+    linkList: {
+        height: '45vh',
+        justifyContent: 'center',
+        alignContent: 'flex-start',
+    },
+    linkCard: {
+        height:"70px",
+        margin: "10px 0",
+        backgroundColor:"#3d3b3c",
+        borderRadius: "13px",
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderColor: "#e3e3e3",
+        // transition: "width 2s, height 4s", 
+        '&:hover':{
+            backgroundColor: "#fff",
+            borderWidth: "2px",
+            borderStyle: "solid",
+            borderColor: "#3d3b3c",
+            transform: "scale(1.03, 1.09)",
+            '& $linkLogo': {
+                color: "#3d3b3c",
+            },
+            '& $linkMsgCont > *': {
+                color: "#3d3b3c",
+            },
+        },
+    },
+    linkLogoCont: {
+        paddingLeft: '12px',
+        alignContent:"center",
+    },
+    linkLogo: {
+        fontSize: "2.35rem",
+        color: "#fff",
+    },
+    linkMsgCont: {
+        justifyContent: 'center',
+        alignContent:"center",
+        
+        '& > *':{
+            fontSize: "1.35rem",
+            fontFamily: "Fira Sans",
+            color: "#fff",
         },
     }
 }));
 
-
 const ShowPage=()=>{
-    const classes = useStyles();
+    // const theme1 = useStyles();
+    const [user,setUser] = useState({
+        email: "",
+        username: "",
+        name: "",
+        bio: "",
+        themes: "1",
+        links: [{
+            title:"",
+            link:"",
+            icon:"",
+            visible:"",
+        }],
+        avatar:"",
+    });
+    useEffect(()=>{
+        const request=async()=>{
+        var Slno=2;
+        const data=await axios.post("http://localhost:5000/mySocioCard", {username: "Amit_Shawuxzvf9"})
+        .then(res=>{
+            console.log(res.data);
+            setUser(res.data[0]);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        }
+        request();
+    },[]);
+    const classes = eval("Theme"+user.themes+"()");
     return(
         <>
             <Grid container className={classes.root}>
@@ -155,3 +286,51 @@ const ShowPage=()=>{
 };
 
 export default ShowPage;
+
+// var currTheme= {
+//         Slno: 1,
+//         Bg: {
+//             color: "wheat",
+//             img: "",
+//         },
+//         Avatar: {
+//             borderWidth: "5px",
+//             borderStyle: "solid",
+//             borderColor: "green",
+//         },
+//         Username: {
+//             fontSize: "1.35rem",
+//             fontFamily: "Lato",
+//             fontWeight: "400",
+//             color: "black",
+//         },
+//         Userbio: {
+//             fontSize: "1.10rem",
+//             fontFamily: "Lato",
+//             fontWeight: "400",
+//             color: "black",
+//         },
+//         LinkCard: {
+//             backgroundColor:"#e8b651",
+//             borderRadius: "13px",
+//             borderWidth: "2px",
+//             borderStyle: "solid",
+//             borderColor: "#e3e3e3",
+//             onHover:{
+//                 backgroundColor: "#fff",
+//                 borderWidth: "2px",
+//                 borderStyle: "solid",
+//                 borderColor: "#6b5d41",
+//                 msgColor: "brown"
+//             },
+//         },
+//         LinkLogo: {
+//             fontSize: "2.25rem",
+//             color: "brown",
+//         },
+//         LinkMsg: {
+//             fontSize: "1.35rem",
+//             fontFamily: "Fira Sans",
+//             color: "brown",
+//         },
+//     };
