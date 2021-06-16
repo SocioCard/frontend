@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function NavigationAppbar(){
+export default function NavigationAppbar({active}){
     const classes = useStyles();
 
     return(
