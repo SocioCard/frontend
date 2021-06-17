@@ -15,6 +15,7 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
+import SocialShare from "../components/socialShare";
 
 const useStyles = makeStyles((theme) => ({
   root: {

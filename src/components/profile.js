@@ -1,5 +1,5 @@
 import { Avatar, Button, Grid, InputBase, makeStyles } from "@material-ui/core";
-import defaultImg from './static/images/avatarDefault1.jpg';
+import defaultImg from '../static/images/a.png';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
@@ -29,23 +29,32 @@ const useStyles = makeStyles((theme) => ({
     margin: "1vh 0 16px 0"
   },
   profText: {
-    color: "white",
+    color: "#000",
     border: "1px solid #a8adbf",
-    borderRadius: '5px',
+    borderRadius: '10px',
     // height: "8vh",
     padding: "10px",
     margin: '0 auto',
     marginBottom: '4px',
   },
   bioText: {
-    color: "white",
+    color: "#000",
     border: "1px solid #a8adbf",
-    borderRadius: '5px',
+    borderRadius: '10px',
     // height: "20vh",
     padding: "10px",
     margin: '0 auto',
     marginTop: '4px',
   },
+  uploadButton: {
+    backgroundColor: '#1940DD',
+    color: '#fff',
+    borderRadius: '10px'
+  },
+  deleteButton:{
+    backgroundColor: '#AAB1BB',
+    borderRadius: '10px'
+  }
 }));
 
 const Profile=()=>{
@@ -61,12 +70,12 @@ const Profile=()=>{
           </Grid>
           <Grid item xs={7} container className={classes.imgButtons}>
             <Grid item xs={10} className={classes.pickImg}>
-              <Button variant="contained" color="primary" startIcon={<CloudUploadIcon />} fullWidth>
+              <Button variant="contained" className={classes.uploadButton} startIcon={<CloudUploadIcon />} fullWidth>
                 Upload
               </Button>
             </Grid>
             <Grid item xs={10} className={classes.removeImg}>
-              <Button variant="contained" color="secondary" startIcon={<DeleteIcon />} fullWidth >
+              <Button variant="contained" className={classes.deleteButton} startIcon={<DeleteIcon />} fullWidth >
                 Remove
               </Button>
             </Grid>

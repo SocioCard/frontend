@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, makeStyles} from "@material-ui/core";
-import Profile from "./profile";
-import Themes from "./themes";
+import Profile from "../components/profile";
 
 const useStyles = makeStyles((theme) => ({
   cont: {
@@ -10,11 +9,14 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1)
     },
     minHeight:'100vh',
-    backgroundColor: "rgb(22,26,43)",
+    //backgroundColor: "rgb(22,26,43)",
+    // [theme.breakpoints.only("md")]:{
+    //   display:'none',
+    // },
   },
-  profileCont: {
-    borderRadius: "5px",
-    backgroundColor: "rgb(31,38,60)",
+    profileCont: {
+    borderRadius: "20px",
+    backgroundColor: "#fff",
     padding: "10px 15px",
   },
   themesCont:{

@@ -2,9 +2,7 @@ import { Avatar, Grid, makeStyles, Typography } from "@material-ui/core";
 import defaultImg from './static/images/avatarDefault1.jpg';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import {LocalThemes} from './data/localthemes';
-import axios from "axios";
-import { useEffect, useState } from "react";
+import {Theme} from '../themes';
 
 
 const Theme1 = makeStyles((theme)=>({
