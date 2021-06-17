@@ -1,10 +1,10 @@
 import React, { useState,useEffect } from "react";
-import Appbar from "./appbar";
+import Appbar from "../components/appbar";
 import Links from "./link";
 import Appearance from "./appearance";
 import axios from 'axios';
-import NavigationAppbar from "./navigationAppbar";
-import LinkShareAppbar from "./linkShareAppbar";
+import NavigationAppbar from "../components/navigationAppbar";
+import LinkShareAppbar from "../components/linkShareAppbar";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({

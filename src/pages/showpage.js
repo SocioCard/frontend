@@ -2,7 +2,7 @@ import { Avatar, Grid, makeStyles, Typography } from "@material-ui/core";
 import defaultImg from './static/images/avatarDefault1.jpg';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import {Theme} from './themes';
+import {Theme} from '../themes';
 
 const useStyles = makeStyles((theme)=>({
     root: {

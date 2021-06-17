@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignIn from "./pages/signIn";
-import Admin from './admin';
+import Admin from './pages/admin';
 import "./index.css";
 import "./App.css";
 
