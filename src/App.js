@@ -1,13 +1,19 @@
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SignIn from "./pages/signIn";
 import Admin from './admin';
-import ShowPage from './showpage';
+import "./index.css";
+import "./App.css";
 
-function App() {
+
+export default function App() {
   return (
-    <div className="App">
-      <Admin />
+    <div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={SignIn}/>
+          <Route exact path="/:id/admin" component={Admin}/>
+        </Switch>
+      </Router>
     </div>
   );
 }
-
-export default App;
