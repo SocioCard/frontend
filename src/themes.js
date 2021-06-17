@@ -1,95 +1,42 @@
-export const Theme = [
-    {
-        Bg: {
-            color: "wheat",
-            img: "",
-        },
-        Avatar: {
-            borderWidth: "5px",
-            borderStyle: "solid",
-            borderColor: "green",
-        },
-        Username: {
-            fontSize: "1.35rem",
-            fontFamily: "Lato",
-            fontWeight: "400",
-            color: "black",
-        },
-        Userbio: {
-            fontSize: "1.10rem",
-            fontFamily: "Lato",
-            fontWeight: "400",
-            color: "black",
-        },
-        LinkCard: {
-            backgroundColor:"#e8b651",
-            borderRadius: "13px",
-            borderWidth: "2px",
-            borderStyle: "solid",
-            borderColor: "#e3e3e3",
-            onHover:{
-                backgroundColor: "#fff",
-                borderWidth: "2px",
-                borderStyle: "solid",
-                borderColor: "#6b5d41",
-                msgColor: "brown"
-            },
-        },
-        LinkLogo: {
-            fontSize: "2.25rem",
-            color: "brown",
-        },
-        LinkMsg: {
-            fontSize: "1.35rem",
-            fontFamily: "Fira Sans",
-            color: "brown",
-        },
-    },
-    {
-        Bg: {
-            color: "#fff",
-            // img: "https://assets.hongkiat.com/uploads/minimalist-dekstop-wallpapers/non-4k/original/14.jpg", 
-            // img: "https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701726095.jpg", 
-        },
-        Avatar: {
-            borderWidth: "0",
-            borderStyle: "solid",
-            borderColor: "green",
-        },
-        Username: {
-            fontSize: "1.35rem",
-            fontFamily: "Lato",
-            fontWeight: "400",
-            color: "black",
-        },
-        Userbio: {
-            fontSize: "1.10rem",
-            fontFamily: "Lato",
-            fontWeight: "600",
-            color: "black",
-        },
-        LinkCard: {
-            backgroundColor:"#3d3b3c",
-            borderRadius: "13px",
-            borderWidth: "2px",
-            borderStyle: "solid",
-            borderColor: "#e3e3e3",
-            onHover:{
-                backgroundColor: "#fff",
-                borderWidth: "2px",
-                borderStyle: "solid",
-                borderColor: "#3d3b3c",
-                msgColor: "#3d3b3c",
-            },
-        },
-        LinkLogo: {
-            fontSize: "2.35rem",
-            color: "#fff",
-        },
-        LinkMsg: {
-            fontSize: "1.35rem",
-            fontFamily: "Fira Sans",
-            color: "#fff",
-        },
-    },
-];
+import { Grid, makeStyles } from "@material-ui/core";
+import AddIcon from '@material-ui/icons/Add';
+import {LocalThemes} from './data/localthemes';
+import axios from 'axios';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  themeCard: {
+      justifyContent: 'center',
+      alignContent: 'center',
+      backgroundColor: '#515d85',
+      margin: theme.spacing(1),
+      width: theme.spacing(16),
+      height: theme.spacing(16),
+    //   '&:hover': {
+    //     backgroundColor: 'white',
+    //   },
+       transition: theme.transitions.create('fill', {
+        duration: theme.transitions.duration.enteringScreen,
+        ease: 'sharp'
+       }),
+      '& > *': {
+          fontSize: '3.5rem',
+          color: 'grey',
+      },
+  },
+}));
+const Themes = ()=>{
+    const classes = useStyles();
+    return(
+        <Grid container className={classes.root}>
+            <Grid item container elevation={3} className={classes.themeCard}>
+                <AddIcon className={classes.icon}/>
+            </Grid>
+        </Grid>
+    );
+};
+
+export default Themes;

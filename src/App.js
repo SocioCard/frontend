@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import ProtectedRoute from "./components/protectedRoute";
 import SignIn from "./pages/signIn";
 import Admin from './pages/admin';
-import ShowPage from './pages/showpage';
 import "./index.css";
 import "./App.css";
+import ShowPage from './pages/showpage'
 import Appearance from "./pages/appearance";
 
 
