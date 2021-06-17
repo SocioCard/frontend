@@ -2,11 +2,11 @@ import { makeStyles } from "@material-ui/core";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import ProtectedRoute from "./components/protectedRoute";
 import SignIn from "./pages/signIn";
-import Admin from './admin';
-import ShowPage from './showpage';
+import Admin from './pages/admin';
+import ShowPage from './pages/showpage';
 import "./index.css";
 import "./App.css";
-import Appearance from "./appearance";
+import Appearance from "./pages/appearance";
 
 
 export default function App() {
