@@ -1,5 +1,5 @@
 import { Avatar, Button, Grid, InputBase, makeStyles } from "@material-ui/core";
-import defaultImg from './static/images/a.png';
+import defaultImg from '../static/images/a.png';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 

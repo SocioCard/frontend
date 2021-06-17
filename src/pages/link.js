@@ -5,8 +5,8 @@ import { Grid, Button, Switch, InputBase, FormControlLabel } from '@material-ui/
 import { IconPicker } from 'react-fa-icon-picker'
 import {Edit, DeleteOutline} from '@material-ui/icons';
 import axios from 'axios';
-import Appbar from "./appbar";
-import NavigationAppbar from "./navigationAppbar";
+import Appbar from "../components/appbar";
+import NavigationAppbar from "../components/navigationAppbar";
 //green: #03D084
 
 const textColor = '#000';
