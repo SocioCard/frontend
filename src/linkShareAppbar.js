@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import {AppBar, Button, Toolbar, Typography} from '@material-ui/core';
+import SocialShare from "./components/socialShare";
 
 const useStyles = makeStyles((theme) => ({
     appbar: {
@@ -34,7 +35,8 @@ export default function LinkShareAppbar(){
             </Typography>
                 <a className={classes.link} href={link} target="_blank"><p style={{margin:0}}>{linkDisp}</p></a>
             
-            <Button size="small" variant="outlined" color="primary">Share</Button>
+            {/* <Button size="small" variant="outlined" color="primary">Share</Button> */}
+            <SocialShare/>
             </Toolbar>
         </AppBar>
     )

@@ -34,7 +34,7 @@ export default function SocialShare() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button size="small" variant="outlined" color="primary" onClick={handleClickOpen}>
         Share
       </Button>
       <Dialog
