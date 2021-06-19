@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+import ShowPage from './pages/showpage';
 
 
 
@@ -25,7 +26,7 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <App />
+    <ShowPage />
   </ThemeProvider>,
 document.getElementById("root"));
 

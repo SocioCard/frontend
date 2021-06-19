@@ -2,14 +2,15 @@ import { Avatar, Grid, makeStyles, Typography } from "@material-ui/core";
 import defaultImg from '../static/images/avatarDefault1.jpg';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import {Theme} from '../themes';
 import { useEffect, useState } from "react";
 import axios from "axios";
+// import {Theme} from '../themes';
 
 
 const Theme1 = makeStyles((theme)=>({
     root: {
-        height:"100vh",
+        minHeight: "100vh",
+        maxHeight:"500vh",
         padding:"6vh 4vw 10vh 4vw",
         // backgroundColor: LocalThemes[1].Bg.color,
         backgroundColor: "wheat",
@@ -107,13 +108,16 @@ const Theme1 = makeStyles((theme)=>({
 }));
 const Theme2 = makeStyles((theme)=>({
     root: {
-        height:"100vh",
+        minHeight: "100vh",
+        maxHeight:"500vh",
         padding:"6vh 4vw 10vh 4vw",
         // backgroundColor: LocalThemes[1].Bg.color,
         backgroundColor: "#fff",
         backgroundImage: "url(https://thumbs.gfycat.com/DeterminedLimpHornbill-small.gif)",
-        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundRepeat: "noRepeat",
         backgroundSize: "cover",
+        backgroundAttachment: "fixed",
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -125,7 +129,7 @@ const Theme2 = makeStyles((theme)=>({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-        alignContent: "flex-start",
+        // alignContent: "flex-start",
     },
     avatarCont: {
         height: "160px",
@@ -143,7 +147,7 @@ const Theme2 = makeStyles((theme)=>({
         direction: 'row',
         justifyContent: 'center',
         alignContent:'flex-start',
-        minHeight: '130px',
+        minHeight: '100px',
     },
     userName: {
         fontSize: "1.35rem",
@@ -158,7 +162,8 @@ const Theme2 = makeStyles((theme)=>({
         color: "black",
     },
     linkList: {
-        height: '45vh',
+        // minHeight: '0',
+        // maxHeight: '500vh',
         justifyContent: 'center',
         alignContent: 'flex-start',
     },
@@ -248,11 +253,11 @@ const ShowPage=()=>{
                         />
                     </Grid>
                     <Grid item className={classes.userDetails} container>
-                        <Grid item className={classes.userNameCont} xs={12}>
-                            <Typography className={classes.userName}>@IssacXid</Typography>
+                        <Grid item className={classes.userNameCont} xs={12} >
+                            <Typography className={classes.userName} style={{"text-align": "center"}}>@IssacXid</Typography>
                         </Grid>
                         <Grid item className={classes.userBioCont}>
-                            <Typography className={classes.userBio}>
+                            <Typography className={classes.userBio} style={{"text-align": "center"}}>
                                 Sophomore at IIEST Shibpur | IT Undergrad | @MLEnthusiat | @BuddingWebDeveloper
                             </Typography>
                         </Grid>

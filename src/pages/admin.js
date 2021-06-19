@@ -1,11 +1,9 @@
 import React, { useState,useEffect } from "react";
 import Appbar from "../components/appbar";
-import Links from "./link";
-import Appearance from "./appearance";
+import Links from "../pages/link";
 import axios from 'axios';
-import NavigationAppbar from "../components/navigationAppbar";
-import LinkShareAppbar from "../components/linkShareAppbar";
 import { makeStyles } from '@material-ui/core/styles';
+import Appearance from "./appearance";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -74,8 +72,8 @@ const Admin = ()=>{
     return (
         <div className={classes.root}>
             <Appbar/>
-            <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />
-            {/* <Appearance/> */}
+            {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} /> */}
+            <Appearance/>
         </div>
     );
 };
