@@ -12,8 +12,7 @@ const Theme1 = makeStyles((theme)=>({
         minHeight: "100vh",
         maxHeight:"500vh",
         padding:"6vh 4vw 10vh 4vw",
-        // backgroundColor: LocalThemes[1].Bg.color,
-        backgroundColor: "wheat",
+        backgroundColor: "#5CDB95",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         display: 'flex',
@@ -37,6 +36,107 @@ const Theme1 = makeStyles((theme)=>({
         height: "120px",
         width: "120px",
         borderWidth: "5px",
+        borderStyle: "dotted",
+        borderColor: "#05386B",
+    },
+    userDetails: {
+        display: 'flex',
+        direction: 'row',
+        justifyContent: 'center',
+        alignContent:'flex-start',
+        minHeight: '130px',
+    },
+    userName: {
+        fontSize: "1.35rem",
+        fontFamily: "Ubuntu",
+        fontWeight: "400",
+        color: "#edf5e1",
+    },
+    userBio: {
+        fontSize: "1.10rem",
+        fontFamily: "Ubuntu",
+        fontWeight: "400",
+        color: "#edf5e1",
+    },
+    linkList: {
+        height: '45vh',
+        justifyContent: 'center',
+        alignContent: 'flex-start',
+    },
+    linkCard: {
+        height:"70px",
+        margin: "10px 0",
+        backgroundColor:"#05386B",
+        // borderRadius: "13px",
+        // borderWidth: "2px",
+        // borderStyle: "solid",
+        // borderColor: "#fff",
+        // transition: "width 2s, height 4s", 
+        "boxShadow": "6px 6px 7px 0px rgba(31,29,29,0.6)",
+        '&:hover':{
+            backgroundColor: "#fff",
+            // borderWidth: "2px",
+            // borderStyle: "solid",
+            // borderColor: "#6b5d41",
+            transform: "scale(1.03, 1.09)",
+            '& *': {
+                color: "#05386B",
+            },
+        },
+    },
+    linkLogoCont: {
+        paddingLeft: '12px',
+        alignContent:"center",
+    },
+    linkLogo: {
+        fontSize: "2.25rem",
+        color: "#fff",
+    },
+    linkMsgCont: {
+        justifyContent: 'center',
+        alignContent:"center",
+        
+        '& > *':{
+            fontSize: "1.35rem",
+            fontFamily: "Ubuntu",
+            color: "#fff",
+        },
+    }
+}));
+const Theme2 = makeStyles((theme)=>({
+    root: {
+        minHeight: "100vh",
+        maxHeight:"500vh",
+        padding:"6vh 4vw 10vh 4vw",
+        // backgroundColor: LocalThemes[1].Bg.color,
+        backgroundColor: "#fff",
+        backgroundImage: "url(https://i.stack.imgur.com/ReAxi.gif)",
+        backgroundPosition: "center center",
+        backgroundRepeat: "noRepeat",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    mainCont: {
+        maxHeight:"auto",
+        [theme.breakpoints.up('md')]: {
+            width: '60vw',
+        },
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignContent: "flex-start",
+    },
+    avatarCont: {
+        height: "160px",
+        width: "auto",
+    },
+    avatar: {
+        height: "120px",
+        width: "120px",
+        borderWidth: "0",
         borderStyle: "solid",
         borderColor: "green",
     },
@@ -60,110 +160,6 @@ const Theme1 = makeStyles((theme)=>({
         color: "black",
     },
     linkList: {
-        height: '45vh',
-        justifyContent: 'center',
-        alignContent: 'flex-start',
-    },
-    linkCard: {
-        height:"70px",
-        margin: "10px 0",
-        backgroundColor:"#e8b651",
-        borderRadius: "13px",
-        borderWidth: "2px",
-        borderStyle: "solid",
-        borderColor: "#e3e3e3",
-        // transition: "width 2s, height 4s", 
-        '&:hover':{
-            backgroundColor: "#fff",
-            borderWidth: "2px",
-            borderStyle: "solid",
-            borderColor: "#6b5d41",
-            transform: "scale(1.03, 1.09)",
-            '& $linkLogo': {
-                color: "brown",
-            },
-            '& $linkMsgCont > *': {
-                color: "brown",
-            },
-        },
-    },
-    linkLogoCont: {
-        paddingLeft: '12px',
-        alignContent:"center",
-    },
-    linkLogo: {
-        fontSize: "2.25rem",
-        color: "brown",
-    },
-    linkMsgCont: {
-        justifyContent: 'center',
-        alignContent:"center",
-        
-        '& > *':{
-            fontSize: "1.35rem",
-            fontFamily: "Fira Sans",
-            color: "brown",
-        },
-    }
-}));
-const Theme2 = makeStyles((theme)=>({
-    root: {
-        minHeight: "100vh",
-        maxHeight:"500vh",
-        padding:"6vh 4vw 10vh 4vw",
-        // backgroundColor: LocalThemes[1].Bg.color,
-        backgroundColor: "#fff",
-        backgroundImage: "url(https://thumbs.gfycat.com/DeterminedLimpHornbill-small.gif)",
-        backgroundPosition: "center center",
-        backgroundRepeat: "noRepeat",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    mainCont: {
-        [theme.breakpoints.up('md')]: {
-            width: '60vw',
-        },
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        // alignContent: "flex-start",
-    },
-    avatarCont: {
-        height: "160px",
-        width: "auto",
-    },
-    avatar: {
-        height: "120px",
-        width: "120px",
-        borderWidth: "0",
-        borderStyle: "solid",
-        borderColor: "green",
-    },
-    userDetails: {
-        display: 'flex',
-        direction: 'row',
-        justifyContent: 'center',
-        alignContent:'flex-start',
-        minHeight: '100px',
-    },
-    userName: {
-        fontSize: "1.35rem",
-        fontFamily: "Lato",
-        fontWeight: "400",
-        color: "black",
-    },
-    userBio: {
-        fontSize: "1.10rem",
-        fontFamily: "Lato",
-        fontWeight: "400",
-        color: "black",
-    },
-    linkList: {
-        // minHeight: '0',
-        // maxHeight: '500vh',
         justifyContent: 'center',
         alignContent: 'flex-start',
     },
@@ -175,7 +171,6 @@ const Theme2 = makeStyles((theme)=>({
         borderWidth: "2px",
         borderStyle: "solid",
         borderColor: "#e3e3e3",
-        // transition: "width 2s, height 4s", 
         '&:hover':{
             backgroundColor: "#fff",
             borderWidth: "2px",
@@ -211,7 +206,6 @@ const Theme2 = makeStyles((theme)=>({
 }));
 
 const ShowPage=()=>{
-    // const theme1 = useStyles();
     const [user,setUser] = useState({
         email: "",
         username: "",
@@ -240,7 +234,8 @@ const ShowPage=()=>{
         }
         request();
     },[]);
-    const classes = eval("Theme"+user.themes+"()");
+    // const classes = eval("Theme1"+"()");
+    const classes = Theme2();
     return(
         <>
             <Grid container className={classes.root}>
@@ -257,8 +252,8 @@ const ShowPage=()=>{
                             <Typography className={classes.userName} style={{"text-align": "center"}}>@IssacXid</Typography>
                         </Grid>
                         <Grid item className={classes.userBioCont}>
-                            <Typography className={classes.userBio} style={{"text-align": "center"}}>
-                                Sophomore at IIEST Shibpur | IT Undergrad | @MLEnthusiat | @BuddingWebDeveloper
+                            <Typography className={classes.userBio} style={{"text-align": "center", "paddingBottom":"35px"}}>
+                                Sophomore at IIEST Shibpur | IT Undergrad | @MLEnthusiast | @BuddingWebDeveloper
                             </Typography>
                         </Grid>
                     </Grid>
@@ -291,51 +286,3 @@ const ShowPage=()=>{
 };
 
 export default ShowPage;
-
-// var currTheme= {
-//         Slno: 1,
-//         Bg: {
-//             color: "wheat",
-//             img: "",
-//         },
-//         Avatar: {
-//             borderWidth: "5px",
-//             borderStyle: "solid",
-//             borderColor: "green",
-//         },
-//         Username: {
-//             fontSize: "1.35rem",
-//             fontFamily: "Lato",
-//             fontWeight: "400",
-//             color: "black",
-//         },
-//         Userbio: {
-//             fontSize: "1.10rem",
-//             fontFamily: "Lato",
-//             fontWeight: "400",
-//             color: "black",
-//         },
-//         LinkCard: {
-//             backgroundColor:"#e8b651",
-//             borderRadius: "13px",
-//             borderWidth: "2px",
-//             borderStyle: "solid",
-//             borderColor: "#e3e3e3",
-//             onHover:{
-//                 backgroundColor: "#fff",
-//                 borderWidth: "2px",
-//                 borderStyle: "solid",
-//                 borderColor: "#6b5d41",
-//                 msgColor: "brown"
-//             },
-//         },
-//         LinkLogo: {
-//             fontSize: "2.25rem",
-//             color: "brown",
-//         },
-//         LinkMsg: {
-//             fontSize: "1.35rem",
-//             fontFamily: "Fira Sans",
-//             color: "brown",
-//         },
-//     };

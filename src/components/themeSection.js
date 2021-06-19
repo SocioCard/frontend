@@ -2,6 +2,8 @@ import { Grid, makeStyles } from "@material-ui/core";
 import AddIcon from '@material-ui/icons/Add';
 import {LocalThemes} from '../data/localthemes';
 import axios from 'axios';
+import Theme1 from '../static/images/Theme1.png';
+import Theme2 from '../static/images/Theme2.gif';
 
 const useStyles = makeStyles((theme) => ({
   themeInnerCont:{
@@ -15,7 +17,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   themeImg:{
-    // backgroundImg: "https://assets.hongkiat.com/uploads/minimalist-dekstop-wallpapers/non-4k/original/14.jpg",
+    backgroundImage: `url(${Theme1})`,
+    backgroundSize: 'cover',
+    backgroundPosition:'center center',
+    backgroundRepeat: 'no-repeat',
     borderRadius: "10px",
     border: "2px solid #ccc",
     paddingTop:"150%"
@@ -32,11 +37,12 @@ const ThemeSection = ()=>{
     return(
         <Grid item container className={classes.themeInnerCont}>
             <Grid item container className={classes.themeCard}>
-              <div className={classes.themeImg}></div>
+              <div className={classes.themeImg}>
+              </div>
               <span className={classes.label}>Lorem Ipsum</span>
             </Grid>
             <Grid item container className={classes.themeCard}>
-              <div className={classes.themeImg}></div>
+              <div className={classes.themeImg} style={{'backgroundImage':`url(${Theme2})`}}></div>
               <span className={classes.label}>Lorem Ipsum</span>
             </Grid>
             <Grid item container className={classes.themeCard}>
