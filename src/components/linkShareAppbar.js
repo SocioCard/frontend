@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import {AppBar, Button, Toolbar, Typography} from '@material-ui/core';
-import SocialShare from "./socialShare";
+import SocialShare from "../components/socialShare";
 
 const useStyles = makeStyles((theme) => ({
     appbar: {

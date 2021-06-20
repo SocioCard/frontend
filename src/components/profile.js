@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   profText: {
     color: "#000",
     border: "1px solid #a8adbf",
-    borderRadius: '10px',
+    borderRadius: '8px',
     // height: "8vh",
     padding: "10px",
     margin: '0 auto',
@@ -40,11 +40,12 @@ const useStyles = makeStyles((theme) => ({
   bioText: {
     color: "#000",
     border: "1px solid #a8adbf",
-    borderRadius: '10px',
+    borderRadius: '8px',
     // height: "20vh",
     padding: "10px",
     margin: '0 auto',
     marginTop: '4px',
+    marginBottom: '14px',
   },
   uploadButton: {
     backgroundColor: '#1940DD',

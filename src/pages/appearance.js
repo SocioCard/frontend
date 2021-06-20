@@ -1,6 +1,8 @@
 import React from "react";
 import { Grid, makeStyles} from "@material-ui/core";
 import Profile from "../components/profile";
+import ThemeSection from "../components/themeSection";
+import { Repeat } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   cont: {
@@ -15,15 +17,15 @@ const useStyles = makeStyles((theme) => ({
     // },
   },
     profileCont: {
-    borderRadius: "20px",
+    borderRadius: "15px",
     backgroundColor: "#fff",
-    padding: "10px 15px",
+    padding: "16px 24px",
   },
-  themesCont:{
-    borderRadius: "5px",
-    backgroundColor: "rgb(31,38,60)",
-    padding: "10px 15px",
-  }
+  themesMainCont:{
+    borderRadius: "15px",
+    backgroundColor:"#fff",
+    padding: "24px 16px",
+  },
 }));
 
 const Appearance = () => {
@@ -50,10 +52,9 @@ const Appearance = () => {
           item
           xs={11}
           container
-          className={classes.themesCont}
-          spacing={1}
+          className={classes.themesMainCont}
         >
-          <Themes/>
+          <ThemeSection/>
         </Grid>
       </Grid>
     </div>

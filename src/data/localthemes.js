@@ -2,48 +2,48 @@ export const LocalThemes = [
     {
         Slno: 1,
         Bg: {
-            color: "wheat",
+            color: "#5CDB95",
             img: "",
         },
         Avatar: {
             borderWidth: "5px",
-            borderStyle: "solid",
-            borderColor: "green",
+            borderStyle: "dotted",
+            borderColor: "#05386B",
         },
         Username: {
             fontSize: "1.35rem",
-            fontFamily: "Lato",
+            fontFamily: "Ubuntu",
             fontWeight: "400",
-            color: "black",
+            color: "#edf5e1",
         },
         Userbio: {
             fontSize: "1.10rem",
-            fontFamily: "Lato",
+            fontFamily: "Ubuntu",
             fontWeight: "400",
-            color: "black",
+            color: "#edf5e1",
         },
         LinkCard: {
             backgroundColor:"#e8b651",
-            borderRadius: "13px",
-            borderWidth: "2px",
-            borderStyle: "solid",
-            borderColor: "#e3e3e3",
+            borderRadius: "",
+            borderWidth: "",
+            borderStyle: "",
+            borderColor: "",
             onHover:{
                 backgroundColor: "#fff",
-                borderWidth: "2px",
-                borderStyle: "solid",
-                borderColor: "#6b5d41",
-                msgColor: "brown"
+                borderWidth: "",
+                borderStyle: "",
+                borderColor: "",
+                msgColor: "#e8b651"
             },
         },
         LinkLogo: {
             fontSize: "2.25rem",
-            color: "brown",
+            color: "#e8b651",
         },
         LinkMsg: {
             fontSize: "1.35rem",
-            fontFamily: "Fira Sans",
-            color: "brown",
+            fontFamily: "Ubuntu",
+            color: "#e8b651",
         },
     },
     {

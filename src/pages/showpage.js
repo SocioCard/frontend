@@ -2,16 +2,17 @@ import { Avatar, Grid, makeStyles, Typography } from "@material-ui/core";
 import defaultImg from '../static/images/avatarDefault1.jpg';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import {Theme} from '../themes';
-import axios from 'axios';
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+// import {Theme} from '../themes';
+
 
 const Theme1 = makeStyles((theme)=>({
     root: {
-        height:"100vh",
+        minHeight: "100vh",
+        maxHeight:"500vh",
         padding:"6vh 4vw 10vh 4vw",
-        // backgroundColor: LocalThemes[1].Bg.color,
-        backgroundColor: "wheat",
+        backgroundColor: "#5CDB95",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         display: 'flex',
@@ -35,8 +36,8 @@ const Theme1 = makeStyles((theme)=>({
         height: "120px",
         width: "120px",
         borderWidth: "5px",
-        borderStyle: "solid",
-        borderColor: "green",
+        borderStyle: "dotted",
+        borderColor: "#05386B",
     },
     userDetails: {
         display: 'flex',
@@ -47,15 +48,15 @@ const Theme1 = makeStyles((theme)=>({
     },
     userName: {
         fontSize: "1.35rem",
-        fontFamily: "Lato",
+        fontFamily: "Ubuntu",
         fontWeight: "400",
-        color: "black",
+        color: "#edf5e1",
     },
     userBio: {
         fontSize: "1.10rem",
-        fontFamily: "Lato",
+        fontFamily: "Ubuntu",
         fontWeight: "400",
-        color: "black",
+        color: "#edf5e1",
     },
     linkList: {
         height: '45vh',
@@ -65,23 +66,21 @@ const Theme1 = makeStyles((theme)=>({
     linkCard: {
         height:"70px",
         margin: "10px 0",
-        backgroundColor:"#e8b651",
-        borderRadius: "13px",
-        borderWidth: "2px",
-        borderStyle: "solid",
-        borderColor: "#e3e3e3",
+        backgroundColor:"#05386B",
+        // borderRadius: "13px",
+        // borderWidth: "2px",
+        // borderStyle: "solid",
+        // borderColor: "#fff",
         // transition: "width 2s, height 4s", 
+        "boxShadow": "6px 6px 7px 0px rgba(31,29,29,0.6)",
         '&:hover':{
             backgroundColor: "#fff",
-            borderWidth: "2px",
-            borderStyle: "solid",
-            borderColor: "#6b5d41",
+            // borderWidth: "2px",
+            // borderStyle: "solid",
+            // borderColor: "#6b5d41",
             transform: "scale(1.03, 1.09)",
-            '& $linkLogo': {
-                color: "brown",
-            },
-            '& $linkMsgCont > *': {
-                color: "brown",
+            '& *': {
+                color: "#05386B",
             },
         },
     },
@@ -91,7 +90,7 @@ const Theme1 = makeStyles((theme)=>({
     },
     linkLogo: {
         fontSize: "2.25rem",
-        color: "brown",
+        color: "#fff",
     },
     linkMsgCont: {
         justifyContent: 'center',
@@ -99,25 +98,29 @@ const Theme1 = makeStyles((theme)=>({
         
         '& > *':{
             fontSize: "1.35rem",
-            fontFamily: "Fira Sans",
-            color: "brown",
+            fontFamily: "Ubuntu",
+            color: "#fff",
         },
     }
 }));
 const Theme2 = makeStyles((theme)=>({
     root: {
-        height:"100vh",
+        minHeight: "100vh",
+        maxHeight:"500vh",
         padding:"6vh 4vw 10vh 4vw",
         // backgroundColor: LocalThemes[1].Bg.color,
         backgroundColor: "#fff",
-        backgroundImage: "url(https://thumbs.gfycat.com/DeterminedLimpHornbill-small.gif)",
-        backgroundRepeat: "no-repeat",
+        backgroundImage: "url(https://i.stack.imgur.com/ReAxi.gif)",
+        backgroundPosition: "center center",
+        backgroundRepeat: "noRepeat",
         backgroundSize: "cover",
+        backgroundAttachment: "fixed",
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
     },
     mainCont: {
+        maxHeight:"auto",
         [theme.breakpoints.up('md')]: {
             width: '60vw',
         },
@@ -157,7 +160,6 @@ const Theme2 = makeStyles((theme)=>({
         color: "black",
     },
     linkList: {
-        height: '45vh',
         justifyContent: 'center',
         alignContent: 'flex-start',
     },
@@ -169,7 +171,6 @@ const Theme2 = makeStyles((theme)=>({
         borderWidth: "2px",
         borderStyle: "solid",
         borderColor: "#e3e3e3",
-        // transition: "width 2s, height 4s", 
         '&:hover':{
             backgroundColor: "#fff",
             borderWidth: "2px",
@@ -205,7 +206,6 @@ const Theme2 = makeStyles((theme)=>({
 }));
 
 const ShowPage=()=>{
-    // const theme1 = useStyles();
     const [user,setUser] = useState({
         email: "",
         username: "",
@@ -234,7 +234,8 @@ const ShowPage=()=>{
         }
         request();
     },[]);
-    const classes = eval("Theme"+user.themes+"()");
+    // const classes = eval("Theme1"+"()");
+    const classes = Theme2();
     return(
         <>
             <Grid container className={classes.root}>
@@ -247,12 +248,12 @@ const ShowPage=()=>{
                         />
                     </Grid>
                     <Grid item className={classes.userDetails} container>
-                        <Grid item className={classes.userNameCont} xs={12}>
-                            <Typography className={classes.userName}>@IssacXid</Typography>
+                        <Grid item className={classes.userNameCont} xs={12} >
+                            <Typography className={classes.userName} style={{"text-align": "center"}}>@IssacXid</Typography>
                         </Grid>
                         <Grid item className={classes.userBioCont}>
-                            <Typography className={classes.userBio}>
-                                Sophomore at IIEST Shibpur | IT Undergrad | @MLEnthusiat | @BuddingWebDeveloper
+                            <Typography className={classes.userBio} style={{"text-align": "center", "paddingBottom":"35px"}}>
+                                Sophomore at IIEST Shibpur | IT Undergrad | @MLEnthusiast | @BuddingWebDeveloper
                             </Typography>
                         </Grid>
                     </Grid>
@@ -285,51 +286,3 @@ const ShowPage=()=>{
 };
 
 export default ShowPage;
-
-// var currTheme= {
-//         Slno: 1,
-//         Bg: {
-//             color: "wheat",
-//             img: "",
-//         },
-//         Avatar: {
-//             borderWidth: "5px",
-//             borderStyle: "solid",
-//             borderColor: "green",
-//         },
-//         Username: {
-//             fontSize: "1.35rem",
-//             fontFamily: "Lato",
-//             fontWeight: "400",
-//             color: "black",
-//         },
-//         Userbio: {
-//             fontSize: "1.10rem",
-//             fontFamily: "Lato",
-//             fontWeight: "400",
-//             color: "black",
-//         },
-//         LinkCard: {
-//             backgroundColor:"#e8b651",
-//             borderRadius: "13px",
-//             borderWidth: "2px",
-//             borderStyle: "solid",
-//             borderColor: "#e3e3e3",
-//             onHover:{
-//                 backgroundColor: "#fff",
-//                 borderWidth: "2px",
-//                 borderStyle: "solid",
-//                 borderColor: "#6b5d41",
-//                 msgColor: "brown"
-//             },
-//         },
-//         LinkLogo: {
-//             fontSize: "2.25rem",
-//             color: "brown",
-//         },
-//         LinkMsg: {
-//             fontSize: "1.35rem",
-//             fontFamily: "Fira Sans",
-//             color: "brown",
-//         },
-//     };
