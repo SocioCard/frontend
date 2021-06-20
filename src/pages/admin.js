@@ -43,6 +43,10 @@ const Admin = ()=>{
         setUser({ ...(user), [event.target.name]: event.target.value});
     };
 
+    const handleDelete = () => {
+        console.log("print index here");
+    };
+
     const handleSubmit = () => {
         console.log(user);
         
@@ -74,7 +78,7 @@ const Admin = ()=>{
     return (
         <div className={classes.root}>
             <Appbar/>
-            <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />
+            <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} handleDelete={handleDelete}/>
             {/* <Appearance/> */}
         </div>
     );

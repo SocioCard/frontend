@@ -127,7 +127,10 @@ export default function Links({user, handleChange, handleSubmit}){
                 </Grid>
             </Grid>
             <Grid justify="flex-end" className={classes.listCardRow} container spacing={1} style={{paddingRight:'30px'}}>
-                <DeleteOutline style={{height:'40px'}}/>
+                <DeleteOutline 
+                    onClick={handleDelete} 
+                    style={{height:'40px'}}
+                />
                 <IconPicker
                     searchInputStyles={{color:'white', backgroundColor:'#16192A', border: 'none', height:'30px'}}
                     pickerIconStyles={{color:'white'}}

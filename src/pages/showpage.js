@@ -3,7 +3,8 @@ import defaultImg from '../static/images/avatarDefault1.jpg';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import {Theme} from '../themes';
-
+import axios from 'axios';
+import React, { useState, useEffect } from "react";
 
 const Theme1 = makeStyles((theme)=>({
     root: {
