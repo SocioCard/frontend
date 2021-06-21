@@ -73,14 +73,12 @@ const Admin = ()=>{
 
     return (
         <div className={classes.root}>
-            <Appbar/>
-            {/* {
-                page="profile"&&<Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />,
-                page="links"&&<Appearance/>
+            <Appbar user={id}/>
+                {page==="links" && <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />}
+                {page==="profile" && <Appearance/>}
                 
-            } */}
-            {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />, */}
-            <Appearance/>
+            {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />,
+            <Appearance/> */}
         </div>
     );
 };
