@@ -7,6 +7,7 @@ import "./index.css";
 import "./App.css";
 import ShowPage from './pages/showpage'
 import Appearance from "./pages/appearance";
+import ThemeShowcase from './components/themeShowcase';
 
 
 export default function App() {
@@ -15,6 +16,8 @@ export default function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={SignIn}/>
+          
+          <Route exact path="/themeexample" component={ThemeShowcase}/>
           <Route exact path="/:id" component={ShowPage}/>
           <Redirect exact from="/:id/admin" to="/:id/admin/profile"/>
           <ProtectedRoute exact path="/:id/admin/links" component={Admin}/>

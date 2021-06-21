@@ -28,14 +28,12 @@ export default function LinkShareAppbar(){
     var link="https://onelink.io/"+id;
     var linkDisp="onelink.io/"+id;
     return(
-        <AppBar className={classes.appbar} position="static">
+        <AppBar className={classes.appbar} style={{alignItems: 'center',}} position="static">
             <Toolbar style={{minHeight:'44px'}}>
             <Typography variant="h8" className={classes.onelink}>
                 Onelink
             </Typography>
                 <a className={classes.link} href={link} target="_blank"><p style={{margin:0}}>{linkDisp}</p></a>
-            
-            {/* <Button size="small" variant="outlined" color="primary">Share</Button> */}
             <SocialShare/>
             </Toolbar>
         </AppBar>

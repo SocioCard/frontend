@@ -249,7 +249,7 @@ const ShowPage=()=>{
                     </Grid>
                     <Grid item className={classes.userDetails} container>
                         <Grid item className={classes.userNameCont} xs={12} >
-                            <Typography className={classes.userName} style={{"text-align": "center"}}>@IssacXid</Typography>
+                            <Typography className={classes.userName} style={{"text-align": "center"}}>@Issd</Typography>
                         </Grid>
                         <Grid item className={classes.userBioCont}>
                             <Typography className={classes.userBio} style={{"text-align": "center", "paddingBottom":"35px"}}>

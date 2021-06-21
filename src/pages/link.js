@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Button, Switch, InputBase, FormControlLabel } from '@material-ui/core';
 
@@ -81,6 +81,11 @@ export default function Links({user, handleChange, handleSubmit}){
         icon:'FaImages',
         visible:true,
     })
+    const [submit, setSubmit] = useState(0);
+
+    useEffect(() => {
+        // console.log("rerendered")
+    },[submit])
 
     const links = user.links.map((link) =>
         <div className={classes.linkList}>
@@ -128,7 +133,7 @@ export default function Links({user, handleChange, handleSubmit}){
             </Grid>
             <Grid justify="flex-end" className={classes.listCardRow} container spacing={1} style={{paddingRight:'30px'}}>
                 <DeleteOutline 
-                    onClick={handleDelete} 
+                    onClick={console.log("1")} 
                     style={{height:'40px'}}
                 />
                 <IconPicker
@@ -164,7 +169,14 @@ export default function Links({user, handleChange, handleSubmit}){
 
     const handleAddLink = () => {
         user.links.push(newLink);
+        setSubmit(submit+1);
         handleSubmit();
+        setNewLink({
+            title:'',
+            link:'',
+            icon:'FaImages',
+            visible:true,
+        });
     }
 
     return(

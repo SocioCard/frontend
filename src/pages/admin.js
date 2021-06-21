@@ -21,7 +21,8 @@ const Admin = ()=>{
 
     var url = window.location.href;
     var id = url.split("/")[3];
-    console.log(id);
+    var page = url.split("/")[5];
+    //console.log(id);
     
 
     const [user,setUser] = useState({
@@ -41,9 +42,6 @@ const Admin = ()=>{
         setUser({ ...(user), [event.target.name]: event.target.value});
     };
 
-    const handleDelete = () => {
-        console.log("print index here");
-    };
 
     const handleSubmit = () => {
         console.log(user);
@@ -76,8 +74,13 @@ const Admin = ()=>{
     return (
         <div className={classes.root}>
             <Appbar/>
-            <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} handleDelete={handleDelete}/>
-            {/* <Appearance/> */}
+            {/* {
+                page="profile"&&<Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />,
+                page="links"&&<Appearance/>
+                
+            } */}
+            {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />, */}
+            <Appearance/>
         </div>
     );
 };
