@@ -2,12 +2,12 @@ import React from "react";
 import LinkShareAppbar from './linkShareAppbar';
 import NavigationAppbar from './navigationAppbar';
 
-export default function Appbar(){
+export default function Appbar({user}){
 
     return(
         <React.Fragment>
         <LinkShareAppbar/>
-        <NavigationAppbar/>
+        <NavigationAppbar user={user}/>
         </React.Fragment>
     )
 }
