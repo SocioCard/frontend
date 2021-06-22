@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function NavigationAppbar({active}){
+export default function NavigationAppbar({active, user}){
     const classes = useStyles();
 
     return(
@@ -32,9 +32,9 @@ export default function NavigationAppbar({active}){
                 justify="space-around"
                 alignItems="center"
             >
-                <Link style={{textDecoration: 'none'}} to="/tushar/admin/links"><Button className={classes.button}>Links</Button></Link>
-                <Link style={{textDecoration: 'none'}}to="/tushar/admin/profile"><Button className={classes.button}>Appearance</Button></Link>
-                <Link style={{textDecoration: 'none'}}><Button className={classes.button}>Settings</Button></Link>
+                <Link style={{textDecoration: 'none'}} to={`/${user}/admin/links`}><Button className={classes.button}>Links</Button></Link>
+                <Link style={{textDecoration: 'none'}} to={`/${user}/admin/profile`}><Button className={classes.button}>Appearance</Button></Link>
+                <Link style={{textDecoration: 'none'}} to={`/${user}/admin/settings`}><Button className={classes.button}>Settings</Button></Link>
             </Grid>
                 
             </Toolbar>
