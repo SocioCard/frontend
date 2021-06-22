@@ -32,6 +32,15 @@ const Admin = ()=>{
         bio:'',
         themes:'',
         links:[],
+        social:[{
+            instagram:'',
+            facebook:'',
+            youtube:'',
+            reddit:'',
+            linkedin:'',
+            twitter:'',
+            pinterest:'',
+        }],
         avatar:'',
     })
 
@@ -79,8 +88,8 @@ const Admin = ()=>{
                 page="links"&&<Appearance/>
                 
             } */}
-            {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />, */}
-            <Appearance/>
+            <Links user={user} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />,
+            {/* <Appearance/> */}
         </div>
     );
 };

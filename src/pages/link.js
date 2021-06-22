@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Button, Switch, InputBase, FormControlLabel } from '@material-ui/core';
-
+import { Grid, Button, Switch, InputBase, FormControlLabel, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText, Typography } from '@material-ui/core';
+import '../App.css';
 import { IconPicker } from 'react-fa-icon-picker'
 import {Edit, DeleteOutline} from '@material-ui/icons';
 import axios from 'axios';
 import Appbar from "../components/appbar";
 import NavigationAppbar from "../components/navigationAppbar";
+import SocialLink from "./socialLinks";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard, faPager, faLink, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 //green: #03D084
 
 const textColor = '#000';
@@ -15,11 +18,12 @@ const textColor = '#000';
 const useStyles = makeStyles((theme) => ({
     root: {
         minHeight: '100vh',
-        padding: '0 0 20px 0'
+        padding: '30px 0 20px 0'
     },
     addLink: {
         margin:'20px 0px 10px 0',
         width: '80%',
+        maxWidth: '500px',
         color:'white',
     },
     titleInput: {
@@ -50,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
         color:textColor,
     },
     addLinkList: {
-        margin:'30px 0 10px 0',
+        margin:'10px 0 10px 0',
         width: '90%',
         // border: '1px solid black',
         borderRadius: '20px',
@@ -59,6 +63,37 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#1641db',
         //backgroundImage: 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)',
 
+    },
+    tile : {
+        padding: '7px',
+        margin:'10px',
+        width: '90%',
+        borderRadius: '20px',
+        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+        color:'white',
+        backgroundColor: '#fff',
+    },
+    tileItem : {
+        margin:'7px',
+        padding: '30px 20px',
+        width: '45%',
+        borderRadius: '20px',
+        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.1)',
+        color:'white',
+        backgroundColor: '#1641db',
+    },
+    tileItemEx : {
+        margin:'7px',
+        padding: '30px 20px',
+        width: '45%',
+        borderRadius: '20px',
+        boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.1)',
+        color:'	#404040',
+        backgroundColor: '#E1E8F2',
+    },
+    tileIcon: {
+        height: '30px !important',
+        margin: '5px'
     },
     cardRow: {
         margin: '10px 5px',
@@ -72,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Links({user, handleChange, handleSubmit}){
+export default function Links({user, handleChange, handleSubmit, setUser}){
     const classes = useStyles();
     const [value, setValue] = useState('FaImages');
     const [newLink, setNewLink] = useState({
@@ -83,11 +118,34 @@ export default function Links({user, handleChange, handleSubmit}){
     })
     const [submit, setSubmit] = useState(0);
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleDone = () => {
+        setOpen(false);
+        handleSubmit();
+    };
+
     useEffect(() => {
         // console.log("rerendered")
     },[submit])
 
-    const links = user.links.map((link) =>
+    const handleDelete = (e,index) =>{
+        e.stopPropagation();
+        //console.log(index);
+        user.links.splice(index,1);
+        setSubmit(submit+1);
+        handleSubmit();
+    }
+
+    const links = user.links.map((link, index) =>
         <div className={classes.linkList}>
             <Grid className={classes.listCardRow} container spacing={1}>
                 <Grid item xs={12}>
@@ -133,7 +191,7 @@ export default function Links({user, handleChange, handleSubmit}){
             </Grid>
             <Grid justify="flex-end" className={classes.listCardRow} container spacing={1} style={{paddingRight:'30px'}}>
                 <DeleteOutline 
-                    onClick={console.log("1")} 
+                    onClick={ (e) => handleDelete(e,index)}
                     style={{height:'40px'}}
                 />
                 <IconPicker
@@ -189,6 +247,50 @@ export default function Links({user, handleChange, handleSubmit}){
                 justify="flex-start"
                 alignItems="center"
             >
+                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Add Social Links</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Fill in only the usernames of your social handles.
+                        </DialogContentText>
+                        <SocialLink user={user} handleChange={handleChange} setUser={setUser}/>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose} color="secondary">
+                            Cancel
+                        </Button>
+                        <Button variant="contained" onClick={handleDone} color="secondary">
+                            Done
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+
+                <Grid
+                    className={classes.tile}
+                    container
+                    direction="row"
+                    justify="space-around"
+                    alignItems="center"
+                >
+                    <h4 style={{color:'#707070',margin: '10px 0 20px 0'}}>What do you want to add?</h4>
+                    <Grid onClick={handleClickOpen} container direction="column" alignItems="center" className={classes.tileItemEx} item>
+                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faUserFriends} />
+                        <Typography style={{fontSize:'13px'}}>Social Link</Typography>
+                    </Grid>
+                    <Grid container direction="column" alignItems="center" className={classes.tileItem} item>
+                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faLink} />
+                        <Typography>Link</Typography>
+                    </Grid>
+                    <Grid container direction="column" alignItems="center" className={classes.tileItemEx} item>
+                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faAddressCard} />
+                        <Typography>Card</Typography>
+                    </Grid>
+                    <Grid container direction="column" alignItems="center" className={classes.tileItemEx} item>
+                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faPager} />
+                        <Typography>Banner</Typography>
+                    </Grid>
+                </Grid>
+
                 <div className={classes.addLinkList}>
                     <Grid className={classes.cardRow} container spacing={1}>
                         <Grid item xs={12}>

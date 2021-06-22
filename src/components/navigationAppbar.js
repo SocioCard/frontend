@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
         minHeight:'44px',
     },
     button: {
-        color: '#fff'
+        color: '#fff',
+        textDecoration: 'none'
     }
 }));
 
@@ -31,9 +32,9 @@ export default function NavigationAppbar({active}){
                 justify="space-around"
                 alignItems="center"
             >
-                <Link to="/tushar/admin/links"><Button className={classes.button}>Links</Button></Link>
-                <Link to="/tushar/admin/profile"><Button className={classes.button}>Appearance</Button></Link>
-                <Link><Button className={classes.button}>Settings</Button></Link>
+                <Link style={{textDecoration: 'none'}} to="/tushar/admin/links"><Button className={classes.button}>Links</Button></Link>
+                <Link style={{textDecoration: 'none'}}to="/tushar/admin/profile"><Button className={classes.button}>Appearance</Button></Link>
+                <Link style={{textDecoration: 'none'}}><Button className={classes.button}>Settings</Button></Link>
             </Grid>
                 
             </Toolbar>
