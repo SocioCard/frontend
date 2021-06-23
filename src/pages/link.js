@@ -11,6 +11,7 @@ import SocialLink from "./socialLinks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard, faPager, faLink, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 //green: #03D084
+//blue: #1641db
 
 const textColor = '#000';
 
@@ -18,7 +19,9 @@ const textColor = '#000';
 const useStyles = makeStyles((theme) => ({
     root: {
         minHeight: '100vh',
-        padding: '30px 0 20px 0'
+        padding: '30px 0 20px 0',
+        maxWidth: '600px',
+        margin: 'auto',
     },
     addLink: {
         margin:'20px 0px 10px 0',
@@ -60,12 +63,13 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '20px',
         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
         color:'white',
-        backgroundColor: '#1641db',
+        backgroundColor: '#1bd1a6',
         //backgroundImage: 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)',
 
     },
     tile : {
         padding: '7px',
+        maxWidth: '400px',
         margin:'10px',
         width: '90%',
         borderRadius: '20px',
@@ -80,7 +84,8 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '20px',
         boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.1)',
         color:'white',
-        backgroundColor: '#1641db',
+        backgroundColor: '#1bd1a6',
+        
     },
     tileItemEx : {
         margin:'7px',
@@ -207,6 +212,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                     control={
                     <Switch
                         name="visible"
+                        //value={link.visible}
                         color="secondary"
                     />
                     }
@@ -235,7 +241,14 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
             icon:'FaImages',
             visible:true,
         });
-    }
+    };
+
+    function handleScrollToAddLink  () {
+        window.scrollTo({
+            top: 400,
+            behavior: 'smooth' 
+        })
+    };
 
     return(
         <React.Fragment>
@@ -277,7 +290,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faUserFriends} />
                         <Typography style={{fontSize:'13px'}}>Social Link</Typography>
                     </Grid>
-                    <Grid container direction="column" alignItems="center" className={classes.tileItem} item>
+                    <Grid onClick={handleScrollToAddLink} container direction="column" alignItems="center" className={classes.tileItem} item>
                         <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faLink} />
                         <Typography>Link</Typography>
                     </Grid>

@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SocialLink({user, setUser}){
+export default function SocialLink({user, setUser, handleChange}){
     //console.log(user.social);
 
-    const handleChange = (event) => {
-        console.log(event.target.name+" "+event.target.value)
-        setUser({ social: [ ...(user.social), [event.target.name]: event.target.value]});
-    };
+    // const handleChange = (event) => {
+    //     console.log(event.target.name+" "+event.target.value)
+    //     setUser({ social: [ ...(user.social), [event.target.name]: event.target.value]});
+    // };
 
     const classes = useStyles();
     return(

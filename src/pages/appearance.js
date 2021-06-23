@@ -5,6 +5,12 @@ import ThemeSection from "../components/themeSection";
 import { Repeat } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
+  root:{
+    minHeight: '100vh',
+    padding: '30px 0 20px 0',
+    maxWidth: '600px',
+    margin: 'auto',
+  },
   cont: {
     display: "flex",
     "& > *": {

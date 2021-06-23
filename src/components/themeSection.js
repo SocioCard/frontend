@@ -86,31 +86,31 @@ const ThemeSection = ()=>{
               <div>
                 <ThemeShowcase  className={classes.themeShowcase} theme="1"/>
               </div>
-              <span className={classes.label}>Lorem Ipsum</span>
+              <span className={classes.label}>Blush</span>
             </Grid>
             <Grid item container className={classes.themeCard}>
               <div>
                 <ThemeShowcase  className={classes.themeShowcase} theme="2"/>
               </div>
-              <span className={classes.label}>Lorem Ipsum</span>
+              <span className={classes.label}>Inverse Rain</span>
             </Grid>
             <Grid item container className={classes.themeCard}>
               <div>
                 <ThemeShowcase  className={classes.themeShowcase} theme="3"/>
               </div>
-              <span className={classes.label}>Lorem Ipsum</span>
+              <span className={classes.label}>Amethyst</span>
             </Grid>
             <Grid item container className={classes.themeCard}>
               <div>
                 <ThemeShowcase  className={classes.themeShowcase} theme="4"/>
               </div>
-              <span className={classes.label}>Lorem Ipsum</span>
+              <span className={classes.label}>Mint</span>
             </Grid>
             <Grid item container className={classes.themeCard}>
               <div>
                 <ThemeShowcase  className={classes.themeShowcase} theme="5"/>
               </div>
-              <span className={classes.label}>Lorem Ipsum</span>
+              <span className={classes.label}>Aqua</span>
             </Grid>
           </Grid>
     

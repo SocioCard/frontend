@@ -7,7 +7,10 @@ import Appearance from "./appearance";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundImage: `url('https://images.hdqwalls.com/download/road-grayscale-photography-an-1125x2436.jpg')`,
+        //backgroundColor:'#EBEBEB',
+        //backgroundImage: `url('https://images.hdqwalls.com/download/road-grayscale-photography-an-1125x2436.jpg')`,
+        backgroundColor: '#000000',
+backgroundImage: 'linear-gradient(315deg, #000000 0%, #414141 74%)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundAttachment:'fixed',
@@ -32,7 +35,7 @@ const Admin = ()=>{
         bio:'',
         themes:'',
         links:[],
-        social:[{
+        social:{
             instagram:'',
             facebook:'',
             youtube:'',
@@ -40,7 +43,7 @@ const Admin = ()=>{
             linkedin:'',
             twitter:'',
             pinterest:'',
-        }],
+        },
         avatar:'',
     })
 
@@ -83,17 +86,11 @@ const Admin = ()=>{
     return (
         <div className={classes.root}>
             <Appbar user={id}/>
-                {page==="links" && <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />}
+                {page==="links" && <Links user={user} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />}
                 {page==="profile" && <Appearance/>}
                 
-<<<<<<< HEAD
-            } */}
-            <Links user={user} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />,
-            {/* <Appearance/> */}
-=======
             {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />,
             <Appearance/> */}
->>>>>>> 5410b03562c25dceb67f9feb4818d8f5a14d8782
         </div>
     );
 };

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     const [access, setAccess]=useState(-1);
-    console.log(rest);
+    //console.log(rest);
     var username="";
     let i=1;
     while(rest.location.pathname[i]!='/'){
