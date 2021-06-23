@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, makeStyles} from "@material-ui/core";
 import Profile from "../components/profile";
-import ThemeSection from "../components/themeSection";
 
 const useStyles = makeStyles((theme) => ({
   cont: {
@@ -20,19 +19,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
     padding: "16px 24px",
   },
-  themesMainCont:{
-    borderRadius: "15px",
-    backgroundColor:"#fff",
-    padding: "24px 16px",
-  },
 }));
 
-const Appearance = () => {
+const Settings = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Grid container className={classes.cont} direction='column' justify='flex-center' alignItems='center'>
-        {/* <Grid item xs={11} container direction='column' alignItems='flex-start'>
+        <Grid item xs={11} container direction='column' alignItems='flex-start'>
           <h3 style={{"color":"white", "margin":"10px 0 0 10px"}}>Profile</h3>
         </Grid>
         <Grid
@@ -43,21 +37,10 @@ const Appearance = () => {
           spacing={1}
         >
           <Profile />
-        </Grid> */}
-        <Grid item xs={11} container direction='column' alignItems='flex-start'>
-          <h3 style={{"color":"white", "margin":"10px 0 0 10px"}}>Themes</h3>
-        </Grid>
-        <Grid
-          item
-          xs={11}
-          container
-          className={classes.themesMainCont}
-        >
-          <ThemeSection/>
         </Grid>
       </Grid>
     </div>
   );
 };
 
-export default Appearance;
+export default Settings;

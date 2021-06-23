@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     borderRadius: "10px",
     border: "2px solid #ccc",
-    paddingTop:"150%"
+    paddingTop:"150%",
   }, 
   themeShowcase:{
     borderRadius: "10px",
@@ -38,82 +38,81 @@ const useStyles = makeStyles((theme) => ({
 }));
 const ThemeSection = ()=>{
     const classes = useStyles();
-    return(
-        <Grid item container className={classes.themeInnerCont}>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="6"/>
-              </div>
-              <span className={classes.label}>Classic</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="7"/>
-              </div>
-              <span className={classes.label}>Black Ocean</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="8"/>
-              </div>
-              <span className={classes.label}>Golden Night</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="9"/>
-              </div>
-              <span className={classes.label}>Rose White</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="10"/>
-              </div>
-              <span className={classes.label}>Dark Love</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="11"/>
-              </div>
-              <span className={classes.label}>Naruto</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="12"/>
-              </div>
-              <span className={classes.label}>Chill Night</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="1"/>
-              </div>
-              <span className={classes.label}>Lorem Ipsum</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="2"/>
-              </div>
-              <span className={classes.label}>Lorem Ipsum</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="3"/>
-              </div>
-              <span className={classes.label}>Lorem Ipsum</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="4"/>
-              </div>
-              <span className={classes.label}>Lorem Ipsum</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="5"/>
-              </div>
-              <span className={classes.label}>Lorem Ipsum</span>
-            </Grid>
-          </Grid>
-    
+    return (
+      <Grid item container className={classes.themeInnerCont}>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="6" />
+          </div>
+          <span className={classes.label}>Classic</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="7" />
+          </div>
+          <span className={classes.label}>Black Ocean</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="8" />
+          </div>
+          <span className={classes.label}>Golden Night</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="9" />
+          </div>
+          <span className={classes.label}>Rose White</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="10" />
+          </div>
+          <span className={classes.label}>Dark Love</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="11" />
+          </div>
+          <span className={classes.label}>Naruto</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="12" />
+          </div>
+          <span className={classes.label}>Chill Night</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="1" />
+          </div>
+          <span className={classes.label}>Lorem Ipsum</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="2" />
+          </div>
+          <span className={classes.label}>Lorem Ipsum</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="3" />
+          </div>
+          <span className={classes.label}>Lorem Ipsum</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="4" />
+          </div>
+          <span className={classes.label}>Lorem Ipsum</span>
+        </Grid>
+        <Grid item container className={classes.themeCard}>
+          <div>
+            <ThemeShowcase className={classes.themeShowcase} theme="5" />
+          </div>
+          <span className={classes.label}>Lorem Ipsum</span>
+        </Grid>
+      </Grid>
     );
 };
 
