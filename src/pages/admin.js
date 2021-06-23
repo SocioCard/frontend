@@ -4,6 +4,7 @@ import Links from "../pages/link";
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Appearance from "./appearance";
+import Settings from "./settings";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -88,6 +89,7 @@ const Admin = ()=>{
             <Appbar user={id}/>
                 {page==="links" && <Links user={user} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />}
                 {page==="profile" && <Appearance/>}
+                {page==="settings" && <Settings/>}
                 
             {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />,
             <Appearance/> */}

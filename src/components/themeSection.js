@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     borderRadius: "10px",
     border: "2px solid #ccc",
-    paddingTop:"150%"
+    paddingTop:"150%",
   }, 
   themeShowcase:{
     borderRadius: "10px",
