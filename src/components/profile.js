@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "1vh 0 16px 0"
   },
   uploadButton: {
-    backgroundColor: '#1940DD',
+    backgroundColor: '#1bd1a6',
     color: '#fff',
     borderRadius: '10px',
     lineHeight: "1.8",
