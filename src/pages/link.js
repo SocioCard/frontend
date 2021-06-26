@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.1)',
         color:'white',
         backgroundColor: '#1bd1a6',
-        
+        cursor: 'pointer',
     },
     tileItemEx : {
         margin:'7px',
@@ -95,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.1)',
         color:'	#404040',
         backgroundColor: '#E1E8F2',
+        cursor: 'pointer',
     },
     tileIcon: {
         height: '30px !important',
@@ -141,6 +142,18 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     useEffect(() => {
         // console.log("rerendered")
     },[submit])
+
+    const handleVisibleChange = (e,index) =>{
+        e.stopPropagation();
+        //console.log(index);
+        //user.links[index].visible=false; 
+        let temp = user.links;
+        //console.log(temp);
+        temp[index].visible=!(temp[index].visible);
+        setUser({...user, [links]:temp});
+        setSubmit(submit+1);
+        handleSubmit();
+    }
 
     const handleDelete = (e,index) =>{
         e.stopPropagation();
@@ -197,7 +210,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
             <Grid justify="flex-end" className={classes.listCardRow} container spacing={1} style={{paddingRight:'30px'}}>
                 <DeleteOutline 
                     onClick={ (e) => handleDelete(e,index)}
-                    style={{height:'40px'}}
+                    style={{height:'40px', cursor:'pointer'}}
                 />
                 <IconPicker
                     searchInputStyles={{color:'white', backgroundColor:'#16192A', border: 'none', height:'30px'}}
@@ -212,7 +225,8 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                     control={
                     <Switch
                         name="visible"
-                        //value={link.visible}
+                        checked={link.visible}
+                        onChange={ (e) => handleVisibleChange(e,index)}
                         color="secondary"
                     />
                     }
@@ -348,7 +362,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         </Grid>
                     </Grid>
                     <Grid justify="flex-end" className={classes.cardRow} container spacing={1} style={{paddingRight:'30px'}}>
-                        <DeleteOutline style={{height:'40px'}}/>
+                        
                         <IconPicker
                             searchInputStyles={{color:'white', backgroundColor:'#16192A', border: 'none', height:'30px'}}
                             pickerIconStyles={{color:'white'}}

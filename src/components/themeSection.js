@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   themeCard:{
     display: "flex",
     flexDirection: "column",
+    cursor: 'pointer',
   },
   themeImg:{
     backgroundImage: `url(${Theme1})`,
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: "1.57",
       fontSize: "14px",
       paddingTop: "8px",
+      cursor:'default',
   },
 }));
 const ThemeSection = ()=>{

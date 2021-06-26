@@ -34,7 +34,7 @@ export default function LinkShareAppbar(){
                 Onelink
             </Typography>
                 <a className={classes.link} href={link} target="_blank"><p style={{margin:0}}>{linkDisp}</p></a>
-            <SocialShare/>
+            <SocialShare link={link}/>
             </Toolbar>
         </AppBar>
     )

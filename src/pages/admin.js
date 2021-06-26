@@ -36,6 +36,7 @@ const Admin = ()=>{
         bio:'',
         themes:'',
         links:[],
+        visible:'',
         social:{
             instagram:'',
             facebook:'',
@@ -88,8 +89,8 @@ const Admin = ()=>{
         <div className={classes.root}>
             <Appbar user={id}/>
                 {page==="links" && <Links user={user} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />}
-                {page==="profile" && <Appearance/>}
-                {page==="settings" && <Settings/>}
+                {page==="appearance" && <Appearance/>}
+                {page==="profile" && <Settings/>}
                 
             {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />,
             <Appearance/> */}

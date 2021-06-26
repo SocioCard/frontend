@@ -27,7 +27,7 @@ export default function SocialLink({user, setUser, handleChange}){
 
     // const handleChange = (event) => {
     //     console.log(event.target.name+" "+event.target.value)
-    //     setUser({ social: [ ...(user.social), [event.target.name]: event.target.value]});
+    //     setUser({ ...(user.social), [event.target.name]: event.target.value]});
     // };
 
     const classes = useStyles();
