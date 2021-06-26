@@ -4,241 +4,68 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import {Theme1, Theme2, Theme3, Theme4, Theme5, Theme6, Theme7, Theme8, Theme9, Theme10, Theme11, Theme12} from '../components//themes.js';
+
 // import {Theme} from '../themes';
 
-
-const Theme1 = makeStyles((theme)=>({
-    root: {
-        minHeight: "100vh",
-        maxHeight:"500vh",
-        padding:"6vh 4vw 10vh 4vw",
-        backgroundColor: "#5CDB95",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    mainCont: {
-        [theme.breakpoints.up('md')]: {
-            width: '60vw',
-        },
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignContent: "flex-start",
-    },
-    avatarCont: {
-        height: "160px",
-        width: "auto",
-    },
-    avatar: {
-        height: "120px",
-        width: "120px",
-        borderWidth: "5px",
-        borderStyle: "dotted",
-        borderColor: "#05386B",
-    },
-    userDetails: {
-        display: 'flex',
-        direction: 'row',
-        justifyContent: 'center',
-        alignContent:'flex-start',
-        minHeight: '130px',
-    },
-    userName: {
-        fontSize: "1.35rem",
-        fontFamily: "Ubuntu",
-        fontWeight: "400",
-        color: "#edf5e1",
-    },
-    userBio: {
-        fontSize: "1.10rem",
-        fontFamily: "Ubuntu",
-        fontWeight: "400",
-        color: "#edf5e1",
-    },
-    linkList: {
-        height: '45vh',
-        justifyContent: 'center',
-        alignContent: 'flex-start',
-    },
-    linkCard: {
-        height:"70px",
-        margin: "10px 0",
-        backgroundColor:"#05386B",
-        // borderRadius: "13px",
-        // borderWidth: "2px",
-        // borderStyle: "solid",
-        // borderColor: "#fff",
-        // transition: "width 2s, height 4s", 
-        "boxShadow": "6px 6px 7px 0px rgba(31,29,29,0.6)",
-        '&:hover':{
-            backgroundColor: "#fff",
-            // borderWidth: "2px",
-            // borderStyle: "solid",
-            // borderColor: "#6b5d41",
-            transform: "scale(1.03, 1.09)",
-            '& *': {
-                color: "#05386B",
-            },
-        },
-    },
-    linkLogoCont: {
-        paddingLeft: '12px',
-        alignContent:"center",
-    },
-    linkLogo: {
-        fontSize: "2.25rem",
-        color: "#fff",
-    },
-    linkMsgCont: {
-        justifyContent: 'center',
-        alignContent:"center",
-        
-        '& > *':{
-            fontSize: "1.35rem",
-            fontFamily: "Ubuntu",
-            color: "#fff",
-        },
-    }
-}));
-const Theme2 = makeStyles((theme)=>({
-    root: {
-        minHeight: "100vh",
-        maxHeight:"500vh",
-        padding:"6vh 4vw 10vh 4vw",
-        // backgroundColor: LocalThemes[1].Bg.color,
-        backgroundColor: "#fff",
-        backgroundImage: "url(https://i.stack.imgur.com/ReAxi.gif)",
-        backgroundPosition: "center center",
-        backgroundRepeat: "noRepeat",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    mainCont: {
-        maxHeight:"auto",
-        [theme.breakpoints.up('md')]: {
-            width: '60vw',
-        },
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignContent: "flex-start",
-    },
-    avatarCont: {
-        height: "160px",
-        width: "auto",
-    },
-    avatar: {
-        height: "120px",
-        width: "120px",
-        borderWidth: "0",
-        borderStyle: "solid",
-        borderColor: "green",
-    },
-    userDetails: {
-        display: 'flex',
-        direction: 'row',
-        justifyContent: 'center',
-        alignContent:'flex-start',
-        minHeight: '130px',
-    },
-    userName: {
-        fontSize: "1.35rem",
-        fontFamily: "Lato",
-        fontWeight: "400",
-        color: "black",
-    },
-    userBio: {
-        fontSize: "1.10rem",
-        fontFamily: "Lato",
-        fontWeight: "400",
-        color: "black",
-    },
-    linkList: {
-        justifyContent: 'center',
-        alignContent: 'flex-start',
-    },
-    linkCard: {
-        height:"70px",
-        margin: "10px 0",
-        backgroundColor:"#3d3b3c",
-        borderRadius: "13px",
-        borderWidth: "2px",
-        borderStyle: "solid",
-        borderColor: "#e3e3e3",
-        '&:hover':{
-            backgroundColor: "#fff",
-            borderWidth: "2px",
-            borderStyle: "solid",
-            borderColor: "#3d3b3c",
-            transform: "scale(1.03, 1.09)",
-            '& $linkLogo': {
-                color: "#3d3b3c",
-            },
-            '& $linkMsgCont > *': {
-                color: "#3d3b3c",
-            },
-        },
-    },
-    linkLogoCont: {
-        paddingLeft: '12px',
-        alignContent:"center",
-    },
-    linkLogo: {
-        fontSize: "2.35rem",
-        color: "#fff",
-    },
-    linkMsgCont: {
-        justifyContent: 'center',
-        alignContent:"center",
-        
-        '& > *':{
-            fontSize: "1.35rem",
-            fontFamily: "Fira Sans",
-            color: "#fff",
-        },
-    }
-}));
-
 const ShowPage=()=>{
-    const [user,setUser] = useState({
-        email: "",
-        username: "",
-        name: "",
-        bio: "",
-        themes: "1",
-        links: [{
-            title:"",
-            link:"",
-            icon:"",
-            visible:"",
-        }],
-        avatar:"",
-    });
+    const [user,setUser] = useState({});
+    const [access, setAccess]=useState(-1);
+    const username=useHistory().location.pathname.split("/")[1];
     useEffect(()=>{
         const request=async()=>{
         var Slno=2;
-        const data=await axios.post("http://localhost:5000/mySocioCard", {username: "Amit_Shawuxzvf9"})
+        const data=await axios.post("http://localhost:5000/mySocioCard", {username: username})
         .then(res=>{
             console.log(res.data);
             setUser(res.data[0]);
+            setAccess(1);
         })
         .catch(err=>{
             console.log(err);
+            setAccess(0);
         })
         }
         request();
     },[]);
     // const classes = eval("Theme1"+"()");
-    const classes = Theme2();
+    const getClass=()=>{
+        if(user.themes==="1"){
+            return Theme1();
+        }else if(user.themes==="2"){
+            return Theme2();
+        }else if(user.themes==="3"){
+            return Theme3();
+        }else if(user.themes==="4"){
+            return Theme4();
+        }else if(user.themes==="5"){
+            return Theme5();
+        }else if(user.themes==="6"){
+            return Theme6();
+        }else if(user.themes==="7"){
+            return Theme7();
+        }else if(user.themes==="8"){
+            return Theme8();
+        }else if(user.themes==="9"){
+            return Theme9();
+        }else if(user.themes==="10"){
+            return Theme10();
+        }else if(user.themes==="11"){
+            return Theme11();
+        }else{
+            return Theme12();
+        }
+    }
+    const classes = access?getClass():Theme1();
     return(
         <>
-            <Grid container className={classes.root}>
+        {access===-1?
+            <h2>Loading, Please wait....</h2>:
+            (access===0?
+                <h2>Sorry... No user found</h2>
+                :
+                <Grid container className={classes.root}>
                 <Grid item container className={classes.mainCont}>
                     <Grid item className={classes.avatarCont}>
                         <Avatar
@@ -281,6 +108,8 @@ const ShowPage=()=>{
                     </Grid>
                 </Grid>                
             </Grid>
+            )
+        }
         </>
     );
 };
