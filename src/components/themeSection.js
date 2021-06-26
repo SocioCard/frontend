@@ -5,6 +5,9 @@ import axios from 'axios';
 import Theme1 from '../static/images/Theme1.png';
 import Theme2 from '../static/images/Theme2.gif';
 import ThemeShowcase from "./themeShowcase";
+import themes from '../data/themesArray.json';
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   themeInnerCont:{
@@ -16,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   themeCard:{
     display: "flex",
     flexDirection: "column",
-    cursor: 'pointer',
+    cursor:'pointer',
   },
   themeImg:{
     backgroundImage: `url(${Theme1})`,
@@ -38,82 +41,49 @@ const useStyles = makeStyles((theme) => ({
       cursor:'default',
   },
 }));
-const ThemeSection = ()=>{
+const ThemeSection = ({user, setUser})=>{
     const classes = useStyles();
+    const [newDetails, setNewDetails]=useState(user);
+    const id=useHistory().location.pathname.split("/")[1];
+    useEffect(()=>{
+      const request=async()=>(
+        axios.post('http://localhost:5000/updateUser', {user:newDetails,id})
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function(err){
+        console.log(err);
+        })
+      )
+      if(newDetails.themes!==""){
+        setUser(newDetails);
+        request();
+      }
+    }, [newDetails])
+    const handleThemeUpdate=(event,index)=>{
+      event.stopPropagation();
+      console.log(index);
+      setNewDetails({...user, themes:index})
+      // setTimeout(handleSubmit,3000);
+    }
     return(
         <Grid item container className={classes.themeInnerCont}>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="6"/>
-              </div>
-              <span className={classes.label}>Classic</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="7"/>
-              </div>
-              <span className={classes.label}>Black Ocean</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="8"/>
-              </div>
-              <span className={classes.label}>Golden Night</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="9"/>
-              </div>
-              <span className={classes.label}>Rose White</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="10"/>
-              </div>
-              <span className={classes.label}>Dark Love</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="11"/>
-              </div>
-              <span className={classes.label}>Naruto</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="12"/>
-              </div>
-              <span className={classes.label}>Chill Night</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="1"/>
-              </div>
-              <span className={classes.label}>Blush</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="2"/>
-              </div>
-              <span className={classes.label}>Inverse Rain</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="3"/>
-              </div>
-              <span className={classes.label}>Amethyst</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="4"/>
-              </div>
-              <span className={classes.label}>Mint</span>
-            </Grid>
-            <Grid item container className={classes.themeCard}>
-              <div>
-                <ThemeShowcase  className={classes.themeShowcase} theme="5"/>
-              </div>
-              <span className={classes.label}>Aqua</span>
-            </Grid>
+            {themes.map((theme, index)=>(
+              <Grid 
+                key={index} 
+                item 
+                container
+                className={classes.themeCard}
+                onClick={(e)=>handleThemeUpdate(e,index+1)}
+              >
+                <div
+                style={parseInt(index)+1===parseInt(user.themes)?{border:'1px solid yellow', borderRadius:'20px',boxShadow: "-8px 9px 14px -2px rgba(242,216,0,0.75)"}:null}
+                >
+                  <ThemeShowcase  className={classes.themeShowcase} theme={theme.id}/>
+                </div>
+                <span className={classes.label}>Classic</span>
+              </Grid>
+            ))}
           </Grid>
     
     );

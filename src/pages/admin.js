@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         //backgroundColor:'#EBEBEB',
         //backgroundImage: `url('https://images.hdqwalls.com/download/road-grayscale-photography-an-1125x2436.jpg')`,
         backgroundColor: '#000000',
-backgroundImage: 'linear-gradient(315deg, #000000 0%, #414141 74%)',
+        backgroundImage: 'linear-gradient(315deg, #000000 0%, #414141 74%)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundAttachment:'fixed',
@@ -26,7 +26,6 @@ const Admin = ()=>{
     var url = window.location.href;
     var id = url.split("/")[3];
     var page = url.split("/")[5];
-    //console.log(id);
     
 
     const [user,setUser] = useState({
@@ -48,7 +47,6 @@ const Admin = ()=>{
         },
         avatar:'',
     })
-
     const handleChange = (event) => {
         //console.log(event.target.name+" "+event.target.value)
         // console.log(user)
@@ -58,8 +56,6 @@ const Admin = ()=>{
 
 
     const handleSubmit = () => {
-        console.log(user);
-        
         axios.post('http://localhost:5000/updateUser', {user,id})
         .then(function (response) {
         console.log(response);
@@ -75,7 +71,6 @@ const Admin = ()=>{
             .then(
               (result) => {
                 if(result.data.length!=0){
-                    console.log(result);
                   setUser(result.data[0])
                 }
               }
@@ -90,7 +85,7 @@ const Admin = ()=>{
         <div className={classes.root}>
             <Appbar user={id}/>
                 {page==="links" && <Links user={user} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />}
-                {page==="appearance" && <Appearance/>}
+                {page==="appearance" && <Appearance user={user} setUser={setUser} handleSubmit={handleSubmit}/>}
                 {page==="profile" && <Settings/>}
                 
             {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />,

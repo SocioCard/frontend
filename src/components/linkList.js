@@ -62,7 +62,7 @@ export default function LinkList({link, index, handleDelete, setValue, setUser, 
         var temp=user.links;
         temp[index]=cardDetails;
         setUser({...user, links:temp});
-        handleSubmit()
+        setTimeout(handleSubmit, 2000)
     }
     const handleCancel=()=>{
         setEdit(false);
