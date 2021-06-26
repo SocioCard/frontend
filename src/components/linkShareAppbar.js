@@ -26,27 +26,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LinkShareAppbar() {
-  const classes = useStyles();
-  var url = window.location.href;
-  var id = url.split("/")[3];
-  var link = "https://onelink.io/" + id;
-  var linkDisp = "onelink.io/" + id;
-  return (
-    <AppBar
-      className={classes.appbar}
-      style={{ alignItems: "center" }}
-      position="static"
-    >
-      <Toolbar style={{ minHeight: "44px", display: "flex" }}>
-        <Typography variant="h8" className={classes.onelink}>
-          Onelink:
-        </Typography>
-        <a className={classes.link} href={link} target="_blank">
-          <p style={{ margin: 0 }}>{linkDisp}</p>
-        </a>
-        <SocialShare />
-      </Toolbar>
-    </AppBar>
-  );
+export default function LinkShareAppbar(){
+    const classes = useStyles();
+    var url = window.location.href;
+    var id = url.split("/")[3];
+    var link="https://onelink.io/"+id;
+    var linkDisp="onelink.io/"+id;
+    return(
+        <AppBar className={classes.appbar} style={{alignItems: 'center',}} position="static">
+            <Toolbar style={{minHeight:'44px'}}>
+            <Typography variant="h8" className={classes.onelink}>
+                Onelink
+            </Typography>
+                <a className={classes.link} href={link} target="_blank"><p style={{margin:0}}>{linkDisp}</p></a>
+            <SocialShare link={link}/>
+            </Toolbar>
+        </AppBar>
+    )
 }

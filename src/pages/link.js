@@ -9,7 +9,7 @@ import Appbar from "../components/appbar";
 import NavigationAppbar from "../components/navigationAppbar";
 import SocialLink from "./socialLinks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard, faPager, faLink, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard, faPager, faLink, faUserFriends, faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 import LinkList from "../components/linkList";
 //green: #03D084
 //blue: #1641db
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.1)',
         color:'white',
         backgroundColor: '#1bd1a6',
-        
+        cursor: 'pointer',
     },
     tileItemEx : {
         margin:'7px',
@@ -66,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.1)',
         color:'	#404040',
         backgroundColor: '#E1E8F2',
+        cursor: 'pointer',
     },
     tileIcon: {
         height: '30px !important',
@@ -144,6 +145,18 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         // console.log("rerendered")
     },[submit])
 
+    // const handleVisibleChange = (e,index) =>{
+    //     e.stopPropagation();
+    //     //console.log(index);
+    //     //user.links[index].visible=false; 
+    //     let temp = user.links;
+    //     //console.log(temp);
+    //     temp[index].visible=!(temp[index].visible);
+    //     setUser({...user, [links]:temp});
+    //     setSubmit(submit+1);
+    //     handleSubmit();
+    // }
+
     const handleDelete = (e,index) =>{
         e.stopPropagation();
         //console.log(index);
@@ -174,7 +187,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
 
     function handleScrollToAddLink  () {
         window.scrollTo({
-            top: 400,
+            top: 480,
             behavior: 'smooth' 
         })
     };
@@ -190,10 +203,10 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                 alignItems="center"
             >
                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">Add Social Links</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Add Quick Links</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                            Fill in only the usernames of your social handles.
+                            Fill in only the usernames for social medias.
                         </DialogContentText>
                         <SocialLink user={user} handleChange={handleChange} setUser={setUser}/>
                     </DialogContent>
@@ -216,8 +229,8 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                 >
                     <h4 style={{color:'#707070',margin: '10px 0 20px 0'}}>What do you want to add?</h4>
                     <Grid onClick={handleClickOpen} container direction="column" alignItems="center" className={classes.tileItemEx} item>
-                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faUserFriends} />
-                        <Typography style={{fontSize:'13px'}}>Social Link</Typography>
+                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faCodeBranch} />
+                        <Typography style={{fontSize:'13px'}}>Quick Link</Typography>
                     </Grid>
                     <Grid onClick={handleScrollToAddLink} container direction="column" alignItems="center" className={classes.tileItem} item>
                         <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faLink} />
@@ -231,6 +244,10 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faPager} />
                         <Typography>Banner</Typography>
                     </Grid>
+                </Grid>
+
+                <Grid item xs={11} container direction='column' alignItems='flex-start'>
+                <h3 style={{"color":"white", "margin":"30px 0 10px 10px"}}>Add Link</h3>
                 </Grid>
 
                 <div className={classes.addLinkList}>
@@ -278,7 +295,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         </Grid>
                     </Grid>
                     <Grid justify="flex-end" className={classes.cardRow} container spacing={1} style={{paddingRight:'30px'}}>
-                        <DeleteOutline style={{height:'40px'}}/>
+                        
                         <IconPicker
                             searchInputStyles={{color:'white', backgroundColor:'#16192A', border: 'none', height:'30px'}}
                             pickerIconStyles={{color:'white'}}
@@ -294,6 +311,10 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         </Button>
                     </Grid>
                 </div>
+
+                <Grid item xs={11} container direction='column' alignItems='flex-start'>
+                <h3 style={{"color":"white", "margin":"30px 0 10px 10px"}}>Added Links</h3>
+                </Grid>
 
                 {
                     user.links.map((link, index) =>

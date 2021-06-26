@@ -1,10 +1,13 @@
-import { Avatar, Button, Grid, InputBase, makeStyles } from "@material-ui/core";
-import { useEffect, useState } from "react";
-import defaultImg from '../static/images/a.png';
+import { Avatar, Button, Grid, InputBase, makeStyles, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText, } from "@material-ui/core";
+
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from "@material-ui/icons/Edit";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import axios from "axios";
+import React,{ useEffect, useState } from "react";
+import axios from 'axios';
+import ImageUpload from "./imageUpload";
+import { useHistory } from "react-router";
+
 
 const useStyles = makeStyles((theme) => ({
   form:{
@@ -44,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "1vh 0 16px 0"
   },
   uploadButton: {
-    backgroundColor: '#1940DD',
+    backgroundColor: '#1bd1a6',
     color: '#fff',
     borderRadius: '10px',
     lineHeight: "1.8",
@@ -84,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
  
 }));
 
+
 const Profile=({details, setDetails})=>{
   var url = window.location.href;
   var id = url.split("/")[3];
@@ -103,12 +107,56 @@ const Profile=({details, setDetails})=>{
             console.log(err);
           });
   }
+
+  const [profileImg, setProfileImg] = useState('http://localhost:5000/image');
+
+  const [open, setOpen] = React.useState(false);
+  const [uploaded, setUploaded] = React.useState(0);
+  const history = useHistory();
+
+  const handleClickOpen = () => {
+      setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
+
+  const handleUpload=()=>{
+      console.log('handleUploaded')
+      //history.push(history.location.pathname)
+      window.location.reload();
+  };
+
   return (
     <Grid container>
     <form onSubmit={handleUpdateProfile} className={classes.form}>
       <Grid item xs={4} className={classes.imgCont}>
-        <Avatar alt="Default Img" src={defaultImg} className={classes.img} />
+        <Avatar
+              alt="Default Img"
+              src={profileImg}
+              
+              className={classes.img}
+        />
       </Grid>
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Upload Profile Image</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Let's give your profile an avatar.
+                        </DialogContentText>
+                        <ImageUpload id={id} uploaded={uploaded} setUploaded={setUploaded} setOpen={setOpen} handleUpload={handleUpload}/>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose} color="secondary">
+                            Cancel
+                        </Button>
+                        <Button variant="contained" onClick={handleClose} color="secondary">
+                            Done
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+          
       <Grid item xs={8} container className={classes.imgButtons}>
         <Grid item xs={8} className={classes.pickImg}>
           <Button
@@ -116,8 +164,9 @@ const Profile=({details, setDetails})=>{
             className={classes.uploadButton}
             startIcon={<CloudUploadIcon />}
             fullWidth
+            onClick={handleClickOpen}
           >
-            Upload
+            Change
           </Button>
         </Grid>
         <Grid item xs={8} className={classes.removeImg}>

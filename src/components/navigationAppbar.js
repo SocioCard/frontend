@@ -33,8 +33,8 @@ export default function NavigationAppbar({active, user}){
                 alignItems="center"
             >
                 <Link style={{textDecoration: 'none'}} to={`/${user}/admin/links`}><Button className={classes.button}>Links</Button></Link>
-                <Link style={{textDecoration: 'none'}} to={`/${user}/admin/profile`}><Button className={classes.button}>Appearance</Button></Link>
-                <Link style={{textDecoration: 'none'}} to={`/${user}/admin/settings`}><Button className={classes.button}>Settings</Button></Link>
+                <Link style={{textDecoration: 'none'}} to={`/${user}/admin/appearance`}><Button className={classes.button}>Appearance</Button></Link>
+                <Link style={{textDecoration: 'none'}} to={`/${user}/admin/profile`}><Button className={classes.button}>Profile</Button></Link>
             </Grid>
                 
             </Toolbar>

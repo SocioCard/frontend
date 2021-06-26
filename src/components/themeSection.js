@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: "1.57",
       fontSize: "14px",
       paddingTop: "8px",
+      cursor:'default',
   },
 }));
 const ThemeSection = ({user, setUser})=>{

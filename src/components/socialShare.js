@@ -5,11 +5,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { SocialIcon } from "react-social-icons";
-import { GridList, GridListTile } from "@material-ui/core";
+import { Grid, GridList, GridListTile } from "@material-ui/core";
+import QRCode from "react-qr-code";
 
-export default function SocialShare() {
-  const url = document.location.href;
-  const title = "Here is the link for my OneLink account";
+export default function SocialShare({link}) {
+  const url = link;
+  const title = "Here is the link for my OneLink card";
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -30,7 +31,7 @@ export default function SocialShare() {
     );
     handleClose();
   };
-  const whatsappText = url;
+  const whatsappText = link;
 
   return (
     <div>
@@ -45,7 +46,17 @@ export default function SocialShare() {
       >
         <DialogTitle id="alert-dialog-title">Share Via</DialogTitle>
         <DialogContent>
-          <GridList cols={3} cellHeight={60}>
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
+          <div style={{margin:'20px'}}>
+          <QRCode size={150} value={link}/>
+          </div>
+          
+          <GridList cols={3} cellHeight={60} >
             <GridListTile>
               <a href="#">
                 <SocialIcon network="facebook" />
@@ -62,7 +73,7 @@ export default function SocialShare() {
             <GridListTile>
               <a
                 href={`https://www.twitter.com/intent/tweet?text=${title}&url=${url}&hashtags=OneLink`}
-                // target="_blank"
+                target="_blank"
               >
                 <SocialIcon network="twitter" />
               </a>
@@ -92,6 +103,7 @@ export default function SocialShare() {
               </a>
             </GridListTile>
           </GridList>
+        </Grid>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCopy} color="secondary">
