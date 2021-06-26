@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Button, Switch, InputBase, FormControlLabel, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText, Typography } from '@material-ui/core';
+import { Grid, Button,  InputBase, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText, Typography } from '@material-ui/core';
 import '../App.css';
 import { IconPicker } from 'react-fa-icon-picker'
 import {Edit, DeleteOutline} from '@material-ui/icons';
@@ -10,6 +10,7 @@ import NavigationAppbar from "../components/navigationAppbar";
 import SocialLink from "./socialLinks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard, faPager, faLink, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import LinkList from "../components/linkList";
 //green: #03D084
 //blue: #1641db
 
@@ -36,36 +37,6 @@ const useStyles = makeStyles((theme) => ({
     linkInput: {
         
         color:'white',
-    },
-    listTitleInput: {
-        fontWeight: 700,
-        color:textColor,
-    },
-    listLinkInput: {
-        
-        color:textColor,
-    },
-    linkList: {
-        margin:'10px 0',
-        width: '90%',
-        // border: '1px solid black',
-        borderRadius: '20px',
-        boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)',
-        backgroundColor:'#fff',
-        // background: 'rgba(242,232,232,0.12)',
-        // backdropFilter: 'blur(10px)',
-        color:textColor,
-    },
-    addLinkList: {
-        margin:'10px 0 10px 0',
-        width: '90%',
-        // border: '1px solid black',
-        borderRadius: '20px',
-        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-        color:'white',
-        backgroundColor: '#1bd1a6',
-        //backgroundImage: 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)',
-
     },
     tile : {
         padding: '7px',
@@ -105,6 +76,36 @@ const useStyles = makeStyles((theme) => ({
         color:'white',
         //borderBottom: '1px solid white'
     },
+    listTitleInput: {
+        fontWeight: 700,
+        color:textColor,
+    },
+    listLinkInput: {
+        
+        color:textColor,
+    },
+    linkList: {
+        margin:'10px 0',
+        width: '90%',
+        // border: '1px solid black',
+        borderRadius: '20px',
+        boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)',
+        backgroundColor:'#fff',
+        // background: 'rgba(242,232,232,0.12)',
+        // backdropFilter: 'blur(10px)',
+        color:textColor,
+    },
+    addLinkList: {
+        margin:'10px 0 10px 0',
+        width: '90%',
+        // border: '1px solid black',
+        borderRadius: '20px',
+        boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+        color:'white',
+        backgroundColor: '#1bd1a6',
+        //backgroundImage: 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)',
+
+    },
     listCardRow: {
         margin: '10px 5px',
         color:textColor,
@@ -113,6 +114,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Links({user, handleChange, handleSubmit, setUser}){
+    console.log(user);
     const classes = useStyles();
     const [value, setValue] = useState('FaImages');
     const [newLink, setNewLink] = useState({
@@ -150,79 +152,6 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         handleSubmit();
     }
 
-    const links = user.links.map((link, index) =>
-        <div className={classes.linkList}>
-            <Grid className={classes.listCardRow} container spacing={1}>
-                <Grid item xs={12}>
-                    <Grid container spacing={1} alignItems="flex-end">
-                        <Grid item>
-                            <Edit />
-                        </Grid>
-                        <Grid item>
-                            <InputBase
-                                required 
-                                id="title" 
-                                value={link.title}
-                                name="title"
-                                onChange={handleChange}
-                                placeholder="Add Title"
-                                inputProps={{
-                                    'aria-label': 'naked',
-                                    className: classes.listTitleInput,
-                                }}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid container spacing={1} alignItems="flex-end">
-                        <Grid item>
-                            <Edit />
-                        </Grid>
-                        <Grid item>
-                            <InputBase
-                                required 
-                                id="link" 
-                                value={link.link}
-                                name="link"
-                                onChange={handleChange}
-                                placeholder="Add Link"
-                                inputProps={{
-                                    'aria-label': 'naked',
-                                    className: classes.listLinkInput,
-                                }}
-                            />
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid justify="flex-end" className={classes.listCardRow} container spacing={1} style={{paddingRight:'30px'}}>
-                <DeleteOutline 
-                    onClick={ (e) => handleDelete(e,index)}
-                    style={{height:'40px'}}
-                />
-                <IconPicker
-                    searchInputStyles={{color:'white', backgroundColor:'#16192A', border: 'none', height:'30px'}}
-                    pickerIconStyles={{color:'white'}}
-                    containerStyles={{backgroundColor:'#404040', border:'none', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',}}
-                    buttonStyles={{padding:'0', height:'20px', margin: '0 10px', border:'none'}}
-                    buttonIconStyles={{color:textColor}}
-                    value={link.icon}
-                    onChange={(v) => setValue(v)}
-                />
-                <FormControlLabel
-                    control={
-                    <Switch
-                        name="visible"
-                        //value={link.visible}
-                        color="secondary"
-                    />
-                    }
-                    label="Visible"
-                    labelPlacement="start"
-                />
-            </Grid>
-        </div>
-
-    );
 
     const handleNewLinkChange = (event) => {
         //console.log(event.target.name+" "+event.target.value)
@@ -323,6 +252,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                                             'aria-label': 'naked',
                                             className: classes.titleInput,
                                         }}
+                                        
                                     />
                                 </Grid>
                             </Grid>
@@ -365,7 +295,20 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                     </Grid>
                 </div>
 
-                {links}
+                {
+                    user.links.map((link, index) =>
+                        <LinkList
+                        key={index}
+                        link={link}
+                        index={index}
+                        handleDelete={handleDelete}
+                        setValue={setValue}
+                        setUser={setUser}
+                        user={user}
+                        handleSubmit={handleSubmit}
+                        />
+                    )
+                }
             
                 
             </Grid>
