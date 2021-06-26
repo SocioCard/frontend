@@ -74,6 +74,7 @@ const Admin = ()=>{
             .then(
               (result) => {
                 if(result.data.length!=0){
+                    console.log(result);
                   setUser(result.data[0])
                 }
               }
