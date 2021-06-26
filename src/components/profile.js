@@ -1,15 +1,24 @@
 import { Avatar, Button, Grid, InputBase, makeStyles } from "@material-ui/core";
+import { useEffect, useState } from "react";
 import defaultImg from '../static/images/a.png';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from "@material-ui/icons/Edit";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
+  form:{
+    display:'flex',
+    flexWrap:'wrap',
+    maxWidth: "500px",
+    
+  },
   imgCont: {
     display:'flex',
     flexDirection: 'row',
     justifyContent:'center',
     alignItems:'center',
+    marginBottom: '16px',
   },
   img: {
     height: theme.spacing(14),
@@ -19,12 +28,18 @@ const useStyles = makeStyles((theme) => ({
     display:'flex',
     flexDirection: 'row',
     justifyContent:'center',
+    marginBottom: '16px',
+
   },
   pickImg: {
+    width: '45vw',
+    minWidth: '175px',
     padding: "0",
     margin: "16px 0 1vh 0"
   },
   removeImg: {
+    width: '45vw',
+    minWidth: '175px',
     padding: "0",
     margin: "1vh 0 16px 0"
   },
@@ -66,87 +81,117 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '4px',
     marginBottom: '14px',
   },
-  deleteAccountCont: {
-    padding: "0",
-    margin: "16px 0 1vh 0"
-  },
-  deleteAccountButton: {
-    backgroundColor: '#e61c4b',
-    color: '#fff',
-    lineHeight: "1.8",
-    '& > *': {
-      fontSize: "17px",
-    },
-    '&:hover':{
-      backgroundColor: '#ff7091',
-    },
-  },
+ 
 }));
 
-const Profile=()=>{
+const Profile=({details, setDetails})=>{
+  var url = window.location.href;
+  var id = url.split("/")[3];
   const classes = useStyles();
-  return(
-        <>
-          <Grid item xs={5} className={classes.imgCont}>
-            <Avatar
-              alt="Default Img"
-              src={defaultImg}
-              className={classes.img}
-            />
-          </Grid>
-          <Grid item xs={7} container className={classes.imgButtons}>
-            <Grid item xs={7} className={classes.pickImg}>
-              <Button variant="contained" className={classes.uploadButton} startIcon={<CloudUploadIcon />} fullWidth>
-                Upload
-              </Button>
-            </Grid>
-            <Grid item xs={7} className={classes.removeImg}>
-              <Button variant="contained" className={classes.deleteButton} startIcon={<DeleteIcon />} fullWidth >
-                Remove
-              </Button>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <InputBase
-              placeholder="Name"
-              fullWidth
-              className= {classes.nameText}
-              InputProps={{
-                shrink: true,
-              }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <InputBase
-              placeholder="Bio"
-              multiline
-              rows={5}
-              fullWidth
-              className= {classes.bioText}
-              InputProps={{
-                shrink: true,
-              }}
-            />
-            <Grid item xs={12}>
-            <InputBase
-              placeholder="Username"
-              fullWidth
-              className= {classes.nameText}
-              InputProps={{
-                shrink: true,
-              }}
-            />
-          </Grid>
-
-          <Grid item xs={5} className={classes.deleteAccountCont}>
-              <Button variant="contained" className={classes.deleteAccountButton} startIcon={<DeleteIcon />} fullWidth>
-                Delete Account
-              </Button>
-          </Grid>
-          </Grid>
-          
-         </>
+  const handleDetails = (event) => {
+    console.log(event.target.name+" "+event.target.value)
+    setDetails({ ...details, [event.target.name]: event.target.value });
+  };
+  const handleUpdateProfile=(event) =>{
+          event.preventDefault();
+          axios.post("http://localhost:5000/updateProfile", details)
+          .then((result) => {
+            console.log(result);
+            // setDetails(result.data[0]);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+  }
+  return (
+    <Grid container>
+    <form onSubmit={handleUpdateProfile} className={classes.form}>
+      <Grid item xs={4} className={classes.imgCont}>
+        <Avatar alt="Default Img" src={defaultImg} className={classes.img} />
+      </Grid>
+      <Grid item xs={8} container className={classes.imgButtons}>
+        <Grid item xs={8} className={classes.pickImg}>
+          <Button
+            variant="contained"
+            className={classes.uploadButton}
+            startIcon={<CloudUploadIcon />}
+            fullWidth
+          >
+            Upload
+          </Button>
+        </Grid>
+        <Grid item xs={8} className={classes.removeImg}>
+          <Button
+            variant="contained"
+            className={classes.deleteButton}
+            startIcon={<DeleteIcon />}
+            fullWidth
+          >
+            Remove
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid item xs={12}>
+        <InputBase
+          placeholder="Name"
+          name="name"
+          value={details.name}
+          fullWidth
+          className={classes.nameText}
+          InputProps={{
+            shrink: true,
+          }}
+          onChange={handleDetails}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <InputBase
+          placeholder="Bio"
+          name="bio"
+          value={details.bio}
+          multiline
+          rows={5}
+          fullWidth
+          className={classes.bioText}
+          InputProps={{
+            shrink: true,
+          }}
+          onChange={handleDetails}
+        />
+      </Grid>
+      <Button
+          type="submit"
+          variant="contained"
+          className={classes.updateProfile}
+          startIcon={<EditIcon />}
+          justify="flex-end"
+      >
+        Update
+      </Button>
+    </form>
+    </Grid>
   );
 };
 
 export default Profile;
+
+  // useEffect(() => {
+  //   const id = setTimeout(() => {
+  //     const request = async () => {
+  //       const data = await axios
+  //         .post("http://localhost:5000/updateProfile", details)
+  //         .then((result) => {
+  //           console.log(result);
+  //           setDetails(result.data[0]);
+  //         })
+  //         .catch((err) => {
+  //           console.log("!!");
+  //           console.log(err);
+  //         });
+  //     };
+  //     request();
+  //   }, 3000);
+  //   return () => {
+  //     clearTimeout(id);
+  //   }
+  // }, [details])
