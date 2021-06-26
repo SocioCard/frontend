@@ -10,6 +10,8 @@ import PinterestIcon from '@material-ui/icons/Pinterest';
 import RedditIcon from '@material-ui/icons/Reddit';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import CallIcon from '@material-ui/icons/Call';
+import MailIcon from '@material-ui/icons/Mail';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -58,6 +60,34 @@ export default function SocialLink({user, setUser, handleChange}){
                     name="facebook"
                     onChange={handleChange}
                     id="input-with-icon-grid" placeholder="Facebook" />
+                </Grid>
+                </Grid>
+            </div>
+            <div className={classes.margin}>
+                <Grid container spacing={1} alignItems="flex-end">
+                <Grid item>
+                    <MailIcon />
+                </Grid>
+                <Grid item>
+                    <TextField
+                    value={user.social.mail}
+                    name="mail"
+                    onChange={handleChange}
+                    id="input-with-icon-grid" placeholder="Mail" />
+                </Grid>
+                </Grid>
+            </div>
+            <div className={classes.margin}>
+                <Grid container spacing={1} alignItems="flex-end">
+                <Grid item>
+                    <CallIcon />
+                </Grid>
+                <Grid item>
+                    <TextField
+                    value={user.social.call}
+                    name="call"
+                    onChange={handleChange}
+                    id="input-with-icon-grid" placeholder="Call" />
                 </Grid>
                 </Grid>
             </div>

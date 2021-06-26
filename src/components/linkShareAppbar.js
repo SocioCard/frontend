@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import {AppBar, Button, Toolbar, Typography} from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
+import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
 import SocialShare from "../components/socialShare";
 
 const useStyles = makeStyles((theme) => ({
-    appbar: {
-        padding: '0 3px',
-        color:'#fff',
-        //backgroundColor: '#721D88'
-        backgroundColor: '#404040',
-        //backgroundImage: 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)',
-    },
-    link: {
-        color: '#03D084',
-        //height: '20px'
-        marginRight: '12px',
-    },
-    onelink: {
-        marginRight: '4px',
-    }
+  appbar: {
+    padding: "0 3px",
+    color: "#fff",
+    //backgroundColor: '#721D88'
+    backgroundColor: "#404040",
+    //backgroundImage: 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)',
+  },
+  link: {
+    color: "#03D084",
+    //height: '20px'
+    maxWidth: "56vw",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    display: "inline-block",
+    textOverflow: "ellipses",
+    marginRight: "12px",
+  },
+  onelink: {
+    marginRight: "4px",
+  },
 }));
 
 export default function LinkShareAppbar(){

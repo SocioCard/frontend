@@ -17,7 +17,7 @@ backgroundImage: 'linear-gradient(315deg, #000000 0%, #414141 74%)',
         backgroundAttachment:'fixed',
         minHeight: '100vh',
         padding: '0 0 20px 0'
-    },
+        },
 }));
 
 const Admin = ()=>{
@@ -75,6 +75,7 @@ const Admin = ()=>{
             .then(
               (result) => {
                 if(result.data.length!=0){
+                    console.log(result);
                   setUser(result.data[0])
                 }
               }
