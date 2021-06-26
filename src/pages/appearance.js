@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Appearance = () => {
+const Appearance = ({user, handleSubmit, setUser}) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -59,7 +59,7 @@ const Appearance = () => {
           container
           className={classes.themesMainCont}
         >
-          <ThemeSection/>
+          <ThemeSection user={user} setUser={setUser} handleSubmit={handleSubmit}/>
         </Grid>
       </Grid>
     </div>
