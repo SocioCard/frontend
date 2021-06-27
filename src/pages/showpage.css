@@ -1,0 +1,94 @@
+.root{
+        min-height: 100vh;
+        max-height:500vh;
+        padding:6vh 4vw 10vh 4vw;
+        background-color: #5CDB95;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+.mainCont {
+        /* [theme.breakpoints.up(md)]: {
+            width: 60vw;
+        }; */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: flex-start;
+    };
+#avatarCont{
+        height: 160px ;
+        width: auto ;
+    };
+#avatar{
+        height: 120px;
+        width: 120px;
+        border-width: 5px;
+        border-style: dotted;
+        border-color: #05386B;
+    };
+.userDetails{
+        display: flex;
+        direction: row;
+        justify-content: center;
+        align-content:flex-start;
+        min-height: 130px;
+    };
+.userName {
+        font-size: 1.35rem;
+        font-family: Ubuntu;
+        font-weight: 400;
+        color: #edf5e1;
+    };
+.userBio{
+        font-size: 1.10rem;
+        font-family: Ubuntu;
+        font-weight: 400;
+        color: #edf5e1;
+    };
+.linkList{
+        height: 45vh;
+        justify-content: center;
+        align-content: flex-start;
+    };
+.linkCard{
+        height:70px;
+        margin: 10px 0;
+        background-color:#05386B;
+        /* // borderRadius: 13px;
+        // borderWidth: 2px;
+        // borderStyle: solid;
+        // borderColor: #fff;
+        // transition: width 2s; height 4s;  */
+        box-shadow: 6px 6px 7px 0px rgba(31,29,29,0.6);
+    };
+.linkCard:hover{
+        background-color: #fff;
+         /* // borderWidth: 2px;
+         // borderStyle: solid;
+         // borderColor: #6b5d41; */
+        transform: scale(1.03, 1.09);
+}
+.linkCard:hover *{
+     color: #05386B;
+}
+.linkLogoCont {
+        padding-left: 12px;
+        align-content:center;
+    };
+.linkLogo{
+        font-size: 2.25rem;
+        color: #fff;
+    };
+.linkMsgCont{
+        justify-content: center;
+        align-content:center;
+
+    }
+.linkMsgCont > *{
+    font-size: 1.35rem;
+    font-family: Ubuntu;
+    color: #fff;
+}
