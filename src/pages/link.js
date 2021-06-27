@@ -56,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.1)',
         color:'white',
         backgroundColor: '#1bd1a6',
+        backgroundColor: '#3ee577',
+        backgroundImage: 'linear-gradient(315deg, #3ee577 0%, #1bd1a6 74%)',
         cursor: 'pointer',
     },
     tileItemEx : {
@@ -103,8 +105,8 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '20px',
         boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
         color:'white',
-        backgroundColor: '#1bd1a6',
-        //backgroundImage: 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)',
+        backgroundColor: '#3ee577',
+        backgroundImage: 'linear-gradient(315deg, #3ee577 0%, #1bd1a6 74%)',
 
     },
     listCardRow: {
