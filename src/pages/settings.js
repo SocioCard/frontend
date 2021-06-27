@@ -71,7 +71,7 @@ const Settings = () => {
     name: "",
     bio: "",
   });
-  const [deleteSure, setDeleteSure] = useState(false);
+  const [deleteCheck, setdeleteCheck] = useState(false);
   const handleUsername = (event) => {
     console.log(event.target.name+" "+event.target.value)
     setUsername({ ...username, newUsername: event.target.value });
@@ -81,13 +81,28 @@ const Settings = () => {
       event.preventDefault();
       axios.post("http://localhost:5000/admin/updateUsername", username)
         .then((result) => {
+            if(result.data.message!=='Username is not avaiable'){
             console.log(result);
             history.push('/'); 
-            // setDetails(result.data[0]);
+            }
+            else{
+              alert('Username is not avaiable')
+            }
         })
         .catch((err) => {
             console.log(err);
         });
+  }
+  const handleDeleteAccount=(event)=>{
+    console.log(id);
+    axios.post("http://localhost:5000/admin/deleteAccount",{id:id})
+    .then((result)=>{
+      history.push('/');
+      alert(result.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
   }
   useEffect(() => {
       const request = async () => {
@@ -170,10 +185,10 @@ const Settings = () => {
             <Checkbox 
               name="deleteCheck"
               style={{color:'#fff'}}
-              checked={deleteSure}
+              checked={deleteCheck}
               onChange={()=>{
-                setDeleteSure(!deleteSure);
-                setTimeout(function(){ console.log(deleteSure); }, 3000);
+                setdeleteCheck(!deleteCheck);
+                setTimeout(function(){ console.log(deleteCheck); }, 3000);
               }}
               />
           </Grid>
@@ -193,7 +208,7 @@ const Settings = () => {
           className={classes.deleteAccountCont}
         >
           {
-            !deleteSure
+            !deleteCheck
             ?<Button
                 disabled
                 variant="contained"
@@ -207,6 +222,7 @@ const Settings = () => {
                 variant="contained"
                 className={classes.deleteAccountButton}
                 startIcon={<DeleteIcon />}
+                onClick={handleDeleteAccount}
              >
             Delete Account
           </Button>
