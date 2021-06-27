@@ -596,3 +596,54 @@ export const Theme12 = makeStyles((theme)=>({
         borderColor: "#e3e3e3",
     },
 }));
+
+export const Theme13 = makeStyles((theme)=>({
+    root: {
+        padding:"3vh 2.5vw 5vh 2.5vw",
+        backgroundColor: '#90d5ec',
+        backgroundImage: 'linear-gradient(315deg, #90d5ec 0%, #fc575e 74%)',
+        backgroundPosition: "center center",
+        backgroundRepeat: "noRepeat",
+        backgroundSize: "cover",
+        //backgroundAttachment: "fixed",
+        borderRadius: '20px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    mainCont: {
+        //maxHeight:"auto",
+        // [theme.breakpoints.up('md')]: {
+        //     width: '60vw',
+        // },
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignContent: "flex-start",
+    },
+    avatarCont: {
+        height: "50px",
+        width: "auto",
+        marginBottom: '25px',
+    },
+    avatar: {
+        height: "50px",
+        width: "50px",
+        borderWidth: "0",
+        borderStyle: "solid",
+        borderColor: "green",
+    },
+    linkList: {
+        justifyContent: 'center',
+        alignContent: 'flex-start',
+    },
+    linkCard: {
+        height:"25px",
+        margin: "1px 0",
+        backgroundColor:"#3d3b3c",
+        borderRadius: "13px",
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderColor: "#e3e3e3",
+    },
+}));

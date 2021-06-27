@@ -1,5 +1,5 @@
 import { Avatar, Grid, Typography } from "@material-ui/core";
-import {Theme1, Theme2, Theme3, Theme4, Theme5, Theme6, Theme7, Theme8, Theme9, Theme10, Theme11, Theme12} from './themes.js';
+import {Theme1, Theme2, Theme3, Theme4, Theme5, Theme6, Theme7, Theme8, Theme9, Theme10, Theme11, Theme12, Theme13} from './themes.js';
 
 
 const ThemeShowcase=({theme})=>{
@@ -26,9 +26,12 @@ const ThemeShowcase=({theme})=>{
             return Theme10();
         }else if(theme===11){
             return Theme11();
-        }else{
+        }else if(theme==12){
             return Theme12();
+        }else{
+            return Theme13();
         }
+
     }
     const classes=getClass()
     return(

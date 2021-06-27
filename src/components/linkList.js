@@ -10,10 +10,12 @@ const useStyles=makeStyles(theme=>({
     listTitleInput: {
         fontWeight: 700,
         color:textColor,
+        width:'290px',
     },
     listLinkInput: {
         fontSize:'1.1rem',
         color:textColor,
+        width:'290px',
     },
     linkList: {
         margin:'10px 0',
@@ -48,7 +50,7 @@ const useStyles=makeStyles(theme=>({
     }
 }))
 
-export default function LinkList({link, index, handleDelete, setValue, setUser, user, handleSubmit}){
+export default function LinkList({link, index, handleDelete, setValue, setUser, user, handleSubmit, handleVisibleChange}){
     const classes=useStyles();
     const [edit, setEdit]=useState(false);
     const [cardDetails, setCardDetails]=useState(link);
@@ -138,7 +140,8 @@ export default function LinkList({link, index, handleDelete, setValue, setUser, 
                         control={
                         <Switch
                             name="visible"
-                            //value={link.visible}
+                            checked={link.visible}
+                            onChange={(e) => handleVisibleChange(e,index)}
                             color="secondary"
                         />
                         }

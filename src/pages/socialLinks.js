@@ -24,13 +24,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SocialLink({user, setUser, handleChange}){
-    //console.log(user.social);
-
-    // const handleChange = (event) => {
-    //     console.log(event.target.name+" "+event.target.value)
-    //     setUser({ ...(user.social), [event.target.name]: event.target.value]});
-    // };
+export default function SocialLink({user, temp, setTemp}){
+    console.log(temp);
+    const handleChange = (event) => {
+        setTemp({ ...(temp), [event.target.name]: event.target.value});
+    };
 
     const classes = useStyles();
     return(
@@ -42,10 +40,10 @@ export default function SocialLink({user, setUser, handleChange}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={user.social.instagram}
+                    value={temp.instagram}
                     name="instagram"
                     onChange={handleChange}
-                    id="input-with-icon-grid" placeholder="Instagram" />
+                    id="instagram" placeholder="Instagram" />
                 </Grid>
                 </Grid>
             </div>
@@ -56,10 +54,10 @@ export default function SocialLink({user, setUser, handleChange}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={user.social.facebook}
+                    value={temp.facebook}
                     name="facebook"
                     onChange={handleChange}
-                    id="input-with-icon-grid" placeholder="Facebook" />
+                    id="facebook" placeholder="Facebook" />
                 </Grid>
                 </Grid>
             </div>
@@ -70,10 +68,10 @@ export default function SocialLink({user, setUser, handleChange}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={user.social.mail}
+                    value={temp.mail}
                     name="mail"
                     onChange={handleChange}
-                    id="input-with-icon-grid" placeholder="Mail" />
+                    id="mail" placeholder="Mail" />
                 </Grid>
                 </Grid>
             </div>
@@ -84,10 +82,10 @@ export default function SocialLink({user, setUser, handleChange}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={user.social.call}
+                    value={temp.call}
                     name="call"
                     onChange={handleChange}
-                    id="input-with-icon-grid" placeholder="Call" />
+                    id="call" placeholder="Call" />
                 </Grid>
                 </Grid>
             </div>
@@ -98,10 +96,10 @@ export default function SocialLink({user, setUser, handleChange}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={user.social.twitter}
+                    value={temp.twitter}
                     name="twitter"
                     onChange={handleChange}
-                    id="input-with-icon-grid" placeholder="Twitter" />
+                    id="twitter" placeholder="Twitter" />
                 </Grid>
                 </Grid>
             </div>
@@ -112,10 +110,10 @@ export default function SocialLink({user, setUser, handleChange}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={user.social.youtube}
+                    value={temp.youtube}
                     name="youtube"
                     onChange={handleChange}
-                    id="input-with-icon-grid" placeholder="Youtube" />
+                    id="youtube" placeholder="Youtube" />
                 </Grid>
                 </Grid>
             </div>
@@ -126,10 +124,10 @@ export default function SocialLink({user, setUser, handleChange}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={user.social.pinterest}
+                    value={temp.pinterest}
                     name="pinterest"
                     onChange={handleChange}
-                    id="input-with-icon-grid" placeholder="Pinterest" />
+                    id="pinterest" placeholder="Pinterest" />
                 </Grid>
                 </Grid>
             </div>
@@ -140,10 +138,10 @@ export default function SocialLink({user, setUser, handleChange}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={user.social.linkedin}
+                    value={temp.linkedin}
                     name="linkedin"
                     onChange={handleChange}
-                    id="input-with-icon-grid" placeholder="LinkedIn" />
+                    id="linkedin" placeholder="LinkedIn" />
                 </Grid>
                 </Grid>
             </div>
@@ -154,10 +152,10 @@ export default function SocialLink({user, setUser, handleChange}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={user.social.reddit}
+                    value={temp.reddit}
                     name="reddit"
                     onChange={handleChange}
-                    id="input-with-icon-grid" placeholder="Reddit" />
+                    id="reddit" placeholder="Reddit" />
                 </Grid>
                 </Grid>
             </div>

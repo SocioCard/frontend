@@ -46,6 +46,7 @@ const Admin = ()=>{
             pinterest:'',
         },
         avatar:'',
+        buymeacoffee:'',
     })
     const handleChange = (event) => {
         //console.log(event.target.name+" "+event.target.value)
