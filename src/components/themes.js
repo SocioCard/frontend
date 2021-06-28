@@ -104,7 +104,7 @@ export const Theme2 = makeStyles((theme)=>({
 export const Theme3 = makeStyles((theme)=>({
     root: {
         padding:"3vh 2.5vw 5vh 2.5vw",
-        backgroundColor: "#FFF5AB",
+        backgroundColor: "#fffbdf",
         backgroundPosition: "center center",
         backgroundRepeat: "noRepeat",
         backgroundSize: "cover",
@@ -143,7 +143,7 @@ export const Theme3 = makeStyles((theme)=>({
     linkCard: {
         height:"25px",
         margin: "1px 0",
-        backgroundColor:"#867AE9",
+        backgroundColor:"#575da5",
         borderRadius: "13px",
         borderWidth: "2px",
         borderStyle: "solid",
@@ -204,56 +204,6 @@ export const Theme4 = makeStyles((theme)=>({
 export const Theme5 = makeStyles((theme)=>({
     root: {
         padding:"3vh 2.5vw 5vh 2.5vw",
-        backgroundColor: "#C0FEFC",
-        backgroundPosition: "center center",
-        backgroundRepeat: "noRepeat",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-        borderRadius: '20px',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    mainCont: {
-        //maxHeight:"auto",
-        // [theme.breakpoints.up('md')]: {
-        //     width: '60vw',
-        // },
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignContent: "flex-start",
-    },
-    avatarCont: {
-        height: "50px",
-        width: "auto",
-        marginBottom: '25px',
-    },
-    avatar: {
-        height: "50px",
-        width: "50px",
-        borderWidth: "0",
-        borderStyle: "solid",
-        borderColor: "green",
-    },
-    linkList: {
-        justifyContent: 'center',
-        alignContent: 'flex-start',
-    },
-    linkCard: {
-        height:"25px",
-        margin: "2px 0",
-        backgroundColor:"#3EDBF0",
-        borderRadius: "13px",
-        borderWidth: "1px",
-        borderStyle: "solid",
-        borderColor: "#77ACF1",
-    },
-}));
-
-export const Theme6 = makeStyles((theme)=>({
-    root: {
-        padding:"3vh 2.5vw 5vh 2.5vw",
         backgroundColor: "#f9f9f9",
         backgroundPosition: "center center",
         backgroundRepeat: "noRepeat",
@@ -298,6 +248,56 @@ export const Theme6 = makeStyles((theme)=>({
         borderWidth: "2px",
         borderStyle: "solid",
         borderColor: "#e3e3e3",
+    },
+}));
+
+export const Theme6 = makeStyles((theme)=>({
+    root: {
+        padding:"3vh 2.5vw 5vh 2.5vw",
+        backgroundColor: "#C0FEFC",
+        backgroundPosition: "center center",
+        backgroundRepeat: "noRepeat",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        borderRadius: '20px',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    mainCont: {
+        //maxHeight:"auto",
+        // [theme.breakpoints.up('md')]: {
+        //     width: '60vw',
+        // },
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignContent: "flex-start",
+    },
+    avatarCont: {
+        height: "50px",
+        width: "auto",
+        marginBottom: '25px',
+    },
+    avatar: {
+        height: "50px",
+        width: "50px",
+        borderWidth: "0",
+        borderStyle: "solid",
+        borderColor: "green",
+    },
+    linkList: {
+        justifyContent: 'center',
+        alignContent: 'flex-start',
+    },
+    linkCard: {
+        height:"25px",
+        margin: "2px 0",
+        backgroundColor:"#3EDBF0",
+        borderRadius: "13px",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "#77ACF1",
     },
 }));
 
@@ -346,7 +346,7 @@ export const Theme7 = makeStyles((theme)=>({
         borderRadius: "13px",
         borderWidth: "1.5px",
         borderStyle: "solid",
-        borderColor: "#e3e3e3",
+        borderColor: "#fca311",
     },
 }));
 
@@ -440,7 +440,7 @@ export const Theme9 = makeStyles((theme)=>({
         height:"25px",
         margin: "1px 0",
         backgroundColor:"#DB0144",
-        borderRadius: "13px",
+        borderRadius: "0",
         borderWidth: "2px",
         borderStyle: "solid",
         borderColor: "#e3e3e3",
@@ -538,7 +538,7 @@ export const Theme11 = makeStyles((theme)=>({
     linkCard: {
         height:"25px",
         margin: "1px 0",
-        backgroundColor:"#3d3b3c",
+        background:"linear-gradient(316deg, #ffe323 0%, #e96b35 74%)",
         borderRadius: "13px",
         borderWidth: "2px",
         borderStyle: "solid",
@@ -589,9 +589,9 @@ export const Theme12 = makeStyles((theme)=>({
     linkCard: {
         height:"25px",
         margin: "1px 0",
-        backgroundColor:"#3d3b3c",
+        background:"linear-gradient(316deg, #eb5e28 0%, #fca311 74%)",
         borderRadius: "13px",
-        borderWidth: "2px",
+        borderWidth: "0px",
         borderStyle: "solid",
         borderColor: "#e3e3e3",
     },
