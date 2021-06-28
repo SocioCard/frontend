@@ -7,6 +7,7 @@ import React,{ useEffect, useState } from "react";
 import axios from 'axios';
 import ImageUpload from "./imageUpload";
 import { useHistory } from "react-router";
+import { SubscriptionsOutlined } from "@material-ui/icons";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -89,27 +90,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Profile=({details, setDetails})=>{
+const Profile=({user, setUser})=>{
+  const [profileImg, setProfileImg] = useState(user.image);
+  //console.log(profileImg)
   var url = window.location.href;
   var id = url.split("/")[3];
   const classes = useStyles();
   const handleDetails = (event) => {
-    console.log(event.target.name+" "+event.target.value)
-    setDetails({ ...details, [event.target.name]: event.target.value });
+    setUser({ ...user, [event.target.name]: event.target.value });
   };
+
   const handleUpdateProfile=(event) =>{
           event.preventDefault();
-          axios.post("http://localhost:5000/updateProfile", details)
+          //console.log(user);
+          axios.post("http://localhost:5000/updateProfile", user)
           .then((result) => {
             console.log(result);
-            // setDetails(result.data[0]);
+            // setUser(result.data[0]);
           })
           .catch((err) => {
             console.log(err);
           });
   }
 
-  const [profileImg, setProfileImg] = useState('http://localhost:5000/image');
 
   const [open, setOpen] = React.useState(false);
   const [uploaded, setUploaded] = React.useState(0);
@@ -125,8 +128,7 @@ const Profile=({details, setDetails})=>{
 
   const handleUpload=()=>{
       console.log('handleUploaded')
-      //history.push(history.location.pathname)
-      window.location.reload();
+      //window.location.reload();
   };
 
   return (
@@ -136,7 +138,6 @@ const Profile=({details, setDetails})=>{
         <Avatar
               alt="Default Img"
               src={profileImg}
-              
               className={classes.img}
         />
       </Grid>
@@ -146,7 +147,7 @@ const Profile=({details, setDetails})=>{
                         <DialogContentText>
                             Let's give your profile an avatar.
                         </DialogContentText>
-                        <ImageUpload id={id} uploaded={uploaded} setUploaded={setUploaded} setOpen={setOpen} handleUpload={handleUpload}/>
+                        <ImageUpload id={id} user={user} setUser={setUser} setOpen={setOpen} handleUpdateProfile={handleUpdateProfile} handleUpload={handleUpload}/>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="secondary">
@@ -185,7 +186,7 @@ const Profile=({details, setDetails})=>{
         <InputBase
           placeholder="Name"
           name="name"
-          value={details.name}
+          value={user.name}
           fullWidth
           className={classes.nameText}
           InputProps={{
@@ -198,7 +199,7 @@ const Profile=({details, setDetails})=>{
         <InputBase
           placeholder="Bio"
           name="bio"
-          value={details.bio}
+          value={user.bio}
           multiline
           rows={5}
           fullWidth
@@ -229,10 +230,10 @@ export default Profile;
   //   const id = setTimeout(() => {
   //     const request = async () => {
   //       const data = await axios
-  //         .post("http://localhost:5000/updateProfile", details)
+  //         .post("http://localhost:5000/updateProfile", user)
   //         .then((result) => {
   //           console.log(result);
-  //           setDetails(result.data[0]);
+  //           setUser(result.data[0]);
   //         })
   //         .catch((err) => {
   //           console.log("!!");
@@ -244,4 +245,4 @@ export default Profile;
   //   return () => {
   //     clearTimeout(id);
   //   }
-  // }, [details])
+  // }, [user])

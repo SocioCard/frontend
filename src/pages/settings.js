@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Settings = () => {
+const Settings = ({user,setUser,handleSubmit}) => {
   const history = useHistory();
   const classes = useStyles();
   var url = window.location.href;
@@ -68,8 +68,8 @@ const Settings = () => {
   })
   const [details, setDetails] = useState({
     username: id,
-    name: "",
-    bio: "",
+    name: user.name,
+    bio: user.bio,
   });
   const [deleteSure, setDeleteSure] = useState(false);
   const handleUsername = (event) => {
@@ -89,26 +89,8 @@ const Settings = () => {
             console.log(err);
         });
   }
-  useEffect(() => {
-      const request = async () => {
-        const data = await axios
-          .post("http://localhost:5000/fetchDetails", details)
-          .then((result) => {
-            console.log("Console fetch Details result:");
-            console.log(result);
-            var data=result.data[0];
-            setDetails({
-              username: id,
-              name: data.name,
-              bio: data.bio,
-            });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-      request();
-  }, [])
+
+
   return (
     <div className={classes.root}>
       <Grid
@@ -128,7 +110,7 @@ const Settings = () => {
           className={classes.profileCont}
           spacing={1}
         >
-          <Profile details={details} setDetails={setDetails} />
+          <Profile user={user} setUser={setUser} />
         </Grid>
         <Grid item xs={11} container direction="column" alignItems="flex-start">
           <h3 style={{ color: "white", margin: "10px 0 0 10px" }}>

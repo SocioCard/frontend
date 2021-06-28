@@ -45,7 +45,7 @@ const Admin = ()=>{
             twitter:'',
             pinterest:'',
         },
-        avatar:'',
+        image:'',
         buymeacoffee:'',
     })
     const handleChange = (event) => {
@@ -87,7 +87,7 @@ const Admin = ()=>{
             <Appbar user={id}/>
                 {page==="links" && <Links user={user} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />}
                 {page==="appearance" && <Appearance user={user} setUser={setUser} handleSubmit={handleSubmit}/>}
-                {page==="profile" && <Settings/>}
+                {page==="profile" && <Settings user={user} setUser={setUser} handleSubmit={handleSubmit}/>}
                 
             {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />,
             <Appearance/> */}

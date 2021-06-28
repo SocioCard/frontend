@@ -3,44 +3,24 @@ import axios, { post } from 'axios';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import {Button} from '@material-ui/core';
 import { SettingsInputComponent } from '@material-ui/icons';
-class ImageUpload extends React.Component {
+import ReactDOM from 'react-dom'; 
+import FileBase64 from 'react-file-base64';
 
-  constructor(props) {
-    super(props);
-    this.state ={
-      file:null
-    }
-    this.onFormSubmit = this.onFormSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
-    this.fileUpload = this.fileUpload.bind(this)
-  }
-  onFormSubmit(e){
-    e.preventDefault() // Stop form submit
-    this.props.setUploaded(this.props.uploaded+1);
-    this.fileUpload(this.state.file).then((response)=>{
-      //console.log(response.data);
-    })
-  }
-  onChange(e) {
-    this.setState({file:e.target.files[0]})
-  }
-  fileUpload(file){
-    const url = 'http://localhost:5000/uploadImage';
-    const formData = new FormData();
-    formData.append('file',file)
-    formData.append('id',this.props.id)
-    const config = {
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
-    }
-    return  post(url, formData,config)
+const ImageUpload = ({user,setUser,handleUpload,setOpen,handleUpdateProfile}) => {
+
+  
+
+  const getFiles = (file) => {
+    console.log(file.base64)
+    setUser({ ...user, 'image': file.base64 })
+    console.log(user)
   }
 
-  render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
-        <input type="file" accept="image/*" onChange={this.onChange} />
+      <form onSubmit={handleUpdateProfile}>
+        <FileBase64
+        multiple={ false }
+        onDone={ getFiles.bind(this) } />
         <Button type="submit" variant="contained" startIcon={<CloudUploadIcon />} fullWidth
             style={{
                 backgroundColor: '#1940DD',
@@ -53,7 +33,7 @@ class ImageUpload extends React.Component {
                 fontSize: "17px",
                 },
             }}
-            onClick={()=>{this.props.setOpen(false); this.props.handleUpload()}}
+            onClick={()=>{setOpen(false);  handleUpload()}}
         >
             Upload
         </Button> 
@@ -61,7 +41,7 @@ class ImageUpload extends React.Component {
       </form>
       
    )
-  }
+  
 }
 
 
