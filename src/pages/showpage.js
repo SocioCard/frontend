@@ -1233,7 +1233,7 @@ const ShowPage=()=>{
         var Slno=2;
         const data=await axios.post("http://localhost:5000/mySocioCard", {username: username})
         .then(res=>{
-            console.log(res.data);
+            //console.log(res.data);
             setUser(res.data[0]);
             setAccess(1);
         })

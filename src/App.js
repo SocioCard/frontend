@@ -9,13 +9,14 @@ import ShowPage from './pages/showpage'
 import Appearance from "./pages/appearance";
 import ThemeShowcase from './components/themeShowcase';
 import SocialLink from "./pages/socialLinks";
+import Homepage from "./pages/homepage";
 
 export default function App() {
   return (
     <div>
       <Router>
         <Switch>
-          <Route exact path="/" component={SignIn}/>
+          <Route exact path="/" component={Homepage}/>
           <Route exact path="/social" component={SocialLink}/>
           <Route exact path="/:id" component={ShowPage}/>
           <Redirect exact from="/:id/admin" to="/:id/admin/links"/>
