@@ -60,7 +60,8 @@ const useStyles = makeStyles((theme) => ({
       padding:'5px',
       border: '2px solid #3ee577',
       borderRadius: '20px',
-      backgroundColor:'#3ee577'
+      backgroundColor: '#3ee577',
+      backgroundImage: 'linear-gradient(315deg, #3ee577 0%, #1bd1a6 74%)',
   },
   links: {
       textDecoration: 'none',
