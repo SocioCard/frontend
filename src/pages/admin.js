@@ -45,6 +45,8 @@ const Admin = ()=>{
             twitter:'',
             pinterest:'',
         },
+        videoTitle:'',
+        videoLink:'',
         image:'',
         buymeacoffee:'',
     })

@@ -45,6 +45,7 @@ const ThemeSection = ({user, setUser})=>{
     const classes = useStyles();
     const [newDetails, setNewDetails]=useState(user);
     const id=useHistory().location.pathname.split("/")[1];
+    
     useEffect(()=>{
       const request=async()=>(
         axios.post('http://localhost:5000/updateUser', {user:newDetails,id})
