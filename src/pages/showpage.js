@@ -13,13 +13,16 @@ const Theme1 = makeStyles((theme)=>({
         maxHeight:"500vh",
         padding:"6vh 4vw 10vh 4vw",
         backgroundColor: "#FFE5E2",
-        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundRepeat: "noRepeat",
         backgroundSize: "cover",
+        backgroundAttachment: "fixed",
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
     },
     mainCont: {
+        maxHeight:"auto",
         [theme.breakpoints.up('md')]: {
             width: '60vw',
         },
