@@ -11,13 +11,14 @@ import SocialLink from "./socialLinks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard, faPager, faLink, faUserFriends, faCodeBranch, faVideo } from '@fortawesome/free-solid-svg-icons'
 import LinkList from "../components/linkList";
-import AddVideos from "../components/addVideos";
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
+import Embed from 'react-embed';
+import AddEmbeded from "./addEmbeded";
 //green: #03D084
 //blue: #1641db
 
 const textColor = '#000';
-const vdo = "https://www.youtube.com/watch?v=qHILe297r7o"
+const vdos = ["https://www.youtube.com/watch?v=qHILe297r7o","https://www.youtube.com/watch?v=O7dJlL5yAUM","https://www.youtube.com/watch?v=672xUAZax7Q"]
 
 
 
@@ -158,13 +159,14 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     const classes = useStyles();
     
     const [temp,setTemp] = useState();
-    
     const [value, setValue] = useState('FaImages');
+    
     const [newLink, setNewLink] = useState({
         title:'',
         link:'',
         icon:'FaImages',
         visible:true,
+        type:'',
     })
     const [submit, setSubmit] = useState(0);
 
@@ -219,13 +221,6 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         handleSubmit();
     }
 
-    const handleVideoDelete = (e,index) =>{
-        e.stopPropagation();
-        //console.log(index);
-        user.videos.splice(index,1);
-        setSubmit(submit+1);
-        handleSubmit();
-    }
 
 
     const handleNewLinkChange = (event) => {
@@ -236,12 +231,28 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     };
 
     const handleAddLink = () => {
+        setNewLink({ ...(newLink), "type": 'link'});
         user.links.push(newLink);
         setSubmit(submit+1);
         handleSubmit();
         setNewLink({
             title:'',
             link:'',
+            type:'',
+            icon:'FaImages',
+            visible:true,
+        });
+    };
+
+    const handleAddEmbededLink = () => {
+        setNewLink({ ...(newLink), "type": 'embeded'});
+        user.links.push(newLink);
+        setSubmit(submit+1);
+        handleSubmit();
+        setNewLink({
+            title:'',
+            link:'',
+            type:'',
             icon:'FaImages',
             visible:true,
         });
@@ -296,15 +307,15 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                     <DialogTitle id="form-dialog-title">Add a Video</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                            Add a Video to your profile. Use link from youtube, facebook or any other platform.
+                            Add Embeded content to your profile. Only add link. Image, title and rest of the details will be automatically taken. Currently supports DailyMotion, Facebook Video, Figma, Gfycat, Gist, Google Maps, imgur, Instagram, JSFiddle, MixCloud, Replit, SoundCloud, Twitch Channel, Twitch Video, Twitter Tweet, Vimeo, YouTube
                         </DialogContentText>
-                        <AddVideos user={user} setUser={setUser} handleSubmit={handleSubmit} handleChange={handleChange}/>
+                        <AddEmbeded handleNewLinkChange={handleNewLinkChange} newLink={newLink}/>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleCloseVideo} color="secondary">
                             Cancel
                         </Button>
-                        <Button variant="contained" onClick={handleCloseVideo} className={classes.dialogButton}>
+                        <Button variant="contained" onClick={handleAddEmbededLink} className={classes.dialogButton}>
                             Save
                         </Button>
                     </DialogActions>
@@ -331,8 +342,8 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         <Typography>Card</Typography>
                     </Grid>
                     <Grid onClick={handleClickOpenVideo} container direction="column" alignItems="center" className={classes.tileItemEx} item>
-                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faVideo} />
-                        <Typography>Video</Typography>
+                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faPager} />
+                        <Typography>Embeded Content</Typography>
                     </Grid>
                 </Grid>
 
@@ -440,7 +451,6 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         link={link}
                         index={index}
                         handleDelete={handleDelete}
-                        setValue={setValue}
                         setUser={setUser}
                         user={user}
                         handleSubmit={handleSubmit}
@@ -453,9 +463,16 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                 <h3 style={{"color":"white", "margin":"30px 0 10px 10px"}}>Added Video</h3>
                 </Grid>
 
-                <ReactPlayer controls="true" url={user.videoLink} width="320px" height="180px"/>
-            
-                
+                {
+                    vdos.map((vdo)=>
+                    <Embed url={vdo} />
+                    )
+                }
+
+                <Embed url='https://www.youtube.com/watch?v=soICQ3B2kEk' />
+                <Embed url='https://twitter.com/warikoo/status/1410535696020905986?s=20' />
+
+
             </Grid>
             
         </React.Fragment>

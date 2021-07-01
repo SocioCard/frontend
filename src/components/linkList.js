@@ -50,17 +50,25 @@ const useStyles=makeStyles(theme=>({
     }
 }))
 
-export default function LinkList({link, index, handleDelete, setValue, setUser, user, handleSubmit, handleVisibleChange}){
+export default function LinkList({link, index, handleDelete, setUser, user, handleSubmit, handleVisibleChange}){
     const classes=useStyles();
     const [edit, setEdit]=useState(false);
     const [cardDetails, setCardDetails]=useState(link);
+    
+    const [value, setValue] = useState(cardDetails.icon);
 
     const handleChange=(event)=>{
         setEdit(true);
-        setCardDetails({...cardDetails, [event.target.name]:event.target.value});
+        setCardDetails({...cardDetails, [event.target.name]:event.target.value});        
+    }
+    const handleIconChange=(v)=>{
+        setValue(v); 
+        handleUpdate();
     }
     const handleUpdate=()=>{
         setEdit(false);
+        if(value!=cardDetails.icon)
+        setCardDetails({...cardDetails, "icon":value});
         var temp=user.links;
         temp[index]=cardDetails;
         setUser({...user, links:temp});
@@ -133,8 +141,8 @@ export default function LinkList({link, index, handleDelete, setValue, setUser, 
                         containerStyles={{backgroundColor:'#404040', border:'none', borderRadius: '10px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',}}
                         buttonStyles={{padding:'0', height:'20px', margin: '0 10px', border:'none'}}
                         buttonIconStyles={{color:textColor}}
-                        value={link.icon}
-                        onChange={(v) => setValue(v)}
+                        value={value}
+                        onChange={(v) => handleIconChange(v)}
                     />
                     <FormControlLabel
                         control={

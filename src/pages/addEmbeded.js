@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function AddVideos({user, handleChange, handleSubmit, setUser}){
+export default function AddEmbeded({newLink, handleNewLinkChange}){
     //console.log(user);
     const classes = useStyles();
     return(
@@ -62,9 +62,9 @@ export default function AddVideos({user, handleChange, handleSubmit, setUser}){
                                     <InputBase
                                         required 
                                         id="title"
-                                        value={user.videoTitle}                                   
-                                        name="videoTitle"
-                                        onChange={handleChange}
+                                        value={newLink.title}                                   
+                                        name="title"
+                                        onChange={handleNewLinkChange}
                                         multiline
                                         placeholder="Add Title"
                                         style={{width:'100%'}}
@@ -84,10 +84,10 @@ export default function AddVideos({user, handleChange, handleSubmit, setUser}){
                                     <InputBase
                                         required 
                                         id="link"
-                                        value={user.videoLink}
+                                        value={newLink.link}
                                         multiline
-                                        name="videoLink"
-                                        onChange={handleChange}
+                                        name="link"
+                                        onChange={handleNewLinkChange}
                                         placeholder="Add Link"
                                         style={{width:'100%'}}
                                         inputProps={{
