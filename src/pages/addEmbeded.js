@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function AddEmbeded({newLink, handleNewLinkChange}){
+export default function AddEmbeded({newEmbeded, handleNewEmbededChange}){
     //console.log(user);
     const classes = useStyles();
     return(
@@ -62,9 +62,9 @@ export default function AddEmbeded({newLink, handleNewLinkChange}){
                                     <InputBase
                                         required 
                                         id="title"
-                                        value={newLink.title}                                   
+                                        value={newEmbeded.title}                                   
                                         name="title"
-                                        onChange={handleNewLinkChange}
+                                        onChange={handleNewEmbededChange}
                                         multiline
                                         placeholder="Add Title"
                                         style={{width:'100%'}}
@@ -84,10 +84,10 @@ export default function AddEmbeded({newLink, handleNewLinkChange}){
                                     <InputBase
                                         required 
                                         id="link"
-                                        value={newLink.link}
+                                        value={newEmbeded.link}
                                         multiline
                                         name="link"
-                                        onChange={handleNewLinkChange}
+                                        onChange={handleNewEmbededChange}
                                         placeholder="Add Link"
                                         style={{width:'100%'}}
                                         inputProps={{

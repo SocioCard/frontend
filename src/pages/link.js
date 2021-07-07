@@ -14,6 +14,7 @@ import LinkList from "../components/linkList";
 import ReactPlayer from 'react-player';
 import Embed from 'react-embed';
 import AddEmbeded from "./addEmbeded";
+import EmbedList from "../components/embedList";
 //green: #03D084
 //blue: #1641db
 
@@ -168,8 +169,18 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         link:'',
         icon:'FaImages',
         visible:true,
-        type:'',
+        type:'link',
     })
+
+    const [newEmbeded, setNewEmbeded] = useState({
+        id:date_id,
+        title:'',
+        link:'',
+        icon:'FaImages',
+        visible:true,
+        type:'embed',
+    })
+
     const [submit, setSubmit] = useState(0);
 
     const [open, setOpen] = React.useState(false);
@@ -229,14 +240,14 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
 
 
     const handleNewLinkChange = (event) => {
-        //console.log(event.target.name+" "+event.target.value)
-        // console.log(user)
-        // console.log(setUser)
         setNewLink({ ...(newLink), [event.target.name]: event.target.value});
     };
 
+    const handleNewEmbededChange = (event) => {
+        setNewEmbeded({ ...(newEmbeded), [event.target.name]: event.target.value});
+    };
+
     const handleAddLink = () => {
-        setNewLink({ ...(newLink), "type": 'link'});
         user.links.push(newLink);
         console.log(user)
         setSubmit(submit+1);
@@ -244,7 +255,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         setNewLink({
             title:'',
             link:'',
-            type:'',
+            type:'link',
             icon:'FaImages',
             visible:true,
             id:date_id,
@@ -252,14 +263,13 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     };
 
     const handleAddEmbededLink = () => {
-        setNewLink({ ...(newLink), "type": 'embeded'});
-        user.links.push(newLink);
+        user.links.push(newEmbeded);
         setSubmit(submit+1);
         handleSubmit();
-        setNewLink({
+        setNewEmbeded({
             title:'',
             link:'',
-            type:'',
+            type:'embed',
             icon:'FaImages',
             visible:true,
             id:date_id,
@@ -317,7 +327,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         <DialogContentText>
                             Add Embeded content to your profile. Only add link. Image, title and rest of the details will be automatically taken. Currently supports DailyMotion, Facebook Video, Figma, Gfycat, Gist, Google Maps, imgur, Instagram, JSFiddle, MixCloud, Replit, SoundCloud, Twitch Channel, Twitch Video, Twitter Tweet, Vimeo, YouTube
                         </DialogContentText>
-                        <AddEmbeded handleNewLinkChange={handleNewLinkChange} newLink={newLink}/>
+                        <AddEmbeded handleNewEmbededChange={handleNewEmbededChange} newEmbeded={newEmbeded}/>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleCloseVideo} color="secondary">
@@ -454,6 +464,8 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
 
                 {
                     user.links.map((link, index) =>
+                    (
+                        link.type==="link" ?
                         <LinkList
                         key={link.id}
                         link={link}
@@ -464,10 +476,16 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         handleSubmit={handleSubmit}
                         handleVisibleChange={handleVisibleChange}
                         />
+                        :
+                        <EmbedList
+                        key={link.id}
+                        link={link}
+                        index={index}
+                        handleDelete={handleDelete}
+                        />
+                    )
                     )
                 }
-
-                
 
             </Grid>
             

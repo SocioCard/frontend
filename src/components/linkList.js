@@ -62,13 +62,13 @@ export default function LinkList({link, index, handleDelete, setUser, user, hand
         setCardDetails({...cardDetails, [event.target.name]:event.target.value});        
     }
     const handleIconChange=(v)=>{
-        setValue(v); 
-        handleUpdate();
+        setEdit(true);
+        console.log(v)
+        setValue(v);
+        setCardDetails({...cardDetails, icon:v});
     }
     const handleUpdate=()=>{
         setEdit(false);
-        if(value!=cardDetails.icon)
-        setCardDetails({...cardDetails, "icon":value});
         var temp=user.links;
         temp[index]=cardDetails;
         setUser({...user, links:temp});
