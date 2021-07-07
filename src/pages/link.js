@@ -155,13 +155,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Links({user, handleChange, handleSubmit, setUser}){
-    //console.log(user);
+    let date_id = new Date().valueOf();
+    console.log(user);
     const classes = useStyles();
     
     const [temp,setTemp] = useState();
     const [value, setValue] = useState('FaImages');
     
     const [newLink, setNewLink] = useState({
+        id:date_id,
         title:'',
         link:'',
         icon:'FaImages',
@@ -198,7 +200,8 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     };
 
     useEffect(() => {
-        // console.log("rerendered")
+        //handleSubmit();
+        //console.log(user)
     },[submit])
 
     const handleVisibleChange = (e,index) =>{
@@ -216,7 +219,9 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     const handleDelete = (e,index) =>{
         e.stopPropagation();
         //console.log(index);
-        user.links.splice(index,1);
+        let temp = user;
+        temp.links.splice(index,1);
+        setUser(temp);
         setSubmit(submit+1);
         handleSubmit();
     }
@@ -233,6 +238,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     const handleAddLink = () => {
         setNewLink({ ...(newLink), "type": 'link'});
         user.links.push(newLink);
+        console.log(user)
         setSubmit(submit+1);
         handleSubmit();
         setNewLink({
@@ -241,6 +247,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
             type:'',
             icon:'FaImages',
             visible:true,
+            id:date_id,
         });
     };
 
@@ -255,6 +262,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
             type:'',
             icon:'FaImages',
             visible:true,
+            id:date_id,
         });
     };
 
@@ -343,7 +351,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                     </Grid>
                     <Grid onClick={handleClickOpenVideo} container direction="column" alignItems="center" className={classes.tileItemEx} item>
                         <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faPager} />
-                        <Typography>Embeded Content</Typography>
+                        <Typography>Embeded</Typography>
                     </Grid>
                 </Grid>
 
@@ -447,7 +455,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                 {
                     user.links.map((link, index) =>
                         <LinkList
-                        key={index}
+                        key={link.id}
                         link={link}
                         index={index}
                         handleDelete={handleDelete}
@@ -459,19 +467,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                     )
                 }
 
-                <Grid item xs={11} container direction='column' alignItems='flex-start'>
-                <h3 style={{"color":"white", "margin":"30px 0 10px 10px"}}>Added Video</h3>
-                </Grid>
-
-                {
-                    vdos.map((vdo)=>
-                    <Embed url={vdo} />
-                    )
-                }
-
-                <Embed url='https://www.youtube.com/watch?v=soICQ3B2kEk' />
-                <Embed url='https://twitter.com/warikoo/status/1410535696020905986?s=20' />
-
+                
 
             </Grid>
             
