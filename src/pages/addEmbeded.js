@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function AddEmbeded({newLink, handleNewLinkChange}){
+export default function AddEmbeded({newLink, handleNewEmbededLinkChange}){
     //console.log(user);
     const classes = useStyles();
     return(
@@ -64,7 +64,7 @@ export default function AddEmbeded({newLink, handleNewLinkChange}){
                                         id="title"
                                         value={newLink.title}                                   
                                         name="title"
-                                        onChange={handleNewLinkChange}
+                                        onChange={handleNewEmbededLinkChange}
                                         multiline
                                         placeholder="Add Title"
                                         style={{width:'100%'}}
@@ -87,7 +87,7 @@ export default function AddEmbeded({newLink, handleNewLinkChange}){
                                         value={newLink.link}
                                         multiline
                                         name="link"
-                                        onChange={handleNewLinkChange}
+                                        onChange={handleNewEmbededLinkChange}
                                         placeholder="Add Link"
                                         style={{width:'100%'}}
                                         inputProps={{

@@ -158,7 +158,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     //console.log(user);
     const classes = useStyles();
     
-    const [temp,setTemp] = useState();
+    const [temp,setTemp] = useState(user.social);
     const [value, setValue] = useState('FaImages');
     
     const [newLink, setNewLink] = useState({
@@ -172,6 +172,10 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
 
     const [open, setOpen] = React.useState(false);
     const [openVideo, setOpenVideo] = React.useState(false);
+
+    useEffect(() => {
+        handleSubmit();
+    },[user,submit])
 
     const handleClickOpen = () => {
         setTemp(user.social)
@@ -189,17 +193,14 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     const handleCloseVideo = () => {
         setOpenVideo(false);
         setSubmit(submit+1);
-        handleSubmit();
     };
 
     const handleDone = () => {
         setOpen(false);
-        handleSubmit();
+        setSubmit(submit+1);
     };
 
-    useEffect(() => {
-        // console.log("rerendered")
-    },[submit])
+    
 
     const handleVisibleChange = (e,index) =>{
         e.stopPropagation();
@@ -208,17 +209,16 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         let temp = user.links;
         //console.log(temp);
         temp[index].visible=!(temp[index].visible);
-        setUser({...user, [user.links]:temp});
+        setUser({...user, links:temp});
         setSubmit(submit+1);
-        handleSubmit();
     }
 
     const handleDelete = (e,index) =>{
         e.stopPropagation();
-        //console.log(index);
+        console.log(index);
+        console.log(user.links)
         user.links.splice(index,1);
         setSubmit(submit+1);
-        handleSubmit();
     }
 
 
@@ -228,13 +228,24 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         // console.log(user)
         // console.log(setUser)
         setNewLink({ ...(newLink), [event.target.name]: event.target.value});
+        if(newLink.type==="")
+        setNewLink({ ...(newLink), type: 'link'});
+    };
+
+    const handleNewEmbededLinkChange = (event) => {
+        //console.log(event.target.name+" "+event.target.value)
+        // console.log(user)
+        // console.log(setUser)
+        setNewLink({ ...(newLink), [event.target.name]: event.target.value});
+        if(newLink.type==="")
+        setNewLink({ ...(newLink), type: 'embed'});
     };
 
     const handleAddLink = () => {
-        setNewLink({ ...(newLink), "type": 'link'});
+        console.log(newLink);
         user.links.push(newLink);
+        console.log(user.links)
         setSubmit(submit+1);
-        handleSubmit();
         setNewLink({
             title:'',
             link:'',
@@ -245,10 +256,10 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     };
 
     const handleAddEmbededLink = () => {
-        setNewLink({ ...(newLink), "type": 'embeded'});
+        console.log(newLink);
         user.links.push(newLink);
+        console.log(user.links)
         setSubmit(submit+1);
-        handleSubmit();
         setNewLink({
             title:'',
             link:'',
@@ -256,6 +267,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
             icon:'FaImages',
             visible:true,
         });
+        handleCloseVideo();
     };
 
     function handleScrollToAddLink  () {
@@ -268,11 +280,10 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     
     const handleSocialChange = () =>{
         console.log(temp)
-        setUser({...user, social:temp});
+        setUser({...user, social :temp});
         console.log(user);
         setOpen(false);
         setSubmit(submit+1);
-        handleSubmit();
     }
 
     return(
@@ -304,14 +315,14 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                 </Dialog>
 
                 <Dialog open={openVideo} onClose={handleCloseVideo} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">Add a Video</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Add an Embeded Link</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
                             Add Embeded content to your profile. Only add link. Image, title and rest of the details will be automatically taken. Currently supports DailyMotion, Facebook Video, Figma, Gfycat, Gist, Google Maps, imgur, Instagram, JSFiddle, MixCloud, Replit, SoundCloud, Twitch Channel, Twitch Video, Twitter Tweet, Vimeo, YouTube
                         </DialogContentText>
-                        <AddEmbeded handleNewLinkChange={handleNewLinkChange} newLink={newLink}/>
+                        <AddEmbeded handleNewEmbededLinkChange={handleNewEmbededLinkChange} newLink={newLink}/>
                     </DialogContent>
-                    <DialogActions>
+                    <DialogActions> 
                         <Button onClick={handleCloseVideo} color="secondary">
                             Cancel
                         </Button>
@@ -422,9 +433,8 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                     direction="row"
                     justify="center"
                     alignItems="center"
-                    className={classes.buyMeACoffee}
-                    
-                    >
+                    className={classes.buyMeACoffee}                    
+                >
                         
                         <Grid item justify="center" xs={3}>
                             <img height="70px" style={{padding:'5px'}} src="https://bmc-dev.s3.us-east-2.amazonaws.com/assets/icons/bmc_icon_black.png"/>
@@ -447,7 +457,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                 {
                     user.links.map((link, index) =>
                         <LinkList
-                        key={index}
+                        key={link._id}
                         link={link}
                         index={index}
                         handleDelete={handleDelete}
@@ -458,19 +468,38 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         />
                     )
                 }
+                
+                {/* {
+                    user.links.map((link, index) =>
+                    (
+                        link.type==="link" ?
+                        <LinkList
+                        key={index}
+                        link={link}
+                        index={index}
+                        submit={submit}
+                        setSubmit={setSubmit}
+                        handleDelete={handleDelete}
+                        setUser={setUser}
+                        user={user}
+                        handleSubmit={handleSubmit}
+                        handleVisibleChange={handleVisibleChange}
+                        />
+                        :
+                        <Embed url={link.link} />
+                    )
+                    )
+                } */}
 
-                <Grid item xs={11} container direction='column' alignItems='flex-start'>
-                <h3 style={{"color":"white", "margin":"30px 0 10px 10px"}}>Added Video</h3>
-                </Grid>
 
-                {
+                {/* {
                     vdos.map((vdo)=>
                     <Embed url={vdo} />
                     )
                 }
 
                 <Embed url='https://www.youtube.com/watch?v=soICQ3B2kEk' />
-                <Embed url='https://twitter.com/warikoo/status/1410535696020905986?s=20' />
+                <Embed url='https://twitter.com/warikoo/status/1410535696020905986?s=20' /> */}
 
 
             </Grid>
@@ -479,3 +508,5 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     )
 }
 
+// deleting perfectly in db. but in website its deleting last element 
+// pass key as _id and never index

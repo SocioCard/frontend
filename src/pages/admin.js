@@ -59,6 +59,7 @@ const Admin = ()=>{
 
 
     const handleSubmit = () => {
+        console.log(user)
         axios.post('http://localhost:5000/updateUser', {user,id})
         .then(function (response) {
         console.log(response);
