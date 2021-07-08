@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SocialLink({user, temp, setTemp}){
-    console.log(temp);
+    //console.log(temp);
     const handleChange = (event) => {
         setTemp({ ...(temp), [event.target.name]: event.target.value});
     };

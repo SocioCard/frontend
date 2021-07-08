@@ -10,6 +10,8 @@ import Appearance from "./pages/appearance";
 import ThemeShowcase from './components/themeShowcase';
 import SocialLink from "./pages/socialLinks";
 import Homepage from "./pages/homepage";
+import About from "./pages/about";
+import HowItWorks from "./pages/howItWorks";
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Homepage}/>
+          <Route exact path="/about" component={About}/>
+          <Route exact path="/howitworks" component={HowItWorks}/>
           <Route exact path="/social" component={SocialLink}/>
           <Route exact path="/:id" component={ShowPage}/>
           <Redirect exact from="/:id/admin" to="/:id/admin/links"/>

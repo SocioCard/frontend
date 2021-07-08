@@ -120,11 +120,12 @@ export default function Footer() {
               justify="center"
               alignItems="flex-start"
               >
+                  <a href='/' className={classes.links}><p>Home</p></a>
                   <a href='#' className={classes.links}><p>Blog</p></a>
-                  <a href='#' className={classes.links}><p>How it works</p></a>
+                  <a href='/howitworks' className={classes.links}><p>How it works</p></a>
                   <a href='#' className={classes.links}><p>Terms and Conditions</p></a>
                   <a href='#' className={classes.links}><p>Privacy Policy</p></a>
-                  <a href='#' className={classes.links}><p>About Us</p></a>
+                  <a href='/about' className={classes.links}><p>About Us</p></a>
                   <a href='#' className={classes.links}><p>Contact</p></a>
               </Grid>
 
