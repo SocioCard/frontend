@@ -20,7 +20,7 @@ import SocialShare from "../components/socialShare";
 const useStyles = makeStyles((theme) => ({
   root: {
     background: "#fff",
-    minHeight: "100vh",
+    minHeight: "80vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SocialLink({user, temp, setTemp}){
-    console.log(temp);
+    //console.log(temp);
     const handleChange = (event) => {
         setTemp({ ...(temp), [event.target.name]: event.target.value});
     };
@@ -40,7 +40,7 @@ export default function SocialLink({user, temp, setTemp}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={temp.instagram}
+                    value={!temp?'':temp.instagram}
                     name="instagram"
                     onChange={handleChange}
                     id="instagram" placeholder="Instagram" />
@@ -54,7 +54,7 @@ export default function SocialLink({user, temp, setTemp}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={temp.facebook}
+                    value={!temp?'':temp.facebook}
                     name="facebook"
                     onChange={handleChange}
                     id="facebook" placeholder="Facebook" />
@@ -68,7 +68,7 @@ export default function SocialLink({user, temp, setTemp}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={temp.mail}
+                    value={!temp?'':temp.mail}
                     name="mail"
                     onChange={handleChange}
                     id="mail" placeholder="Mail" />
@@ -82,7 +82,7 @@ export default function SocialLink({user, temp, setTemp}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={temp.call}
+                    value={!temp?'':temp.call}
                     name="call"
                     onChange={handleChange}
                     id="call" placeholder="Call" />
@@ -96,7 +96,7 @@ export default function SocialLink({user, temp, setTemp}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={temp.twitter}
+                    value={!temp?'':temp.twitter}
                     name="twitter"
                     onChange={handleChange}
                     id="twitter" placeholder="Twitter" />
@@ -110,7 +110,7 @@ export default function SocialLink({user, temp, setTemp}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={temp.youtube}
+                    value={!temp?'':temp.youtube}
                     name="youtube"
                     onChange={handleChange}
                     id="youtube" placeholder="Youtube" />
@@ -124,7 +124,7 @@ export default function SocialLink({user, temp, setTemp}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={temp.pinterest}
+                    value={!temp?'':temp.pinterest}
                     name="pinterest"
                     onChange={handleChange}
                     id="pinterest" placeholder="Pinterest" />
@@ -138,7 +138,7 @@ export default function SocialLink({user, temp, setTemp}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={temp.linkedin}
+                    value={!temp?'':temp.linkedin}
                     name="linkedin"
                     onChange={handleChange}
                     id="linkedin" placeholder="LinkedIn" />
@@ -152,7 +152,7 @@ export default function SocialLink({user, temp, setTemp}){
                 </Grid>
                 <Grid item>
                     <TextField
-                    value={temp.reddit}
+                    value={!temp?'':temp.reddit}
                     name="reddit"
                     onChange={handleChange}
                     id="reddit" placeholder="Reddit" />

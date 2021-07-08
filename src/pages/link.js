@@ -4,20 +4,18 @@ import { Grid, Button,  InputBase, Dialog, DialogActions, DialogContent, DialogT
 import '../App.css';
 import { IconPicker } from 'react-fa-icon-picker'
 import {Edit, DeleteOutline} from '@material-ui/icons';
-import axios from 'axios';
-import Appbar from "../components/appbar";
-import NavigationAppbar from "../components/navigationAppbar";
 import SocialLink from "./socialLinks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard, faPager, faLink, faUserFriends, faCodeBranch, faVideo } from '@fortawesome/free-solid-svg-icons'
 import LinkList from "../components/linkList";
-import AddVideos from "../components/addVideos";
-import ReactPlayer from 'react-player'
+import Embed from 'react-embed';
+import AddEmbeded from "./addEmbeded";
+import { requestUpdate } from "../components/api";
 //green: #03D084
 //blue: #1641db
 
 const textColor = '#000';
-const vdo = "https://www.youtube.com/watch?v=qHILe297r7o"
+const vdos = ["https://www.youtube.com/watch?v=qHILe297r7o","https://www.youtube.com/watch?v=O7dJlL5yAUM","https://www.youtube.com/watch?v=672xUAZax7Q"]
 
 
 
@@ -153,26 +151,31 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Links({user, handleChange, handleSubmit, setUser}){
-    //console.log(user);
+export default function Links({user, handleChange, handleSubmit, setUser, id}){
+    console.log(user.social);
     const classes = useStyles();
     
-    const [temp,setTemp] = useState();
-    
+    const [temp,setTemp] = useState(user.social);
     const [value, setValue] = useState('FaImages');
+    
     const [newLink, setNewLink] = useState({
         title:'',
         link:'',
         icon:'FaImages',
         visible:true,
+        type:'',
     })
     const [submit, setSubmit] = useState(0);
 
     const [open, setOpen] = React.useState(false);
     const [openVideo, setOpenVideo] = React.useState(false);
 
+    useEffect(() => {
+        handleSubmit();
+    },[user,submit])
+
     const handleClickOpen = () => {
-        setTemp(user.social)
+        // setTemp(user.social)
         setOpen(true);
     };
 
@@ -181,23 +184,21 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     };
 
     const handleClose = () => {
+        setTemp(user.social);
         setOpen(false);
     };
 
     const handleCloseVideo = () => {
         setOpenVideo(false);
         setSubmit(submit+1);
-        handleSubmit();
     };
 
     const handleDone = () => {
         setOpen(false);
-        handleSubmit();
+        setSubmit(submit+1);
     };
 
-    useEffect(() => {
-        // console.log("rerendered")
-    },[submit])
+    
 
     const handleVisibleChange = (e,index) =>{
         e.stopPropagation();
@@ -206,26 +207,18 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         let temp = user.links;
         //console.log(temp);
         temp[index].visible=!(temp[index].visible);
-        setUser({...user, [user.links]:temp});
+        setUser({...user, links:temp});
         setSubmit(submit+1);
-        handleSubmit();
     }
 
     const handleDelete = (e,index) =>{
         e.stopPropagation();
-        //console.log(index);
+        console.log(index);
+        console.log(user.links)
         user.links.splice(index,1);
         setSubmit(submit+1);
-        handleSubmit();
     }
 
-    const handleVideoDelete = (e,index) =>{
-        e.stopPropagation();
-        //console.log(index);
-        user.videos.splice(index,1);
-        setSubmit(submit+1);
-        handleSubmit();
-    }
 
 
     const handleNewLinkChange = (event) => {
@@ -233,18 +226,46 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         // console.log(user)
         // console.log(setUser)
         setNewLink({ ...(newLink), [event.target.name]: event.target.value});
+        if(newLink.type==="")
+        setNewLink({ ...(newLink), type: 'link'});
+    };
+
+    const handleNewEmbededLinkChange = (event) => {
+        //console.log(event.target.name+" "+event.target.value)
+        // console.log(user)
+        // console.log(setUser)
+        setNewLink({ ...(newLink), [event.target.name]: event.target.value});
+        if(newLink.type==="")
+        setNewLink({ ...(newLink), type: 'embed'});
     };
 
     const handleAddLink = () => {
+        console.log(newLink);
         user.links.push(newLink);
+        console.log(user.links)
         setSubmit(submit+1);
-        handleSubmit();
         setNewLink({
             title:'',
             link:'',
+            type:'',
             icon:'FaImages',
             visible:true,
         });
+    };
+
+    const handleAddEmbededLink = () => {
+        console.log(newLink);
+        user.links.push(newLink);
+        console.log(user.links)
+        setSubmit(submit+1);
+        setNewLink({
+            title:'',
+            link:'',
+            type:'',
+            icon:'FaImages',
+            visible:true,
+        });
+        handleCloseVideo();
     };
 
     function handleScrollToAddLink  () {
@@ -258,10 +279,11 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     const handleSocialChange = () =>{
         console.log(temp)
         setUser({...user, social:temp});
-        console.log(user);
         setOpen(false);
         setSubmit(submit+1);
-        handleSubmit();
+        var tempUser=user;
+        tempUser.social=temp;
+        requestUpdate(tempUser, id);
     }
 
     return(
@@ -293,18 +315,18 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                 </Dialog>
 
                 <Dialog open={openVideo} onClose={handleCloseVideo} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">Add a Video</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Add an Embeded Link</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                            Add a Video to your profile. Use link from youtube, facebook or any other platform.
+                            Add Embeded content to your profile. Only add link. Image, title and rest of the details will be automatically taken. Currently supports DailyMotion, Facebook Video, Figma, Gfycat, Gist, Google Maps, imgur, Instagram, JSFiddle, MixCloud, Replit, SoundCloud, Twitch Channel, Twitch Video, Twitter Tweet, Vimeo, YouTube
                         </DialogContentText>
-                        <AddVideos user={user} setUser={setUser} handleSubmit={handleSubmit} handleChange={handleChange}/>
+                        <AddEmbeded handleNewEmbededLinkChange={handleNewEmbededLinkChange} newLink={newLink}/>
                     </DialogContent>
-                    <DialogActions>
+                    <DialogActions> 
                         <Button onClick={handleCloseVideo} color="secondary">
                             Cancel
                         </Button>
-                        <Button variant="contained" onClick={handleCloseVideo} className={classes.dialogButton}>
+                        <Button variant="contained" onClick={handleAddEmbededLink} className={classes.dialogButton}>
                             Save
                         </Button>
                     </DialogActions>
@@ -331,8 +353,8 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         <Typography>Card</Typography>
                     </Grid>
                     <Grid onClick={handleClickOpenVideo} container direction="column" alignItems="center" className={classes.tileItemEx} item>
-                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faVideo} />
-                        <Typography>Video</Typography>
+                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faPager} />
+                        <Typography>Embeded Content</Typography>
                     </Grid>
                 </Grid>
 
@@ -411,9 +433,8 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                     direction="row"
                     justify="center"
                     alignItems="center"
-                    className={classes.buyMeACoffee}
-                    
-                    >
+                    className={classes.buyMeACoffee}                    
+                >
                         
                         <Grid item justify="center" xs={3}>
                             <img height="70px" style={{padding:'5px'}} src="https://bmc-dev.s3.us-east-2.amazonaws.com/assets/icons/bmc_icon_black.png"/>
@@ -436,11 +457,10 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                 {
                     user.links.map((link, index) =>
                         <LinkList
-                        key={index}
+                        key={link._id}
                         link={link}
                         index={index}
                         handleDelete={handleDelete}
-                        setValue={setValue}
                         setUser={setUser}
                         user={user}
                         handleSubmit={handleSubmit}
@@ -448,17 +468,45 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         />
                     )
                 }
-
-                <Grid item xs={11} container direction='column' alignItems='flex-start'>
-                <h3 style={{"color":"white", "margin":"30px 0 10px 10px"}}>Added Video</h3>
-                </Grid>
-
-                <ReactPlayer controls="true" url={user.videoLink} width="320px" height="180px"/>
-            
                 
+                {/* {
+                    user.links.map((link, index) =>
+                    (
+                        link.type==="link" ?
+                        <LinkList
+                        key={index}
+                        link={link}
+                        index={index}
+                        submit={submit}
+                        setSubmit={setSubmit}
+                        handleDelete={handleDelete}
+                        setUser={setUser}
+                        user={user}
+                        handleSubmit={handleSubmit}
+                        handleVisibleChange={handleVisibleChange}
+                        />
+                        :
+                        <Embed url={link.link} />
+                    )
+                    )
+                } */}
+
+
+                {/* {
+                    vdos.map((vdo)=>
+                    <Embed url={vdo} />
+                    )
+                }
+
+                <Embed url='https://www.youtube.com/watch?v=soICQ3B2kEk' />
+                <Embed url='https://twitter.com/warikoo/status/1410535696020905986?s=20' /> */}
+
+
             </Grid>
             
         </React.Fragment>
     )
 }
 
+// deleting perfectly in db. but in website its deleting last element 
+// pass key as _id and never index

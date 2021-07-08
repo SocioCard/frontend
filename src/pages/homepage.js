@@ -15,12 +15,14 @@ const useStyles = makeStyles((theme) => ({
         width: '50px',
         margin: '2.5% 4%'
     },
-    main:{
+    section1:{
         width:'90%',
-        marginTop:'30px',
-        marginBottom:'50px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        margin: '0px auto 30px auto',
+    },
+    section2:{
+        width:'90%',
+        margin: '0px auto 30px auto',
+        backgroundColor: ''
     },
     h1: {
         fontSize: '60px',
@@ -31,12 +33,12 @@ const useStyles = makeStyles((theme) => ({
     },
     h3: {
         color: '#22406b',
-        width: '95%',
-        margin: '40px 0 30px 0',
+        width: '100%',
+        margin: '20px auto 0px auto',
     },
     h2: {
         color: '#22406b',
-        width: '80%',
+        width: '100%',
         margin: '40px 10px 30px 10px',
         textAlign: 'center',
         marginLeft: 'auto',
@@ -56,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
         color: '#fff',
         borderRadius: '10px',
         lineHeight: "1.8",
-        margin:'20px 0 0px 0',
+        margin:'10px 20px 20px 0',
         border: 'none',
         padding: '10px 20px',
         "&:hover": {
@@ -98,18 +100,40 @@ export default function Homepage(){
             direction="row"
             justify="center"
             alignItems="flex-start"
-            className={classes.main}
+            className={classes.section1}
             >
-                <Grid item xs={12} md={7}>
-                <h1 className={classes.h1}>The only link you will ever need!</h1>        
+                <Grid
+                container
+                xs={12} sm={6}
+                direction="column"
+                justify="center"
+                alignItems="flex-start"
+                className={classes.main}
+                >
+                    <Grid item xs={12} >
+                    <h1 className={classes.h1}>The only link you will ever need!</h1>
+                    </Grid>
+                    <Grid style={{width:'90%', margin:'0 auto'}} item xs={12} >
+                    <h3 className={classes.h3}>This is your social card. Add links, cards, banners and more. Choose the theme with which you vibe. <br/>Your own universal profile page!</h3>
+                    <Button onClick={handleClick} className={classes.getStartedButton} variant="outlined">Get Started</Button>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={5}>
-                <h3 className={classes.h3}>This is your social card. Add links, cards, banners and more. Choose the theme with which you vibe. <br/>Your own universal profile page!</h3>
-                <Button onClick={handleClick} className={classes.getStartedButton} variant="outlined">Get Started</Button>
+                <Grid item xs={12} sm={6}>
+                    <img className={classes.hero} src={hero} />
                 </Grid>
             </Grid>
-            <img className={classes.hero} src={hero} />
-            <h1 className={classes.h2}>Let your SocioCard speak for you. Use this as your your universal bio!</h1>
+
+            <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="flex-start"
+            className={classes.section2}
+            >
+                <h1 className={classes.h2}>Let your SocioCard speak for you. Use this as your your universal bio!</h1>
+            </Grid>
+                
+            
             <div className={classes.lower}>
                 <Grid
                 container
