@@ -4,16 +4,13 @@ import { Grid, Button,  InputBase, Dialog, DialogActions, DialogContent, DialogT
 import '../App.css';
 import { IconPicker } from 'react-fa-icon-picker'
 import {Edit, DeleteOutline} from '@material-ui/icons';
-import axios from 'axios';
-import Appbar from "../components/appbar";
-import NavigationAppbar from "../components/navigationAppbar";
 import SocialLink from "./socialLinks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard, faPager, faLink, faUserFriends, faCodeBranch, faVideo } from '@fortawesome/free-solid-svg-icons'
 import LinkList from "../components/linkList";
-import ReactPlayer from 'react-player';
 import Embed from 'react-embed';
 import AddEmbeded from "./addEmbeded";
+import { requestUpdate } from "../components/api";
 //green: #03D084
 //blue: #1641db
 
@@ -154,11 +151,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Links({user, handleChange, handleSubmit, setUser}){
-    //console.log(user);
+export default function Links({user, handleChange, handleSubmit, setUser, id}){
+    console.log(user.social);
     const classes = useStyles();
     
-    const [temp,setTemp] = useState();
+    const [temp,setTemp] = useState(user.social);
     const [value, setValue] = useState('FaImages');
     
     const [newLink, setNewLink] = useState({
@@ -174,7 +171,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     const [openVideo, setOpenVideo] = React.useState(false);
 
     const handleClickOpen = () => {
-        setTemp(user.social)
+        // setTemp(user.social)
         setOpen(true);
     };
 
@@ -183,6 +180,7 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     };
 
     const handleClose = () => {
+        setTemp(user.social);
         setOpen(false);
     };
 
@@ -269,10 +267,11 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     const handleSocialChange = () =>{
         console.log(temp)
         setUser({...user, social:temp});
-        console.log(user);
         setOpen(false);
         setSubmit(submit+1);
-        handleSubmit();
+        var tempUser=user;
+        tempUser.social=temp;
+        requestUpdate(tempUser, id);
     }
 
     return(
