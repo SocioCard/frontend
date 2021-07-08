@@ -7,9 +7,9 @@ const useStyles = makeStyles((theme) => ({
     appbar: {
         padding: '0 3px',
         color:'#1641db',
-        //backgroundColor: '#1f263c'
         backgroundColor: 'rgba(0,0,0,0)',
-        //backgroundImage: 'linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)',
+        backgroundColor: '#22406b',
+        backgroundImage: 'linear-gradient(315deg, #22406b 0%, #1bd1a6 74%)',
     },
     toolbar: {
         minHeight:'44px',

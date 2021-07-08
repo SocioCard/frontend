@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Button,  InputBase, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText, Typography, TextField } from '@material-ui/core';
+import { Grid, Button,  InputBase, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText, Typography, TextField, Card, CardHeader, IconButton } from '@material-ui/core';
 import '../App.css';
 import { IconPicker } from 'react-fa-icon-picker'
 import {Edit, DeleteOutline} from '@material-ui/icons';
@@ -9,12 +9,16 @@ import Appbar from "../components/appbar";
 import NavigationAppbar from "../components/navigationAppbar";
 import SocialLink from "./socialLinks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard, faPager, faLink, faUserFriends, faCodeBranch } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard, faPager, faLink, faUserFriends, faCodeBranch, faVideo } from '@fortawesome/free-solid-svg-icons'
 import LinkList from "../components/linkList";
+import AddVideos from "../components/addVideos";
+import ReactPlayer from 'react-player'
 //green: #03D084
 //blue: #1641db
 
 const textColor = '#000';
+const vdo = "https://www.youtube.com/watch?v=qHILe297r7o"
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -126,6 +130,27 @@ const useStyles = makeStyles((theme) => ({
         // backdropFilter: 'blur(10px)',
         color:textColor,
     },
+    cardRoot: {
+        maxWidth: 345,
+    },
+    media: {
+        // height: 0,
+        // paddingTop: '56.25%', // 16:9
+    },
+    expand: {
+        marginLeft: 'auto',
+    },
+    dialogButton:{
+        backgroundColor: '#22406b',
+        backgroundImage: 'linear-gradient(315deg, #22406b 0%, #1bd1a6 74%)',
+        color: '#fff',
+        borderRadius: '15px',
+        border: 'none',
+        "&:hover": {
+            backgroundColor: '#1bd1a6',
+            backgroundImage: 'linear-gradient(315deg, #1bd1a6 0%, #22406b 74%)',
+        },
+    }
 }));
 
 export default function Links({user, handleChange, handleSubmit, setUser}){
@@ -144,14 +169,25 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
     const [submit, setSubmit] = useState(0);
 
     const [open, setOpen] = React.useState(false);
+    const [openVideo, setOpenVideo] = React.useState(false);
 
     const handleClickOpen = () => {
         setTemp(user.social)
         setOpen(true);
     };
 
+    const handleClickOpenVideo = () => {
+        setOpenVideo(true);
+    };
+
     const handleClose = () => {
         setOpen(false);
+    };
+
+    const handleCloseVideo = () => {
+        setOpenVideo(false);
+        setSubmit(submit+1);
+        handleSubmit();
     };
 
     const handleDone = () => {
@@ -179,6 +215,14 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
         e.stopPropagation();
         //console.log(index);
         user.links.splice(index,1);
+        setSubmit(submit+1);
+        handleSubmit();
+    }
+
+    const handleVideoDelete = (e,index) =>{
+        e.stopPropagation();
+        //console.log(index);
+        user.videos.splice(index,1);
         setSubmit(submit+1);
         handleSubmit();
     }
@@ -242,7 +286,25 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         <Button onClick={handleClose} color="secondary">
                             Cancel
                         </Button>
-                        <Button variant="contained" onClick={handleSocialChange} color="secondary">
+                        <Button variant="contained" onClick={handleSocialChange} className={classes.dialogButton}>
+                            Save
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+
+                <Dialog open={openVideo} onClose={handleCloseVideo} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Add a Video</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Add a Video to your profile. Use link from youtube, facebook or any other platform.
+                        </DialogContentText>
+                        <AddVideos user={user} setUser={setUser} handleSubmit={handleSubmit} handleChange={handleChange}/>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleCloseVideo} color="secondary">
+                            Cancel
+                        </Button>
+                        <Button variant="contained" onClick={handleCloseVideo} className={classes.dialogButton}>
                             Save
                         </Button>
                     </DialogActions>
@@ -268,9 +330,9 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faAddressCard} />
                         <Typography>Card</Typography>
                     </Grid>
-                    <Grid container direction="column" alignItems="center" className={classes.tileItemEx} item>
-                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faPager} />
-                        <Typography>Banner</Typography>
+                    <Grid onClick={handleClickOpenVideo} container direction="column" alignItems="center" className={classes.tileItemEx} item>
+                        <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faVideo} />
+                        <Typography>Video</Typography>
                     </Grid>
                 </Grid>
 
@@ -386,6 +448,12 @@ export default function Links({user, handleChange, handleSubmit, setUser}){
                         />
                     )
                 }
+
+                <Grid item xs={11} container direction='column' alignItems='flex-start'>
+                <h3 style={{"color":"white", "margin":"30px 0 10px 10px"}}>Added Video</h3>
+                </Grid>
+
+                <ReactPlayer controls="true" url={user.videoLink} width="320px" height="180px"/>
             
                 
             </Grid>
