@@ -86,15 +86,20 @@ const Admin = ()=>{
     
 
     return (
+        <>
+        {user.email===''?<p>Please wait, loading...</p>:
         <div className={classes.root}>
             <Appbar user={id}/>
-                {page==="links" && <Links user={user} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />}
+                {page==="links" && <Links user={user} id={id} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />}
                 {page==="appearance" && <Appearance user={user} setUser={setUser} handleSubmit={handleSubmit}/>}
                 {page==="profile" && <Settings user={user} setUser={setUser} handleSubmit={handleSubmit}/>}
                 
             {/* <Links user={user} handleChange={handleChange} handleSubmit={handleSubmit} />,
             <Appearance/> */}
         </div>
+        }
+
+        </>
     );
 };
 

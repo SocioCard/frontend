@@ -8,7 +8,7 @@ import allinone from '../static/images/allinone.svg'
 import logo from '../static/images/logo.png'
 import linksPage from '../static/images/linksPage.png'
 import profilePage from '../static/images/profilePage.png'
-import { classes } from "istanbul-lib-coverage";
+// import { classes } from "istanbul-lib-coverage";
 
 const useStyles = makeStyles((theme) => ({
     logo:{

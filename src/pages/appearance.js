@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   root:{
     minHeight: '100vh',
     padding: '30px 0 20px 0',
-    maxWidth: '600px',
+    maxWidth: '900px',
     margin: 'auto',
   },
   cont: {

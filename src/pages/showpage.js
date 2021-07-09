@@ -1,11 +1,10 @@
 import { Avatar, Grid, makeStyles, Typography } from "@material-ui/core";
 import defaultImg from '../static/images/avatarDefault1.jpg';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
+import { IconPickerItem } from 'react-fa-icon-picker';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
+import { themeLogoColor } from "../data/localthemes";
 
 const Theme1 = makeStyles((theme)=>({
     root: {
@@ -13,13 +12,16 @@ const Theme1 = makeStyles((theme)=>({
         maxHeight:"500vh",
         padding:"6vh 4vw 10vh 4vw",
         backgroundColor: "#FFE5E2",
-        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundRepeat: "noRepeat",
         backgroundSize: "cover",
+        backgroundAttachment: "fixed",
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
     },
     mainCont: {
+        maxHeight:"auto",
         [theme.breakpoints.up('md')]: {
             width: '60vw',
         },
@@ -1233,7 +1235,7 @@ const ShowPage=()=>{
         var Slno=2;
         const data=await axios.post("http://localhost:5000/mySocioCard", {username: username})
         .then(res=>{
-            //console.log(res.data);
+            console.log(res.data);
             setUser(res.data[0]);
             setAccess(1);
         })
@@ -1247,6 +1249,7 @@ const ShowPage=()=>{
     if (user!==undefined)
     console.log(user.themes)
     const classes = (user!==undefined)?eval("Theme"+user.themes+"()"):Theme1();
+    // console.log(classes.linkCard)
     // const classes = access?getClass():Theme1();
     return(
         <>
@@ -1261,7 +1264,7 @@ const ShowPage=()=>{
                         <Avatar
                             className={classes.avatar}
                             alt={defaultImg} 
-                            src={defaultImg}
+                            src={user.image}
                         />
                     </Grid>
                     <Grid item className={classes.userDetails} container>
@@ -1275,103 +1278,27 @@ const ShowPage=()=>{
                         </Grid>
                     </Grid>
                     <Grid item container className={classes.linkList}>
-                        <Grid item container className={classes.linkCard}>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <InstagramIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[0].title}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid item container className={classes.linkCard} fullWidth>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <FacebookIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[1].title}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid item container className={classes.linkCard}>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <InstagramIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[0].title}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid item container className={classes.linkCard} fullWidth>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <FacebookIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[1].title}
-                                </Typography>
-                            </Grid>
-                        </Grid><Grid item container className={classes.linkCard}>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <InstagramIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[0].title}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid item container className={classes.linkCard} fullWidth>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <FacebookIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[1].title}
-                                </Typography>
-                            </Grid>
-                        </Grid><Grid item container className={classes.linkCard}>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <InstagramIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[0].title}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid item container className={classes.linkCard} fullWidth>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <FacebookIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[1].title}
-                                </Typography>
-                            </Grid>
-                        </Grid><Grid item container className={classes.linkCard}>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <InstagramIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[0].title}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid item container className={classes.linkCard} fullWidth>
-                            <Grid item container className={classes.linkLogoCont} xs={2}>
-                                <FacebookIcon className={classes.linkLogo}/>
-                            </Grid>
-                            <Grid item container className={classes.linkMsgCont} xs={8}>
-                                <Typography className={classes.linkMsg} xs={10}>
-                                    {user.links[1].title}
-                                </Typography>
-                            </Grid>
-                        </Grid>
+                        {
+                            user.links.map((item, index) => (
+                                <Grid item container className={classes.linkCard} onClick={()=>{window.open(item.link, "_blank")}} href={item.link} key={index}>
+                                    {      
+                                        (item.icon!="FaImages")
+                                        ?<Grid item container className={classes.linkLogoCont} xs={2}>
+                                            <IconPickerItem icon={item.icon} size={themeLogoColor[user.themes-1].fontSize} color={themeLogoColor[user.themes-1].color}/>
+                                        </Grid>
+                                        :
+                                        <Grid item container className={classes.linkLogoCont} xs={2}>
+                                        </Grid>
+                                        
+                                    }
+                                    <Grid item container className={classes.linkMsgCont} xs={8}>
+                                        <Typography className={classes.linkMsg} xs={10}>
+                                            {item.title}
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                            ))
+                        }
                     </Grid>
                 </Grid>                
             </Grid>

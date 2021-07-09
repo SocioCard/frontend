@@ -95,3 +95,66 @@ export const LocalThemes = [
         },
     },
 ];
+
+export const themeLogoColor = [
+    {
+        themeId: 1,
+        fontSize: "2.25rem",
+        color: "#e3e3e3",
+    },
+    {
+        themeId: 2,
+        fontSize: "2.35rem",
+        color: "#fff",
+    },
+    {
+        themeId:3,
+        fontSize: "2.35rem",
+        color: "#f7f0be",
+    },
+    {
+        themeId:4,
+        fontSize: "2.35rem",
+        color: "#34656d",
+    },
+    {
+        themeId:5,
+        fontSize: "2.35rem",
+        color: "#f9f9f9", 
+    },
+    {
+        themeId:6,
+        fontSize: "2.35rem",
+        color: "#2a2d34",
+    },
+    {
+        themeId:7,
+        fontSize: "2.35rem",
+        color: "#284b63",
+    },
+    {
+        themeId:8,
+        fontSize: "2.35rem",
+        color: "#284b63",
+    },
+    {
+        themeId:9,
+        fontSize: "2.35rem",
+        color: "#e8e8e8",
+    },
+    {
+        themeId:10,
+        fontSize: "2.35rem",
+        color: "#e8e8e8",
+    },
+    {
+        themeId:11,
+        fontSize: "2.35rem",
+        color: "#e8e8e8",
+    },
+    {
+        themeId:12,
+        fontSize: "2.35rem",
+        color: "#e8e8e8",
+    }
+]
