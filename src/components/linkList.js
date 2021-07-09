@@ -62,13 +62,13 @@ export default function LinkList({link, index, handleDelete, setUser, user, hand
         setCardDetails({...cardDetails, [event.target.name]:event.target.value});        
     }
     const handleIconChange=(v)=>{
-        setValue(v); 
-        handleUpdate();
+        setEdit(true);
+        console.log(v)
+        setValue(v);
+        setCardDetails({...cardDetails, icon:v});
     }
     const handleUpdate=()=>{
         setEdit(false);
-        if(value!=cardDetails.icon)
-        setCardDetails({...cardDetails, "icon":value});
         var temp=user.links;
         temp[index]=cardDetails;
         setUser({...user, links:temp});
@@ -89,7 +89,7 @@ export default function LinkList({link, index, handleDelete, setUser, user, hand
                         <Grid item>
                             <InputBase
                                 required 
-                                id="title" 
+                                id={"title"+cardDetails.id} 
                                 value={cardDetails.title}
                                 name="title"
                                 onChange={handleChange}
@@ -108,7 +108,7 @@ export default function LinkList({link, index, handleDelete, setUser, user, hand
                         <Grid item>
                             <InputBase
                                 required 
-                                id="link" 
+                                id={"link"+cardDetails.id} 
                                 value={cardDetails.link}
                                 name="link"
                                 onChange={handleChange}
@@ -133,7 +133,7 @@ export default function LinkList({link, index, handleDelete, setUser, user, hand
                 <div style={{display:'flex'}}>
                     <DeleteOutline 
                         onClick={ (e) => handleDelete(e,index)}
-                        style={{height:'40px'}}
+                        style={{height:'40px',cursor:'pointer'}}
                     />
                     <IconPicker
                         searchInputStyles={{color:'white', backgroundColor:'#16192A', border: 'none', height:'30px'}}
