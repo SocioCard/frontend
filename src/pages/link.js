@@ -16,7 +16,6 @@ import { requestUpdate } from "../components/api";
 //blue: #1641db
 
 const textColor = '#000';
-const vdos = ["https://www.youtube.com/watch?v=qHILe297r7o","https://www.youtube.com/watch?v=O7dJlL5yAUM","https://www.youtube.com/watch?v=672xUAZax7Q"]
 
 
 
@@ -58,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '20px',
         boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 5px 0 rgba(0, 0, 0, 0.1)',
         color:'white',
-        backgroundColor: '#1bd1a6',
         backgroundColor: '#3ee577',
         backgroundImage: 'linear-gradient(315deg, #3ee577 0%, #1bd1a6 74%)',
         cursor: 'pointer',
@@ -359,7 +357,7 @@ export default function Links({user, handleChange, handleSubmit, setUser, id}){
                         <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faLink} />
                         <Typography>Link</Typography>
                     </Grid>
-                    <Grid container direction="column" alignItems="center" className={classes.tileItemEx} item>
+                    <Grid onClick={()=>(alert("Feature Coming Soon..."))} container direction="column" alignItems="center" className={classes.tileItemEx} item>
                         <FontAwesomeIcon id="tileIcon" className={classes.tileIcon} icon={faAddressCard} />
                         <Typography>Card</Typography>
                     </Grid>

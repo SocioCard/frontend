@@ -5,6 +5,7 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Appearance from "./appearance";
 import Settings from "./settings";
+import Loader from './loader';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -87,7 +88,7 @@ const Admin = ()=>{
 
     return (
         <>
-        {user.email===''?<p>Please wait, loading...</p>:
+        {user.email===''?<Loader/>:
         <div className={classes.root}>
             <Appbar user={id}/>
                 {page==="links" && <Links user={user} id={id} setUser={setUser} handleChange={handleChange} handleSubmit={handleSubmit} />}

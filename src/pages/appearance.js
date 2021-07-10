@@ -38,18 +38,6 @@ const Appearance = ({user, handleSubmit, setUser}) => {
   return (
     <div className={classes.root}>
       <Grid container className={classes.cont} direction='column' justify='flex-center' alignItems='center'>
-        {/* <Grid item xs={11} container direction='column' alignItems='flex-start'>
-          <h3 style={{"color":"white", "margin":"10px 0 0 10px"}}>Profile</h3>
-        </Grid>
-        <Grid
-          item
-          xs={11}
-          container
-          className={classes.profileCont}
-          spacing={1}
-        >
-          <Profile />
-        </Grid> */}
         <Grid item xs={11} container direction='column' alignItems='flex-start'>
           <h3 style={{"color":"white", "margin":"10px 0 0 10px"}}>Themes</h3>
         </Grid>

@@ -1,9 +1,5 @@
 import { Grid, makeStyles } from "@material-ui/core";
-import AddIcon from '@material-ui/icons/Add';
-import {LocalThemes} from '../data/localthemes';
 import axios from 'axios';
-import Theme1 from '../static/images/Theme1.png';
-import Theme2 from '../static/images/Theme2.gif';
 import ThemeShowcase from "./themeShowcase";
 import themes from '../data/themesArray.json';
 import { useEffect, useState } from "react";
@@ -21,15 +17,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     cursor:'pointer',
   },
-  themeImg:{
-    backgroundImage: `url(${Theme1})`,
-    backgroundSize: 'cover',
-    backgroundPosition:'center center',
-    backgroundRepeat: 'no-repeat',
-    borderRadius: "10px",
-    border: "2px solid #ccc",
-    paddingTop:"150%",
-  }, 
   themeShowcase:{
     borderRadius: "10px",
   }, 

@@ -14,22 +14,8 @@ const ThemeShowcase=({theme})=>{
             return Theme4();
         }else if(theme===5){
             return Theme5();
-        }else if(theme===6){
-            return Theme6();
-        }else if(theme===7){
-            return Theme7();
-        }else if(theme===8){
-            return Theme8();
-        }else if(theme===9){
-            return Theme9();
-        }else if(theme===10){
-            return Theme10();
-        }else if(theme===11){
-            return Theme11();
-        }else if(theme==12){
-            return Theme12();
         }else{
-            return Theme13();
+            return Theme6();
         }
 
     }

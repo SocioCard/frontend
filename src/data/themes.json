@@ -1,0 +1,70 @@
+[
+    {
+        "buttonFontColor":"#FFE5E2",
+        "buttonHoverFontColor":"#05386B",
+        "headerFontColor":"#a3295a",
+        "backgroundColor":"#FFE5E2",
+        "background": "none",
+        "foregroundColor":"#E93B81",
+        "foregroundHoverColor":"#FFE5E2",
+        "fontFamily":"Lato",
+        "borderColor":"#05386B",
+        "borderRadius":"40px",
+        "borderWidth":"2px"
+    },
+    {
+        "buttonFontColor":"#FFFBDF",
+        "headerFontColor":"#575DA5",
+        "backgroundColor":"#FFFBDF",
+        "background": "none",
+        "foregroundColor":"#575DA5",
+        "fontFamily":"Ubuntu",
+        "borderColor":"#05386B",
+        "borderRadius":"40px",
+        "borderWidth":"0px"
+    },
+    {
+        "buttonFontColor":"#fff",
+        "headerFontColor":"#181818",
+        "backgroundColor":"#fff",
+        "background": "none",
+        "foregroundColor":"#404040",
+        "fontFamily":"Ubuntu",
+        "borderColor":"#05386B",
+        "borderRadius":"40px",
+        "borderWidth":"0px"
+    },
+    {
+        "buttonFontColor":"#fff",
+        "headerFontColor":"#db0144",
+        "backgroundColor":"#fff",
+        "background": "none",
+        "foregroundColor":"#db0144",
+        "fontFamily":"Ubuntu",
+        "borderColor":"#05386B",
+        "borderRadius":"0px",
+        "borderWidth":"0px"
+    },
+    {
+        "buttonFontColor":"#404040",
+        "headerFontColor":"#fff",
+        "backgroundColor":"#6b0f1a",
+        "background": "linear-gradient(315deg, #000000 0%, #414141 74%)",
+        "foregroundColor":"#fff",
+        "fontFamily":"Ubuntu",
+        "borderColor":"#fff",
+        "borderRadius":"40px"
+    },
+    {
+        "buttonFontColor":"#6E0F1E",
+        "buttonHoverFontColor":"#6E0F1E",
+        "headerFontColor":"#fff",
+        "backgroundColor":"#6b0f1a",
+        "background": "linear-gradient(315deg, #6b0f1a 0%, #b91372 74%)",
+        "foregroundColor":"#fff",
+        "foregroundHoverColor":"#fff",
+        "fontFamily":"Lato",
+        "borderColor":"#fff",
+        "borderRadius":"40px"
+    }
+]

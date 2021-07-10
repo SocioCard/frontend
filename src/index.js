@@ -5,8 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
-import ShowPage from './pages/showpage';
-
 
 
 
@@ -21,7 +19,6 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
   },
-  //fontFamily: Roboto // as an aside, highly recommend importing roboto font for Material UI projects! Looks really nice
 });
 
 ReactDOM.render(

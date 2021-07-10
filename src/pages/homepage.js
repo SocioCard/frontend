@@ -3,7 +3,7 @@ import SignIn from "./signIn";
 import Footer from "../components/footer";
 import { Grid, CssBaseline, Button, Paper } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
-import hero from '../static/images/hero.svg'
+import hero from '../static/images/homepageHero.svg'
 import allinone from '../static/images/allinone.svg'
 import logo from '../static/images/logo.png'
 import linksPage from '../static/images/linksPage.png'

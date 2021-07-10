@@ -8,8 +8,10 @@ const useStyles = makeStyles((theme) => ({
         padding: '0 3px',
         color:'#1641db',
         backgroundColor: 'rgba(0,0,0,0)',
-        backgroundColor: '#22406b',
-        backgroundImage: 'linear-gradient(315deg, #22406b 0%, #1bd1a6 74%)',
+        // backgroundColor: '#22406b',
+        // backgroundImage: 'linear-gradient(315deg, #22406b 0%, #1bd1a6 74%)',
+        backgroundColor: '#3ee577',
+        backgroundImage: 'linear-gradient(315deg, #3ee577 0%, #1bd1a6 74%)',
     },
     toolbar: {
         minHeight:'44px',
@@ -33,7 +35,7 @@ export default function NavigationAppbar({active, user}){
                 alignItems="center"
             >
                 <Link style={{textDecoration: 'none'}} to={`/${user}/admin/links`}><Button className={classes.button}>Links</Button></Link>
-                <Link style={{textDecoration: 'none'}} to={`/${user}/admin/appearance`}><Button className={classes.button}>Appearance</Button></Link>
+                <Link style={{textDecoration: 'none'}} to={`/${user}/admin/appearance`}><Button className={classes.button}>Design</Button></Link>
                 <Link style={{textDecoration: 'none'}} to={`/${user}/admin/profile`}><Button className={classes.button}>Profile</Button></Link>
             </Grid>
                 
