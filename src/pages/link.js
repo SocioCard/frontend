@@ -11,10 +11,7 @@ import LinkList from "../components/linkList";
 import Embed from 'react-embed';
 import AddEmbeded from "./addEmbeded";
 import EmbedList from "../components/embedList";
-<<<<<<< HEAD
 import { requestUpdate } from "../components/api";
-=======
->>>>>>> f4ea57c21963453d91e8824e59417ef569277280
 //green: #03D084
 //blue: #1641db
 
