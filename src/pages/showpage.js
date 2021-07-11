@@ -253,9 +253,12 @@ const ShowPage=()=>{
                             ))
                         }
                     </Grid>
-                    <Grid item className={classes.buymeacoffee} container>
-                        <a href={"https://buymeacoffee.com/"+user.buymeacoffee}><img style={{width:"100%"}} src={buymeacoffee} /></a>
-                    </Grid>
+                    {
+                        (user.sociocard!=="")&&
+                        <Grid item className={classes.buymeacoffee} container>
+                            <a href={"https://buymeacoffee.com/"+user.buymeacoffee}><img style={{width:"100%"}} src={buymeacoffee} /></a>
+                        </Grid>
+                    }
                     
                 </Grid>                
             </Grid>
