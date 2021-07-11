@@ -8,6 +8,7 @@ import allinone from '../static/images/allinone.svg'
 import logo from '../static/images/logo.png'
 import linksPage from '../static/images/linksPage.png'
 import profilePage from '../static/images/profilePage.png'
+import "../App.css"
 // import { classes } from "istanbul-lib-coverage";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,15 +49,16 @@ const useStyles = makeStyles((theme) => ({
     hero: {
         //maxWidth: '900px',
         display: 'block',
+        marginTop: "20px",
         marginLeft: 'auto',
         marginRight: 'auto',
-        width: '95%',
+        width: '90%',
     },
     getStartedButton: {
         backgroundColor: '#22406b',
         backgroundImage: 'linear-gradient(315deg, #22406b 0%, #1bd1a6 74%)',
         color: '#fff',
-        borderRadius: '10px',
+        borderRadius: '30px',
         lineHeight: "1.8",
         margin:'10px 20px 20px 0',
         border: 'none',
@@ -111,15 +113,15 @@ export default function Homepage(){
                 className={classes.main}
                 >
                     <Grid item xs={12} >
-                    <h1 className={classes.h1}>The only link you will ever need!</h1>
+                    <h1 className={classes.h1}>The only bio you will ever need!</h1>
                     </Grid>
                     <Grid style={{width:'90%', margin:'0 auto'}} item xs={12} >
                     <h3 className={classes.h3}>This is your social card. Add links, cards, banners and more. Choose the theme with which you vibe. <br/>Your own universal profile page!</h3>
                     <Button onClick={handleClick} className={classes.getStartedButton} variant="outlined">Get Started</Button>
                     </Grid>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <img className={classes.hero} src={hero} />
+                <Grid item xs={12} sm={5}>
+                    <img id="hero"  className={classes.hero} src={hero} />
                 </Grid>
             </Grid>
 
