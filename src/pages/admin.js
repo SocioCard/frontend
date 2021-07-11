@@ -9,10 +9,9 @@ import Loader from './loader';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        //backgroundColor:'#EBEBEB',
-        //backgroundImage: `url('https://images.hdqwalls.com/download/road-grayscale-photography-an-1125x2436.jpg')`,
         backgroundColor: '#000000',
         backgroundImage: 'linear-gradient(315deg, #000000 0%, #414141 74%)',
+        //backgroundColor: '#EEEEEE',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundAttachment:'fixed',
@@ -77,6 +76,7 @@ const Admin = ()=>{
               (result) => {
                 if(result.data.length!=0){
                   setUser(result.data[0])
+                  //console.log(user)
                 }
               }
             )
