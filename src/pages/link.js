@@ -158,7 +158,7 @@ export default function Links({user, handleChange, handleSubmit, setUser, id}){
     //console.log(user.social);
     const classes = useStyles();
     
-    const [temp,setTemp] = useState();
+    const [temp,setTemp] = useState(user.social);
     const [value, setValue] = useState('FaImages');
     
     const [newLink, setNewLink] = useState({
