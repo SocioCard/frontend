@@ -48,8 +48,8 @@ export default function HowItWorks (){
                 <h3 className={classes.h3}>Signup with your google, facebook or twitter account. Set your name, profile image, a classy bio, choose a theme from a wide variety and add links to your work and social handles. You may also add embeded contents like youtube videos, tweets and many more.</h3><h3 className={classes.h3}>And Voila! You are ready to go</h3>
                 
             </Grid>
-            <SignIn/>
-            <Footer />
+            {/* <SignIn/>
+            <Footer /> */}
         </Grid>
         
     )

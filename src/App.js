@@ -11,7 +11,6 @@ import ThemeShowcase from './components/themeShowcase';
 import SocialLink from "./pages/socialLinks";
 import Homepage from "./pages/homepage";
 import About from "./pages/about";
-import HowItWorks from "./pages/howItWorks";
 //import Loader from "./pages/loader";
 
 export default function App() {
@@ -22,7 +21,6 @@ export default function App() {
           <Route exact path="/" component={Homepage}/>
           {/* <Route exact path="/loading" component={Loader}/> */}
           <Route exact path="/about" component={About}/>
-          <Route exact path="/howitworks" component={HowItWorks}/>
           <Route exact path="/social" component={SocialLink}/>
           <Route exact path="/:id" component={ShowPage}/>
           <Redirect exact from="/:id/admin" to="/:id/admin/links"/>

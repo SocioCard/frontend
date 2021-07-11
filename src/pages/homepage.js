@@ -9,6 +9,7 @@ import logo from '../static/images/logo.png'
 import linksPage from '../static/images/linksPage.png'
 import profilePage from '../static/images/profilePage.png'
 import "../App.css"
+import HowItWorks from "./howItWorks";
 // import { classes } from "istanbul-lib-coverage";
 
 const useStyles = makeStyles((theme) => ({
@@ -175,9 +176,12 @@ export default function Homepage(){
                     </Grid>
                 </Grid>
             </div>
+            <HowItWorks/>
             <img src={allinone} className={classes.allinone}/>
             <h2 className={classes.h2}>All your links in one place!</h2>
+
             <SignIn/>
+            
             <Footer/>
         </Grid>
     )

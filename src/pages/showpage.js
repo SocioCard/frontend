@@ -254,7 +254,7 @@ const ShowPage=()=>{
                         }
                     </Grid>
                     {
-                        (user.sociocard!=="")&&
+                        (user.buymeacoffee!=="")&&
                         <Grid item className={classes.buymeacoffee} container>
                             <a href={"https://buymeacoffee.com/"+user.buymeacoffee}><img style={{width:"100%"}} src={buymeacoffee} /></a>
                         </Grid>
