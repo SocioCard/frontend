@@ -250,8 +250,8 @@ export const Theme5 = makeStyles((theme)=>({
 export const Theme6 = makeStyles((theme)=>({
     root: {
         padding:"3vh 2.5vw 5vh 2.5vw",
-        backgroundColor: '#000000',
-        backgroundImage: 'linear-gradient(315deg, #000000 0%, #414141 99%)',
+        backgroundColor: '#6b0f1a',
+        backgroundImage: 'linear-gradient(315deg, #6b0f1a 0%, #b91372 74%)',
         borderRadius: '20px',
         display: 'flex',
         flexDirection: 'row',
@@ -288,7 +288,7 @@ export const Theme6 = makeStyles((theme)=>({
         margin: "1px 0",
         backgroundColor: '#fff',
         borderRadius: "13px",
-        borderWidth: "2px",
+        borderWidth: "0px",
         borderStyle: "solid",
         borderColor: "#2E1832",
     }

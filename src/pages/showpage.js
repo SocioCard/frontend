@@ -112,8 +112,8 @@ const useStyles = makeStyles({
     EmbedCard: props => ( {
         justifyContent: 'center',
         cursor:"pointer",
-        margin: "40px 0",
-        color: props.headerColor,
+        margin: "20px 0",
+        color: props.headerFontColor,
         '&:hover':{
             transform: "scale(1.03, 1.09)",
         },
@@ -123,7 +123,6 @@ const useStyles = makeStyles({
         textAlign: "center",
         justifyContent: 'center',
         alignContent:"center",
-
         '& > *':{
             fontSize: "1.45rem",
             fontFamily: props.fontFamily,
