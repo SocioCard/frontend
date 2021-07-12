@@ -97,7 +97,7 @@ const Settings = ({user,setUser,handleSubmit}) => {
 
   const handleDeleteAccount=(event)=>{
     console.log(id);
-    axios.post("http://localhost:5000/admin/deleteAccount",{id:id})
+    axios.post("https://unibio.herokuapp.com/admin/deleteAccount",{id:id})
     .then((result)=>{
       history.push('/');
       alert(result.data);

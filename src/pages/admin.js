@@ -60,7 +60,7 @@ const Admin = ()=>{
 
     const handleSubmit = () => {
         console.log(user)
-        axios.post('http://localhost:5000/updateUser', {user,id})
+        axios.post('https://unibio.herokuapp.com/updateUser', {user,id})
         .then(function (response) {
         console.log(response);
         })
@@ -71,7 +71,7 @@ const Admin = ()=>{
 
     useEffect(()=>{
         const request = async () => {
-          axios.post("http://localhost:5000/userDetails",{id})
+          axios.post("https://unibio.herokuapp.com/userDetails",{id})
             .then(
               (result) => {
                 if(result.data.length!=0){

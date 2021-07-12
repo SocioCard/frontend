@@ -87,7 +87,7 @@ export default function SignIn() {
     console.log(response.accessToken);
     axios({
       method:'POST',
-      url:"http://localhost:5000/facebooklogin",
+      url:"https://unibio.herokuapp.com/facebooklogin",
       data:{userId:response.userID,accessToken:response.accessToken}
     })
     .then(res=>{
@@ -106,7 +106,7 @@ export default function SignIn() {
     console.log(response);
     axios({
       method:'POST',
-      url:"http://localhost:5000/googlelogin",
+      url:"https://unibio.herokuapp.com/googlelogin",
       data:{tokenId:response.tokenId}
     })
     .then(res=>{

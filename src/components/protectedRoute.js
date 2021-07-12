@@ -14,7 +14,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     }
     useEffect(()=>{
         const request=async()=>{
-            axios.get("http://localhost:5000/verify", {
+            axios.get("https://unibio.herokuapp.com/verify", {
                 headers:{
                     "x-access-token":localStorage.getItem(`token${username}`),
                 }

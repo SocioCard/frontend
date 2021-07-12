@@ -162,7 +162,7 @@ const ShowPage=()=>{
     useEffect(()=>{
         const request=async()=>{
         var Slno=2;
-        const data=await axios.post("http://localhost:5000/mySocioCard", {username: username})
+        const data=await axios.post("https://unibio.herokuapp.com/mySocioCard", {username: username})
         .then(res=>{
             setUser(res.data[0]);
             setAccess(1);
