@@ -30,8 +30,8 @@ export default function LinkShareAppbar(){
     const classes = useStyles();
     var url = window.location.href;
     var id = url.split("/")[3];
-    var link="https://onelink.io/"+id;
-    var linkDisp="onelink.io/"+id;
+    var link="http://3.108.100.131:5000/"+id;
+    var linkDisp="http://3.108.100.131:5000/"+id;
     return(
         <AppBar className={classes.appbar} style={{alignItems: 'center',}} position="static">
             <Toolbar style={{minHeight:'44px'}}>

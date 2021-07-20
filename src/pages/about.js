@@ -89,8 +89,8 @@ export default function About (){
                     direction="column"
                     justify="center"
                     alignItems="center" xs={12} md={3}>
-                        <img src={team1} className={classes.team}/>
-                        <h4>Amit Shaw</h4>
+                        <img src={team2} className={classes.team}/>
+                        <h4>Tushar Raj</h4>
                         <p>Developer</p>
                         <div style={{justify:'center'}}>
                         <a href='#'><LinkedIn className={classes.icon}/></a>
@@ -102,8 +102,8 @@ export default function About (){
                     direction="column"
                     justify="center"
                     alignItems="center" xs={12} md={3}>
-                        <img src={team2} className={classes.team}/>
-                        <h4>Tushar Raj</h4>
+                        <img src={team1} className={classes.team}/>
+                        <h4>Amit Shaw</h4>
                         <p>Developer</p>
                         <div style={{justify:'center'}}>
                         <a href='#'><LinkedIn className={classes.icon}/></a>

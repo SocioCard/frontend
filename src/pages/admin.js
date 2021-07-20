@@ -60,7 +60,7 @@ const Admin = ()=>{
 
     const handleSubmit = () => {
         console.log(user)
-        axios.post('https://unibio.herokuapp.com/updateUser', {user,id})
+        axios.post('http://3.108.100.131:5000/updateUser', {user,id})
         .then(function (response) {
         console.log(response);
         })
@@ -71,7 +71,7 @@ const Admin = ()=>{
 
     useEffect(()=>{
         const request = async () => {
-          axios.post("https://unibio.herokuapp.com/userDetails",{id})
+          axios.post("http://3.108.100.131:5000/userDetails",{id})
             .then(
               (result) => {
                 if(result.data.length!=0){

@@ -13,7 +13,7 @@ function Copyright() {
   return (
     <Typography variant="body2" style={{color:'white', margin:'40px'}}>
       {'Copyright © '}
-      <Link style={{color:'white'}} href="https://material-ui.com/">
+      <Link style={{color:'white'}} href="http://3.108.100.131:5000/">
         SocioCard
       </Link>{' '}
       {new Date().getFullYear()}
