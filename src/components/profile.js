@@ -103,7 +103,7 @@ const Profile=({user, setUser})=>{
   const handleUpdateProfile=(event) =>{
           event.preventDefault();
           //console.log(user);
-          axios.post("http://3.108.100.131:5000/updateProfile", user)
+          axios.post("https://unibio.herokuapp.com/updateProfile", user)
           .then((result) => {
             console.log(result);
             // setUser(result.data[0]);
