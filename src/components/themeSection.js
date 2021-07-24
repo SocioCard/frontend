@@ -35,7 +35,7 @@ const ThemeSection = ({user, setUser})=>{
     
     useEffect(()=>{
       const request=async()=>(
-        axios.post('http://localhost:5000/updateUser', {user:newDetails,id})
+        axios.post('https://unibio.herokuapp.com/updateUser', {user:newDetails,id})
         .then(function (response) {
         console.log(response);
         })
