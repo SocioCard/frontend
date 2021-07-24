@@ -154,6 +154,7 @@ const useStyles = makeStyles({
 
 const ShowPage=()=>{
     var url = window.location.href;
+    console.log("UniBio: Showpage Component Rendering")
     var id = url.split("/")[3];
     const [user,setUser] = useState();
     const [themeId,setThemeId] = useState("1");
@@ -164,6 +165,7 @@ const ShowPage=()=>{
         var Slno=2;
         const data=await axios.post("https://unibio.herokuapp.com/mySocioCard", {username: username})
         .then(res=>{
+            console.log("UniBio: data achieved")
             setUser(res.data[0]);
             setAccess(1);
             setThemeId(res.data[0].themes);
@@ -178,6 +180,7 @@ const ShowPage=()=>{
     if (user!==undefined)
     console.log(user.themes)
     const classes = useStyles(props[themeId-1]);
+    console.log("UniBio: Style implemented")
     return(
         <>
         {access===-1?
@@ -187,6 +190,7 @@ const ShowPage=()=>{
                 <h2>Sorry... No user found</h2>
                 :
                 <Grid container className={classes.root}>
+                    {console.log("UniBio: Showpage compononent rendered"}
                 <Grid item container className={classes.mainCont}>
                     <Grid item className={classes.avatarCont}>
                         <Avatar
