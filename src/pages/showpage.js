@@ -190,7 +190,7 @@ const ShowPage=()=>{
                 <h2>Sorry... No user found</h2>
                 :
                 <Grid container className={classes.root}>
-                    {console.log("UniBio: Showpage compononent rendered"}
+                {console.log("UniBio: Showpage compononent rendered")}
                 <Grid item container className={classes.mainCont}>
                     <Grid item className={classes.avatarCont}>
                         <Avatar
