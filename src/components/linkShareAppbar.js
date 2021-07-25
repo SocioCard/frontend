@@ -31,12 +31,12 @@ export default function LinkShareAppbar(){
     var url = window.location.href;
     var id = url.split("/")[3];
     var link="https://main.d22qidw6d2y4nc.amplifyapp.com/"+id;
-    var linkDisp="Share My Link";
+    var linkDisp="My Link";
     return(
         <AppBar className={classes.appbar} style={{alignItems: 'center',}} position="static">
             <Toolbar style={{minHeight:'44px'}}>
             <Typography variant="h8" className={classes.onelink}>
-                Onelink
+                Sociocard
             </Typography>
                 <a className={classes.link} href={link} target="_blank"><p style={{margin:0}}>{linkDisp}</p></a>
             <SocialShare link={link}/>
