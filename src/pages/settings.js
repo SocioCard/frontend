@@ -79,7 +79,7 @@ const Settings = ({user,setUser,handleSubmit}) => {
   const handleChangeUsername=(event)=>{
       console.log(username)
       event.preventDefault();
-      axios.post("http://3.108.100.131:5000/admin/updateUsername", username)
+      axios.post("https://unibio.herokuapp.com/admin/updateUsername", username)
         .then((result) => {
             if(result.data.message!=='Username is not avaiable'){
             console.log(result);
@@ -97,7 +97,7 @@ const Settings = ({user,setUser,handleSubmit}) => {
 
   const handleDeleteAccount=(event)=>{
     console.log(id);
-    axios.post("http://3.108.100.131:5000/admin/deleteAccount",{id:id})
+    axios.post("https://unibio.herokuapp.com/admin/deleteAccount",{id:id})
     .then((result)=>{
       history.push('/');
       alert(result.data);

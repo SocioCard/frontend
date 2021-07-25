@@ -144,11 +144,12 @@ const useStyles = makeStyles({
         },
     }),
     buymeacoffee: {
-        width:'70%',
+        width:'40%',
         maxWidth:'300px',
         '&:hover':{
             transform: "scale(1.03, 1.09)",
         },
+        margin:'20px',
     }
 });
 
